@@ -1,0 +1,318 @@
+{
+  "communities": {
+    "0": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getobservacao",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getprecounitario",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getproduto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getquantidade",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setobservacao",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setprecounitario",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setproduto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setquantidade",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_java_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_java_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getpreco",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_isativo",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setativo",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setpreco"
+    ],
+    "1": [
+      "planta_projeto_entidade_comanda",
+      "planta_projeto_entidade_itemcomanda",
+      "planta_projeto_entidade_mesa",
+      "planta_projeto_entidade_produto",
+      "planta_projeto_escpos_coffee",
+      "planta_projeto_grand_chef_pro",
+      "planta_projeto_impressao_escpos",
+      "planta_projeto_impressora_caixa",
+      "planta_projeto_impressora_trailer_1",
+      "planta_projeto_impressora_trailer_2",
+      "planta_projeto_modulo_caixa",
+      "planta_projeto_modulo_cardapio",
+      "planta_projeto_modulo_impressao",
+      "planta_projeto_modulo_mesas_comandas",
+      "planta_projeto_modulo_usuarios_funcionarios",
+      "planta_projeto_piloto_grand_chef_pro",
+      "planta_projeto_roadmap_fases",
+      "planta_projeto_servidor_spring_boot",
+      "planta_projeto_tabela_roteamento_impressoras"
+    ],
+    "2": [
+      "claude_gestor_comercial",
+      "claude_graph_report",
+      "claude_graphify_out",
+      "claude_ifood_merchant_api",
+      "claude_regra_graphify",
+      "planta_projeto_arquitetura_local_first",
+      "planta_projeto_banco_sqlite",
+      "planta_projeto_consumer_concorrente",
+      "planta_projeto_food_truck",
+      "planta_projeto_gestor_comercial",
+      "planta_projeto_ifood_merchant_api",
+      "planta_projeto_interface_atendente_pwa",
+      "planta_projeto_licenca",
+      "planta_projeto_perguntas_abertas",
+      "planta_projeto_problema_produto_final_html",
+      "planta_projeto_repositorio_github",
+      "planta_projeto_stack_tecnologica",
+      "planta_projeto_toast_pos"
+    ],
+    "3": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getdataabertura",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getdatafechamento",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getstatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setdataabertura",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setdatafechamento",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setstatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_java_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda_aberta",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda_fechada"
+    ],
+    "4": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getmesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setmesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_java_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getnumero",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getstatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setnumero",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setstatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa_statusmesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa_statusmesa_livre",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa_statusmesa_ocupada"
+    ],
+    "5": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_categoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria_getnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria_setnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_java_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getcategoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setcategoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_categoriarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_categoriarepository_categoriarepository"
+    ],
+    "6": [
+      "mvnw",
+      "mvnw__entry",
+      "mvnw_clean",
+      "mvnw_die",
+      "mvnw_exec_maven",
+      "mvnw_hash_string",
+      "mvnw_native_path",
+      "mvnw_set_java_home",
+      "mvnw_trim",
+      "mvnw_verbose"
+    ],
+    "7": [
+      "jparepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_comandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository_itemcomandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository_mesarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_produtorepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_produtorepository_produtorepository"
+    ],
+    "8": [
+      "springboottest",
+      "src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests",
+      "src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests",
+      "src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads",
+      "test"
+    ],
+    "9": [
+      "springbootapplication",
+      "src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication",
+      "src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication",
+      "src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main"
+    ],
+    "10": [
+      "pkg_com_vitorraphael_gestor_comercial"
+    ]
+  },
+  "cohesion": {
+    "0": 0.09782608695652174,
+    "1": 0.1111111111111111,
+    "2": 0.12418300653594772,
+    "3": 0.13970588235294118,
+    "4": 0.1619047619047619,
+    "5": 0.21818181818181817,
+    "6": 0.3333333333333333,
+    "7": 0.3333333333333333,
+    "8": 0.6,
+    "9": 0.6666666666666666,
+    "10": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda",
+      "label": "Comanda",
+      "degree": 19
+    },
+    {
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda",
+      "label": "ItemComanda",
+      "degree": 18
+    },
+    {
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto",
+      "label": "Produto",
+      "degree": 18
+    },
+    {
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa",
+      "label": "Mesa",
+      "degree": 14
+    },
+    {
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria",
+      "label": "Categoria",
+      "degree": 11
+    },
+    {
+      "id": "planta_projeto_gestor_comercial",
+      "label": "Gestor Comercial (sistema PDV)",
+      "degree": 8
+    },
+    {
+      "id": "planta_projeto_roadmap_fases",
+      "label": "Roadmap por Fases (1 a 6)",
+      "degree": 7
+    },
+    {
+      "id": "planta_projeto_arquitetura_local_first",
+      "label": "Arquitetura Local-first (não cloud-first)",
+      "degree": 6
+    },
+    {
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda",
+      "label": "StatusComanda",
+      "degree": 6
+    },
+    {
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa_statusmesa",
+      "label": "StatusMesa",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "gestor-comercial (projeto, dono deste grafo)",
+      "target": "Gestor Comercial (sistema PDV)",
+      "source_files": [
+        "CLAUDE.md",
+        "PLANTA_PROJETO.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `gestor-comercial (projeto, dono deste grafo)` unexpectedly reaches hub `Gestor Comercial (sistema PDV)`"
+    },
+    {
+      "source": "Produto",
+      "target": "Categoria",
+      "source_files": [
+        "src/main/java/com/vitorraphael/gestor_comercial/model/Produto.java",
+        "src/main/java/com/vitorraphael/gestor_comercial/model/Categoria.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "Comanda",
+      "target": "Mesa",
+      "source_files": [
+        "src/main/java/com/vitorraphael/gestor_comercial/model/Comanda.java",
+        "src/main/java/com/vitorraphael/gestor_comercial/model/Mesa.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "ItemComanda",
+      "target": "Comanda",
+      "source_files": [
+        "src/main/java/com/vitorraphael/gestor_comercial/model/ItemComanda.java",
+        "src/main/java/com/vitorraphael/gestor_comercial/model/Comanda.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "ComandaRepository",
+      "target": "Comanda",
+      "source_files": [
+        "src/main/java/com/vitorraphael/gestor_comercial/repository/ComandaRepository.java",
+        "src/main/java/com/vitorraphael/gestor_comercial/model/Comanda.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `Comanda` connect `Comanda` to `ItemComanda`, `Mesa`, `JpaRepository`?",
+      "why": "High betweenness centrality (0.172) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `ItemComanda` connect `ItemComanda` to `Comanda`, `JpaRepository`?",
+      "why": "High betweenness centrality (0.167) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Produto` connect `ItemComanda` to `Categoria`, `JpaRepository`?",
+      "why": "High betweenness centrality (0.129) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `com.vitorraphael:gestor-comercial`, `graphify-out/ (diretório do grafo)`, `graphify-out/GRAPH_REPORT.md` to the rest of the system?",
+      "why": "23 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `ItemComanda` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09782608695652174 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Roadmap por Fases (1 a 6)` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Gestor Comercial (sistema PDV)` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12418300653594772 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

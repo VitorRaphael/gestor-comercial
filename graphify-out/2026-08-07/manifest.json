@@ -1,0 +1,92 @@
+{
+  "mvnw": {
+    "mtime": 1786060575.8735366,
+    "ast_hash": "ab50dd89da7da2346b28003352eeeeeb",
+    "semantic_hash": "ab50dd89da7da2346b28003352eeeeeb"
+  },
+  "pom.xml": {
+    "mtime": 1786060879.7180097,
+    "ast_hash": "27018a997e1c97f54c7c1c24ebdad8ee",
+    "semantic_hash": "27018a997e1c97f54c7c1c24ebdad8ee"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/GestorComercialApplication.java": {
+    "mtime": 1786060575.8371508,
+    "ast_hash": "99cecee44e94ad5dfadd7e3a07251556",
+    "semantic_hash": "99cecee44e94ad5dfadd7e3a07251556"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/GestorComercialApplicationTests.java": {
+    "mtime": 1786060575.8129778,
+    "ast_hash": "456dac41ca32f8eecacb9d86fccb2ba9",
+    "semantic_hash": "456dac41ca32f8eecacb9d86fccb2ba9"
+  },
+  "CLAUDE.md": {
+    "mtime": 1786062232.258133,
+    "ast_hash": "93490ebca00ea2c63ab69f27d355883a",
+    "semantic_hash": "93490ebca00ea2c63ab69f27d355883a"
+  },
+  "PLANTA_PROJETO.md": {
+    "mtime": 1786061202.8258667,
+    "ast_hash": "f89de466ce35b6f75e134dd0f3df6c24",
+    "semantic_hash": "f89de466ce35b6f75e134dd0f3df6c24"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/Categoria.java": {
+    "mtime": 1786100278.0510354,
+    "ast_hash": "f2536e2764ab894963a811c82363b9c5",
+    "semantic_hash": "f2536e2764ab894963a811c82363b9c5"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/Comanda.java": {
+    "mtime": 1786100306.7036626,
+    "ast_hash": "46ec8e509dc6bb86b3a79246557d98e4",
+    "semantic_hash": "46ec8e509dc6bb86b3a79246557d98e4"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/ItemComanda.java": {
+    "mtime": 1786100314.3236868,
+    "ast_hash": "9cc082394e07daea853fdc369d97549a",
+    "semantic_hash": "9cc082394e07daea853fdc369d97549a"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/Mesa.java": {
+    "mtime": 1786100299.893567,
+    "ast_hash": "01b0432699dc21a340b8c38e77572778",
+    "semantic_hash": "01b0432699dc21a340b8c38e77572778"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/Produto.java": {
+    "mtime": 1786100285.589681,
+    "ast_hash": "e3f6e3a7572eb42d4d58a11f1e03acb5",
+    "semantic_hash": "e3f6e3a7572eb42d4d58a11f1e03acb5"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/StatusComanda.java": {
+    "mtime": 1786100293.5157318,
+    "ast_hash": "2ada114e2be87e05c63a63dbd861843c",
+    "semantic_hash": "2ada114e2be87e05c63a63dbd861843c"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/StatusMesa.java": {
+    "mtime": 1786100289.0247793,
+    "ast_hash": "5ba1503993276d905a81c1bef721b24d",
+    "semantic_hash": "5ba1503993276d905a81c1bef721b24d"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/repository/CategoriaRepository.java": {
+    "mtime": 1786100322.0099864,
+    "ast_hash": "a1966a28875694629412da9b27a21115",
+    "semantic_hash": "a1966a28875694629412da9b27a21115"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/repository/ComandaRepository.java": {
+    "mtime": 1786100332.3136399,
+    "ast_hash": "b0fee57da80fe653f42c444412ae9938",
+    "semantic_hash": "b0fee57da80fe653f42c444412ae9938"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/repository/ItemComandaRepository.java": {
+    "mtime": 1786100335.186765,
+    "ast_hash": "5b967c73e716d81eafb1f791a415f2cd",
+    "semantic_hash": "5b967c73e716d81eafb1f791a415f2cd"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/repository/MesaRepository.java": {
+    "mtime": 1786100328.1692533,
+    "ast_hash": "4c66b121ecb3c33e55363486e3b72b72",
+    "semantic_hash": "4c66b121ecb3c33e55363486e3b72b72"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/repository/ProdutoRepository.java": {
+    "mtime": 1786100325.2033076,
+    "ast_hash": "da0253e00a11ee418e21227caf85cac2",
+    "semantic_hash": "da0253e00a11ee418e21227caf85cac2"
+  }
+}
