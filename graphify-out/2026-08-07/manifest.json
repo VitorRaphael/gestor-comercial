@@ -383,5 +383,25 @@
     "mtime": 1786127845.756171,
     "ast_hash": "e62ea689d60a3f5b6aa881ac4c28fa2e",
     "semantic_hash": "e62ea689d60a3f5b6aa881ac4c28fa2e"
+  },
+  ".claude/launch.json": {
+    "mtime": 1786128876.5030563,
+    "ast_hash": "5439228e7d2e172d3a460c6696023f02",
+    "semantic_hash": "5439228e7d2e172d3a460c6696023f02"
+  },
+  "src/main/resources/static/js/app.js": {
+    "mtime": 1786128862.2755592,
+    "ast_hash": "8e21fda4b2a5fa0772786024e2c9da20",
+    "semantic_hash": "8e21fda4b2a5fa0772786024e2c9da20"
+  },
+  "src/main/resources/static/manifest.json": {
+    "mtime": 1786128790.1863403,
+    "ast_hash": "6a6fb1648c381d6cdb4eb967c3e1bf8a",
+    "semantic_hash": "6a6fb1648c381d6cdb4eb967c3e1bf8a"
+  },
+  "src/main/resources/static/sw.js": {
+    "mtime": 1786128868.4018648,
+    "ast_hash": "2efa251fbfdfde2ff52a5402bd6cd95d",
+    "semantic_hash": "2efa251fbfdfde2ff52a5402bd6cd95d"
   }
 }

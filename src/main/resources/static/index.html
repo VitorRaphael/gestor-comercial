@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Gestor Comercial - Atendente</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#e8590c">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <button id="btn-voltar" class="btn-voltar" hidden>&larr;</button>
+    <h1 id="titulo-topo">Mesas</h1>
+  </header>
+
+  <main id="app">
+
+    <!-- Tela: lista de mesas -->
+    <section id="view-mesas" class="view">
+      <div id="lista-mesas" class="grid-mesas"></div>
+      <button id="btn-nova-mesa" class="btn-fab" title="Nova mesa">+</button>
+    </section>
+
+    <!-- Tela: comanda aberta -->
+    <section id="view-comanda" class="view" hidden>
+      <div class="comanda-header">
+        <span id="comanda-mesa-numero"></span>
+        <span id="comanda-status" class="badge"></span>
+      </div>
+
+      <ul id="lista-itens" class="lista-itens"></ul>
+
+      <div class="comanda-total">
+        <span>Total</span>
+        <strong id="comanda-total-valor">R$ 0,00</strong>
+      </div>
+
+      <div class="comanda-acoes">
+        <button id="btn-add-item" class="btn-primario">+ Item</button>
+        <button id="btn-imprimir" class="btn-secundario">Imprimir</button>
+        <button id="btn-fechar-comanda" class="btn-perigo">Fechar comanda</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal: escolher produto -->
+  <div id="modal-produto" class="modal" hidden>
+    <div class="modal-conteudo">
+      <div class="modal-header">
+        <h2>Adicionar item</h2>
+        <button id="btn-fechar-modal-produto" class="btn-fechar-modal">&times;</button>
+      </div>
+      <div id="categorias-tabs" class="categorias-tabs"></div>
+      <div id="lista-produtos" class="lista-produtos"></div>
+    </div>
+  </div>
+
+  <!-- Modal: quantidade e observação -->
+  <div id="modal-quantidade" class="modal" hidden>
+    <div class="modal-conteudo modal-conteudo-pequena">
+      <div class="modal-header">
+        <h2 id="qtd-produto-nome"></h2>
+        <button id="btn-fechar-modal-qtd" class="btn-fechar-modal">&times;</button>
+      </div>
+      <div class="stepper">
+        <button id="btn-qtd-menos" class="btn-stepper">-</button>
+        <span id="qtd-valor">1</span>
+        <button id="btn-qtd-mais" class="btn-stepper">+</button>
+      </div>
+      <textarea id="qtd-observacao" placeholder="Observação (ex: sem cebola)"></textarea>
+      <button id="btn-confirmar-item" class="btn-primario btn-full">Adicionar</button>
+    </div>
+  </div>
+
+  <!-- Modal: nova mesa -->
+  <div id="modal-nova-mesa" class="modal" hidden>
+    <div class="modal-conteudo modal-conteudo-pequena">
+      <div class="modal-header">
+        <h2>Nova mesa</h2>
+        <button id="btn-fechar-modal-mesa" class="btn-fechar-modal">&times;</button>
+      </div>
+      <input id="input-numero-mesa" type="number" min="1" placeholder="Número da mesa">
+      <button id="btn-confirmar-mesa" class="btn-primario btn-full">Criar</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
