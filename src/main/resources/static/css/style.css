@@ -1,15 +1,15 @@
 :root {
-  --cor-fundo: #16181c;
-  --cor-superficie: #22252b;
-  --cor-superficie-alt: #2c3038;
-  --cor-texto: #f2f2f2;
-  --cor-texto-fraco: #9aa0a8;
-  --cor-primaria: #e8590c;
-  --cor-primaria-forte: #c94a00;
-  --cor-livre: #2f9e44;
-  --cor-ocupada: #e8590c;
-  --cor-perigo: #c92a2a;
-  --raio: 12px;
+  /* Pele mobile em cima da paleta compartilhada (tokens.css) */
+  --cor-fundo: var(--bg);
+  --cor-superficie: var(--superficie);
+  --cor-superficie-alt: var(--superficie-2);
+  --cor-texto: var(--texto);
+  --cor-texto-fraco: var(--texto-fraco);
+  --cor-primaria: var(--roxo);
+  --cor-primaria-forte: var(--indigo);
+  --cor-livre: var(--sucesso);
+  --cor-ocupada: var(--rosa);
+  --cor-perigo: var(--perigo);
 }
 
 * { box-sizing: border-box; }
@@ -126,7 +126,7 @@ button, input, textarea {
   height: 56px;
   border-radius: 50%;
   border: none;
-  background: var(--cor-primaria);
+  background: var(--gradiente);
   color: white;
   font-size: 1.8rem;
   line-height: 1;
@@ -195,7 +195,7 @@ button, input, textarea {
   font-size: 1rem;
   font-weight: bold;
 }
-.btn-primario { background: var(--cor-primaria); color: white; }
+.btn-primario { background: var(--gradiente); color: white; }
 .btn-primario:active { background: var(--cor-primaria-forte); }
 .btn-secundario { background: var(--cor-superficie-alt); color: var(--cor-texto); }
 .btn-secundario:active { background: #3a3f48; }
@@ -254,7 +254,7 @@ button, input, textarea {
   font-size: 0.85rem;
   white-space: nowrap;
 }
-.categoria-tab.ativa { background: var(--cor-primaria); color: white; }
+.categoria-tab.ativa { background: var(--gradiente); color: white; }
 
 .lista-produtos { display: flex; flex-direction: column; gap: 8px; }
 .produto-card {

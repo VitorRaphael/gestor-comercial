@@ -160,9 +160,9 @@
     "semantic_hash": "f74bd989b59677da910174d0360b8a2b"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/dto/CategoriaResponse.java": {
-    "mtime": 1786126025.0504067,
-    "ast_hash": "2393f5556145982ad35f41b931f979a9",
-    "semantic_hash": "2393f5556145982ad35f41b931f979a9"
+    "mtime": 1786131213.8787572,
+    "ast_hash": "2a6d9d342ed50785e8155500a8d3d8b3",
+    "semantic_hash": "2a6d9d342ed50785e8155500a8d3d8b3"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/dto/ComandaResponse.java": {
     "mtime": 1786126034.3059072,
@@ -390,9 +390,9 @@
     "semantic_hash": "5439228e7d2e172d3a460c6696023f02"
   },
   "src/main/resources/static/js/app.js": {
-    "mtime": 1786129976.4982305,
-    "ast_hash": "8e2defd5062483e3c3111ffac753e045",
-    "semantic_hash": "8e2defd5062483e3c3111ffac753e045"
+    "mtime": 1786130898.3699894,
+    "ast_hash": "251f6aa89ea788bf11e19ebd2d80b49c",
+    "semantic_hash": "251f6aa89ea788bf11e19ebd2d80b49c"
   },
   "src/main/resources/static/manifest.json": {
     "mtime": 1786128790.1863403,
@@ -400,9 +400,9 @@
     "semantic_hash": "6a6fb1648c381d6cdb4eb967c3e1bf8a"
   },
   "src/main/resources/static/sw.js": {
-    "mtime": 1786130147.7611158,
-    "ast_hash": "300ceb1905f16ccf2613118140905fe4",
-    "semantic_hash": "300ceb1905f16ccf2613118140905fe4"
+    "mtime": 1786131515.0659063,
+    "ast_hash": "fb005c7bf1ce46aa4fe8f016b035c47a",
+    "semantic_hash": "fb005c7bf1ce46aa4fe8f016b035c47a"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/config/FuncionarioSeeder.java": {
     "mtime": 1786129704.1749718,
@@ -410,9 +410,9 @@
     "semantic_hash": "2c88fc25b229bc067b821243cb02b5ee"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/config/WebConfig.java": {
-    "mtime": 1786129696.397633,
-    "ast_hash": "c4e67c6e77fbe766496845c426db745f",
-    "semantic_hash": "c4e67c6e77fbe766496845c426db745f"
+    "mtime": 1786131336.0506482,
+    "ast_hash": "4ddc9f0889f4255487bcfc1427e1e96d",
+    "semantic_hash": "4ddc9f0889f4255487bcfc1427e1e96d"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/controller/AuthController.java": {
     "mtime": 1786129724.1663735,
@@ -508,5 +508,10 @@
     "mtime": 1786129845.7735548,
     "ast_hash": "862bf4bdad0ca3d2e043ad43214076be",
     "semantic_hash": "862bf4bdad0ca3d2e043ad43214076be"
+  },
+  "src/main/resources/static/desktop/js/app.js": {
+    "mtime": 1786131200.6318328,
+    "ast_hash": "3e4daed6d2c22e50ae64e0fd388caaed",
+    "semantic_hash": "3e4daed6d2c22e50ae64e0fd388caaed"
   }
 }

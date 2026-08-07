@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestor Comercial - Console</title>
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0b0d16">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/desktop/css/style.css">
+</head>
+<body>
+
+  <!-- Tela de login -->
+  <section id="view-login" class="tela-login">
+    <div class="cartao-login">
+      <div class="marca">
+        <span class="marca-icone">GC</span>
+        <span class="marca-texto">Gestor Comercial</span>
+      </div>
+      <p class="login-subtitulo">Console do caixa / gerência</p>
+      <input id="input-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="PIN" autocomplete="off">
+      <button id="btn-entrar" class="botao botao-primario botao-full">Entrar</button>
+    </div>
+  </section>
+
+  <!-- App -->
+  <div id="app-shell" class="app-shell" hidden>
+
+    <aside class="sidebar">
+      <div class="marca marca-sidebar">
+        <span class="marca-icone">GC</span>
+        <span class="marca-texto">Gestor Comercial</span>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item" data-view="mesas">
+          <span class="nav-icone">▦</span> Mesas
+        </button>
+        <button class="nav-item" data-view="comandas">
+          <span class="nav-icone">🧾</span> Comandas
+        </button>
+        <button class="nav-item" data-view="produtos">
+          <span class="nav-icone">🍔</span> Produtos
+        </button>
+        <button class="nav-item" data-view="categorias" data-gerente>
+          <span class="nav-icone">🏷️</span> Categorias
+        </button>
+        <button class="nav-item" data-view="impressoras" data-gerente>
+          <span class="nav-icone">🖨️</span> Impressoras
+        </button>
+        <button class="nav-item" data-view="caixa" data-gerente>
+          <span class="nav-icone">💰</span> Caixa
+        </button>
+        <button class="nav-item" data-view="funcionarios" data-gerente>
+          <span class="nav-icone">👤</span> Funcionários
+        </button>
+      </nav>
+
+      <div class="sidebar-rodape">
+        <div class="usuario-info">
+          <span id="usuario-nome" class="usuario-nome"></span>
+          <span id="usuario-perfil" class="usuario-perfil"></span>
+        </div>
+        <button id="btn-sair" class="botao-sair" title="Sair">Sair</button>
+      </div>
+    </aside>
+
+    <main class="conteudo">
+      <header class="conteudo-topbar">
+        <h1 id="titulo-secao">Mesas</h1>
+      </header>
+
+      <div class="conteudo-corpo">
+
+        <!-- Mesas -->
+        <section id="view-mesas" class="secao">
+          <div class="secao-toolbar">
+            <span class="secao-legenda">Toque numa mesa livre para abrir comanda, ou numa ocupada para ver a comanda.</span>
+            <button id="btn-nova-mesa" class="botao botao-primario" data-gerente>+ Nova mesa</button>
+          </div>
+          <div id="grid-mesas" class="grid-mesas"></div>
+        </section>
+
+        <!-- Comandas -->
+        <section id="view-comandas" class="secao secao-comandas" hidden>
+          <div class="painel-lista">
+            <div class="painel-lista-header">
+              <span>Comandas abertas</span>
+            </div>
+            <ul id="lista-comandas" class="lista-comandas"></ul>
+          </div>
+
+          <div class="painel-detalhe">
+            <div id="comanda-vazia" class="estado-vazio">
+              <p>Selecione uma comanda para ver os detalhes.</p>
+            </div>
+
+            <div id="comanda-detalhe" class="comanda-detalhe" hidden>
+              <div class="comanda-detalhe-header">
+                <div>
+                  <h2 id="detalhe-mesa-numero"></h2>
+                  <span id="detalhe-status" class="badge"></span>
+                </div>
+                <div class="comanda-detalhe-acoes">
+                  <button id="btn-detalhe-add-item" class="botao botao-secundario">+ Item</button>
+                  <button id="btn-detalhe-imprimir" class="botao botao-secundario">Imprimir</button>
+                  <button id="btn-detalhe-fechar" class="botao botao-perigo">Fechar comanda</button>
+                </div>
+              </div>
+
+              <table class="tabela">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Qtd</th>
+                    <th>Total</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="detalhe-itens-tbody"></tbody>
+              </table>
+
+              <div class="comanda-total-linha">
+                <span>Total</span>
+                <strong id="detalhe-total-valor">R$ 0,00</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Produtos -->
+        <section id="view-produtos" class="secao" hidden>
+          <div class="secao-toolbar">
+            <span class="secao-legenda" id="produtos-legenda"></span>
+            <button id="btn-novo-produto" class="botao botao-primario" data-gerente>+ Novo produto</button>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Status</th>
+                <th data-gerente></th>
+              </tr>
+            </thead>
+            <tbody id="produtos-tbody"></tbody>
+          </table>
+        </section>
+
+        <!-- Categorias -->
+        <section id="view-categorias" class="secao" hidden>
+          <div class="secao-toolbar">
+            <span class="secao-legenda">Cada categoria pode ser associada a uma impressora — é isso que roteia os pedidos.</span>
+            <button id="btn-nova-categoria" class="botao botao-primario">+ Nova categoria</button>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Impressora</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="categorias-tbody"></tbody>
+          </table>
+        </section>
+
+        <!-- Impressoras -->
+        <section id="view-impressoras" class="secao" hidden>
+          <div class="secao-toolbar">
+            <span class="secao-legenda">Impressoras térmicas cadastradas no sistema.</span>
+            <button id="btn-nova-impressora" class="botao botao-primario">+ Nova impressora</button>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Nome</th>
+              </tr>
+            </thead>
+            <tbody id="impressoras-tbody"></tbody>
+          </table>
+        </section>
+
+        <!-- Caixa -->
+        <section id="view-caixa" class="secao" hidden>
+          <div id="caixa-cartao" class="cartao-caixa"></div>
+
+          <div class="secao-toolbar">
+            <span class="secao-legenda">Movimentos do caixa aberto (sangria, reforço, despesa).</span>
+            <button id="btn-novo-movimento" class="botao botao-primario" hidden>+ Movimento</button>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Data/hora</th>
+              </tr>
+            </thead>
+            <tbody id="movimentos-tbody"></tbody>
+          </table>
+        </section>
+
+        <!-- Funcionários -->
+        <section id="view-funcionarios" class="secao" hidden>
+          <div class="secao-toolbar">
+            <span class="secao-legenda">Funcionários com acesso ao sistema.</span>
+            <button id="btn-novo-funcionario" class="botao botao-primario">+ Novo funcionário</button>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Perfil</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="funcionarios-tbody"></tbody>
+          </table>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal genérico -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-cartao">
+      <div class="modal-header">
+        <h2 id="modal-titulo"></h2>
+        <button id="modal-fechar" class="botao-icone">&times;</button>
+      </div>
+      <div id="modal-corpo" class="modal-corpo"></div>
+      <div class="modal-rodape">
+        <button id="modal-cancelar" class="botao botao-secundario">Cancelar</button>
+        <button id="modal-confirmar" class="botao botao-primario"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/desktop/js/app.js"></script>
+</body>
+</html>

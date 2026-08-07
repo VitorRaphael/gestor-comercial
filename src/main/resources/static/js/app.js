@@ -70,6 +70,12 @@ function mostrarToast(mensagem, ehErro = false) {
   mostrarToast._timer = setTimeout(() => { toast.hidden = true; }, 3000);
 }
 
+function fecharTodosModais() {
+  for (const modal of document.querySelectorAll(".modal")) {
+    modal.hidden = true;
+  }
+}
+
 function formatarMoeda(valor) {
   return Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
@@ -175,6 +181,7 @@ async function abrirMesa(mesa) {
 }
 
 el("btn-nova-mesa").addEventListener("click", () => {
+  fecharTodosModais();
   el("input-numero-mesa").value = "";
   el("modal-nova-mesa").hidden = false;
 });

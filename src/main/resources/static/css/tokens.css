@@ -1,0 +1,38 @@
+/*
+ * Paleta compartilhada entre a PWA do atendente (mobile) e o console do
+ * caixa/gerente (desktop) — mesma identidade visual, estruturas diferentes.
+ * Inspirada em dashboards SaaS modernos: fundo escuro, acentos em
+ * gradiente roxo/rosa/azul.
+ */
+:root {
+  --bg: #0b0d16;
+  --bg-elevado: #10131f;
+  --superficie: #161a29;
+  --superficie-2: #1f2436;
+  --superficie-3: #2a2f47;
+  --borda: #2a2f47;
+
+  --texto: #f3f4f8;
+  --texto-fraco: #9195ac;
+  --texto-fraquissimo: #6a6f89;
+
+  --roxo: #7c5cff;
+  --rosa: #ec4899;
+  --azul: #3b82f6;
+  --indigo: #6366f1;
+
+  --gradiente: linear-gradient(135deg, var(--indigo), var(--roxo) 55%, var(--rosa));
+  --gradiente-suave: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(236, 72, 153, 0.14));
+
+  --sucesso: #22c55e;
+  --perigo: #f43f5e;
+  --aviso: #f59e0b;
+  --info: var(--azul);
+
+  --raio-sm: 8px;
+  --raio: 14px;
+  --raio-lg: 20px;
+
+  --sombra: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --sombra-forte: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
