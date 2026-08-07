@@ -795,7 +795,7 @@ el("btn-novo-funcionario").addEventListener("click", () => {
     "Novo funcionário",
     [
       { nome: "nome", label: "Nome", tipo: "text" },
-      { nome: "pin", label: "PIN (4 a 6 dígitos)", tipo: "password", attrs: "maxlength='6' inputmode='numeric'" },
+      { nome: "pin", label: "PIN (4 a 6 dígitos)", tipo: "password", attrs: "maxlength='6' inputmode='numeric' autocomplete='new-password'" },
       { nome: "perfil", label: "Perfil", tipo: "select", opcoes: [
         { value: "ATENDENTE", label: "Atendente" },
         { value: "GERENTE", label: "Gerente" },
