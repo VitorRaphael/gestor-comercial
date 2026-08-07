@@ -2,23 +2,20 @@ package com.vitorraphael.gestor_comercial.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
 /**
- * Categoria de produtos do cardápio (ex: Lanches, Bebidas, Sobremesas).
- * Entidade própria (não enum) porque na Fase 3 ela será a chave do
- * roteamento de impressão por categoria -> impressora.
+ * Impressora física do food truck (ex: "Trailer 1", "Chapa"). Fase 3 trata
+ * a impressão de forma SIMULADA (log) — a integração ESC/POS real fica para
+ * quando o hardware estiver disponível.
  */
 @Entity
-public class Categoria {
+public class Impressora {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +24,6 @@ public class Categoria {
     @NotBlank
     @Column(nullable = false, unique = true)
     private String nome;
-
-    // Opcional: categorias da Fase 1 já existem sem impressora associada.
-    // A associação é feita depois via endpoint dedicado (associarImpressora).
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "impressora_id", nullable = true)
-    private Impressora impressora;
 
     public Long getId() {
         return id;
@@ -50,14 +41,6 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public Impressora getImpressora() {
-        return impressora;
-    }
-
-    public void setImpressora(Impressora impressora) {
-        this.impressora = impressora;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -66,7 +49,7 @@ public class Categoria {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Categoria that = (Categoria) o;
+        Impressora that = (Impressora) o;
         return id != null && Objects.equals(id, that.id);
     }
 

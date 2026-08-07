@@ -55,7 +55,8 @@ class ItemComandaServiceTest {
     void setUp() {
         MesaService mesaService = new MesaService(mesaRepository);
         ComandaService comandaService = new ComandaService(comandaRepository, mesaService);
-        CategoriaService categoriaService = new CategoriaService(categoriaRepository);
+        ImpressoraService impressoraService = new ImpressoraService(null);
+        CategoriaService categoriaService = new CategoriaService(categoriaRepository, impressoraService);
         ProdutoService produtoService = new ProdutoService(produtoRepository, categoriaService);
         itemComandaService = new ItemComandaService(itemComandaRepository, comandaService, produtoService);
     }

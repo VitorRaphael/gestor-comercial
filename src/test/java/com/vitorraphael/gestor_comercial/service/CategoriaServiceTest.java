@@ -18,7 +18,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.vitorraphael.gestor_comercial.exception.RecursoNaoEncontradoException;
 import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
 import com.vitorraphael.gestor_comercial.model.Categoria;
+import com.vitorraphael.gestor_comercial.model.Impressora;
 import com.vitorraphael.gestor_comercial.repository.CategoriaRepository;
+import com.vitorraphael.gestor_comercial.repository.ImpressoraRepository;
 
 @ExtendWith(MockitoExtension.class)
 class CategoriaServiceTest {
@@ -26,11 +28,34 @@ class CategoriaServiceTest {
     @Mock
     private CategoriaRepository categoriaRepository;
 
+    @Mock
+    private ImpressoraRepository impressoraRepository;
+
     private CategoriaService categoriaService;
 
     @BeforeEach
     void setUp() {
-        categoriaService = new CategoriaService(categoriaRepository);
+        ImpressoraService impressoraService = new ImpressoraService(impressoraRepository);
+        categoriaService = new CategoriaService(categoriaRepository, impressoraService);
+    }
+
+    @Test
+    void deveAssociarImpressoraAUmaCategoria() {
+        Categoria categoria = new Categoria();
+        categoria.setId(1L);
+        categoria.setNome("Lanches");
+
+        Impressora impressora = new Impressora();
+        impressora.setId(2L);
+        impressora.setNome("Trailer 1");
+
+        when(categoriaRepository.findById(1L)).thenReturn(Optional.of(categoria));
+        when(impressoraRepository.findById(2L)).thenReturn(Optional.of(impressora));
+        when(categoriaRepository.save(any(Categoria.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        Categoria associada = categoriaService.associarImpressora(1L, 2L);
+
+        assertThat(associada.getImpressora()).isEqualTo(impressora);
     }
 
     @Test
