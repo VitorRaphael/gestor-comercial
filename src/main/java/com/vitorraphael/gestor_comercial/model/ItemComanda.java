@@ -13,6 +13,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+import java.util.Objects;
+
 /**
  * Lançamento de um {@link Produto} em uma {@link Comanda}.
  * {@link #precoUnitario} é um snapshot do preço do produto no momento do
@@ -93,5 +95,22 @@ public class ItemComanda {
 
     public void setPrecoUnitario(BigDecimal precoUnitario) {
         this.precoUnitario = precoUnitario;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ItemComanda that = (ItemComanda) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

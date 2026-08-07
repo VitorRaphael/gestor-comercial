@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Objects;
+
 /**
  * Comanda aberta em uma {@link Mesa}, agrupando os {@link ItemComanda}
  * consumidos até o fechamento da conta.
@@ -80,5 +82,22 @@ public class Comanda {
 
     public void setDataFechamento(LocalDateTime dataFechamento) {
         this.dataFechamento = dataFechamento;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Comanda that = (Comanda) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

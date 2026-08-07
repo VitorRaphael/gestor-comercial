@@ -8,6 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+import java.util.Objects;
 
 /**
  * Mesa física do food truck.
@@ -20,6 +23,7 @@ public class Mesa {
     private Long id;
 
     @NotNull
+    @Positive
     @Column(nullable = false, unique = true)
     private Integer numero;
 
@@ -50,5 +54,22 @@ public class Mesa {
 
     public void setStatus(StatusMesa status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Mesa that = (Mesa) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

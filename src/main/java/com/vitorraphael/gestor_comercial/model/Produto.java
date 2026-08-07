@@ -14,6 +14,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+import java.util.Objects;
+
 /**
  * Item do cardápio. Pode ser desativado ({@link #ativo}) sem ser apagado,
  * preservando o histórico de comandas que já o referenciam.
@@ -80,5 +82,22 @@ public class Produto {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Produto that = (Produto) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
