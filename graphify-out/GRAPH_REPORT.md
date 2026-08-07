@@ -4,27 +4,27 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 303 nodes · 553 edges · 16 communities (14 shown, 2 thin omitted)
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 39 edges (avg confidence: 0.8)
+- 368 nodes · 716 edges · 16 communities (14 shown, 2 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 45 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ba6bb096`
+- Built from commit: `a7d33b87`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
+- Comanda
 - Produto
 - Gestor Comercial (sistema PDV)
-- Mesa
-- Comanda
 - ItemComanda
-- ItemComandaController.java
+- ComandaServiceTest.java
 - ProdutoController.java
-- CategoriaController.java
-- ComandaController.java
 - MesaController.java
 - GlobalExceptionHandler.java
+- ItemComandaController.java
+- ItemComandaServiceTest.java
+- CategoriaController.java
 - mvnw
 - GestorComercialApplicationTests.java
 - GestorComercialApplication
@@ -37,23 +37,23 @@
 3. `ItemComanda` - 24 edges
 4. `Mesa` - 23 edges
 5. `Categoria` - 19 edges
-6. `ComandaService` - 11 edges
-7. `ProdutoService` - 11 edges
-8. `MesaService` - 10 edges
-9. `CategoriaService` - 9 edges
-10. `ItemComandaService` - 9 edges
+6. `ItemComandaServiceTest` - 16 edges
+7. `ComandaServiceTest` - 12 edges
+8. `ComandaService` - 11 edges
+9. `ProdutoService` - 11 edges
+10. `MesaService` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `gestor-comercial (projeto, dono deste grafo)` --conceptually_related_to--> `Gestor Comercial (sistema PDV)`  [INFERRED]
   CLAUDE.md → PLANTA_PROJETO.md
 - `ProdutoRepository` --references--> `Produto`  [EXTRACTED]
   src/main/java/com/vitorraphael/gestor_comercial/repository/ProdutoRepository.java → src/main/java/com/vitorraphael/gestor_comercial/model/Produto.java
-- `Comanda` --references--> `Mesa`  [EXTRACTED]
-  src/main/java/com/vitorraphael/gestor_comercial/model/Comanda.java → src/main/java/com/vitorraphael/gestor_comercial/model/Mesa.java
 - `ItemComanda` --references--> `Comanda`  [EXTRACTED]
   src/main/java/com/vitorraphael/gestor_comercial/model/ItemComanda.java → src/main/java/com/vitorraphael/gestor_comercial/model/Comanda.java
 - `ItemComanda` --references--> `Produto`  [EXTRACTED]
   src/main/java/com/vitorraphael/gestor_comercial/model/ItemComanda.java → src/main/java/com/vitorraphael/gestor_comercial/model/Produto.java
+- `ItemComandaService` --references--> `ComandaService`  [EXTRACTED]
+  src/main/java/com/vitorraphael/gestor_comercial/service/ItemComandaService.java → src/main/java/com/vitorraphael/gestor_comercial/service/ComandaService.java
 
 ## Import Cycles
 - None detected.
@@ -65,49 +65,49 @@
 
 ## Communities (16 total, 2 thin omitted)
 
-### Community 0 - "Produto"
+### Community 0 - "Comanda"
+Cohesion: 0.07
+Nodes (20): RecursoNaoEncontradoException, RegraDeNegocioException, Comanda, Entity, Override, StatusComanda, Entity, Override (+12 more)
+
+### Community 1 - "Produto"
 Cohesion: 0.08
 Nodes (12): ProdutoRepository, Categoria, Entity, Override, Entity, Override, Produto, CategoriaRepository (+4 more)
 
-### Community 1 - "Gestor Comercial (sistema PDV)"
+### Community 2 - "Gestor Comercial (sistema PDV)"
 Cohesion: 0.06
 Nodes (37): gestor-comercial (projeto, dono deste grafo), graphify-out/GRAPH_REPORT.md, graphify-out/ (diretório do grafo), ifood-merchant-api (projeto irmão, regra já estabelecida), Regra Inegociável — Graphify, Arquitetura Local-first (não cloud-first), Banco de dados SQLite, Consumer (concorrente nacional, validação de mercado) (+29 more)
 
-### Community 2 - "Mesa"
-Cohesion: 0.11
-Nodes (12): RecursoNaoEncontradoException, RegraDeNegocioException, Entity, Override, Mesa, StatusComanda, ABERTA, FECHADA (+4 more)
-
-### Community 3 - "Comanda"
-Cohesion: 0.12
-Nodes (8): Comanda, Entity, Override, StatusComanda, ComandaRepository, StatusComanda, ComandaService, Service
-
-### Community 4 - "ItemComanda"
-Cohesion: 0.11
+### Community 3 - "ItemComanda"
+Cohesion: 0.09
 Nodes (8): JpaRepository, ItemComanda, Entity, Override, ItemComandaRepository, ProdutoRepository, ItemComandaService, Service
 
-### Community 5 - "ItemComandaController.java"
+### Community 4 - "ComandaServiceTest.java"
+Cohesion: 0.15
+Nodes (15): Comanda, ComandaService, ComandaController, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController (+7 more)
+
+### Community 5 - "ProdutoController.java"
+Cohesion: 0.13
+Nodes (17): PatchMapping, Produto, ProdutoService, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController (+9 more)
+
+### Community 6 - "MesaController.java"
+Cohesion: 0.14
+Nodes (15): Mesa, MesaService, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController, MesaController (+7 more)
+
+### Community 7 - "GlobalExceptionHandler.java"
+Cohesion: 0.16
+Nodes (13): ExceptionHandler, MethodArgumentNotValidException, RecursoNaoEncontradoException, RegraDeNegocioException, RestControllerAdvice, GlobalExceptionHandler, ResponseEntity, ErroResponse (+5 more)
+
+### Community 8 - "ItemComandaController.java"
 Cohesion: 0.20
 Nodes (11): DeleteMapping, ItemComanda, ItemComandaService, ItemComandaController, GetMapping, PostMapping, RequestMapping, ResponseEntity (+3 more)
 
-### Community 6 - "ProdutoController.java"
-Cohesion: 0.21
-Nodes (11): PatchMapping, Produto, ProdutoService, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController (+3 more)
+### Community 9 - "ItemComandaServiceTest.java"
+Cohesion: 0.22
+Nodes (10): ItemComandaRepository, ItemComandaServiceTest, BeforeEach, CategoriaRepository, ComandaRepository, ExtendWith, MesaRepository, ProdutoRepository (+2 more)
 
-### Community 7 - "CategoriaController.java"
+### Community 10 - "CategoriaController.java"
 Cohesion: 0.22
 Nodes (10): Categoria, CategoriaService, CategoriaController, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController (+2 more)
-
-### Community 8 - "ComandaController.java"
-Cohesion: 0.27
-Nodes (9): Comanda, ComandaService, ComandaController, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController (+1 more)
-
-### Community 9 - "MesaController.java"
-Cohesion: 0.22
-Nodes (10): Mesa, MesaService, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController, MesaController (+2 more)
-
-### Community 10 - "GlobalExceptionHandler.java"
-Cohesion: 0.31
-Nodes (8): ExceptionHandler, MethodArgumentNotValidException, RecursoNaoEncontradoException, RegraDeNegocioException, RestControllerAdvice, GlobalExceptionHandler, ResponseEntity, ErroResponse
 
 ### Community 11 - "mvnw"
 Cohesion: 0.33
@@ -129,17 +129,17 @@ Nodes (3): StatusMesa, LIVRE, OCUPADA
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Comanda` connect `Comanda` to `Mesa`, `ItemComanda`?**
-  _High betweenness centrality (0.072) - this node is a cross-community bridge._
-- **Why does `Produto` connect `Produto` to `Mesa`, `ItemComanda`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
-- **Why does `ItemComanda` connect `ItemComanda` to `Produto`, `Mesa`, `Comanda`?**
-  _High betweenness centrality (0.058) - this node is a cross-community bridge._
+- **Why does `Comanda` connect `Comanda` to `ItemComanda`?**
+  _High betweenness centrality (0.155) - this node is a cross-community bridge._
+- **Why does `Mesa` connect `Comanda` to `ItemComanda`?**
+  _High betweenness centrality (0.130) - this node is a cross-community bridge._
+- **Why does `ItemComanda` connect `ItemComanda` to `Comanda`, `Produto`?**
+  _High betweenness centrality (0.086) - this node is a cross-community bridge._
 - **What connects `com.vitorraphael:gestor-comercial`, `graphify-out/ (diretório do grafo)`, `graphify-out/GRAPH_REPORT.md` to the rest of the system?**
   _23 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Comanda` be split into smaller, more focused modules?**
+  _Cohesion score 0.06547619047619048 - nodes in this community are weakly interconnected._
 - **Should `Produto` be split into smaller, more focused modules?**
-  _Cohesion score 0.07676767676767676 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08478513356562137 - nodes in this community are weakly interconnected._
 - **Should `Gestor Comercial (sistema PDV)` be split into smaller, more focused modules?**
   _Cohesion score 0.06156156156156156 - nodes in this community are weakly interconnected._
-- **Should `Mesa` be split into smaller, more focused modules?**
-  _Cohesion score 0.10634920634920635 - nodes in this community are weakly interconnected._

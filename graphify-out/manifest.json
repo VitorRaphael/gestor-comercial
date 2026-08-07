@@ -203,5 +203,30 @@
     "mtime": 1786126029.4774332,
     "ast_hash": "49bbf4352948f61471392fd06db8f3f9",
     "semantic_hash": "49bbf4352948f61471392fd06db8f3f9"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/service/CategoriaServiceTest.java": {
+    "mtime": 1786126779.9021072,
+    "ast_hash": "f88089c44ff938adbd2a6f480a50202b",
+    "semantic_hash": "f88089c44ff938adbd2a6f480a50202b"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/service/ComandaServiceTest.java": {
+    "mtime": 1786126730.6276581,
+    "ast_hash": "d8ab06ccc1fd53e055b5273f3713f346",
+    "semantic_hash": "d8ab06ccc1fd53e055b5273f3713f346"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/service/ItemComandaServiceTest.java": {
+    "mtime": 1786126749.9235597,
+    "ast_hash": "b78855c54772d2d2e57e354b77759a7f",
+    "semantic_hash": "b78855c54772d2d2e57e354b77759a7f"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/service/MesaServiceTest.java": {
+    "mtime": 1786126771.8682585,
+    "ast_hash": "8103347a05068322d2bca8cea03c3e9f",
+    "semantic_hash": "8103347a05068322d2bca8cea03c3e9f"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/service/ProdutoServiceTest.java": {
+    "mtime": 1786126763.5401711,
+    "ast_hash": "0df3dd792d97b20b70319cd31fff6b56",
+    "semantic_hash": "0df3dd792d97b20b70319cd31fff6b56"
   }
 }
