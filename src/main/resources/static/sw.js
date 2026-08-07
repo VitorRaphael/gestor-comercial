@@ -1,4 +1,6 @@
-const CACHE_NOME = "gestor-comercial-shell-v1";
+// Lembrete: incrementar esta versão a cada deploy que muda index.html/css/js
+// — sem isso, quem já instalou o PWA fica preso no shell antigo em cache.
+const CACHE_NOME = "gestor-comercial-shell-v2";
 const ARQUIVOS_SHELL = [
   "/",
   "/index.html",

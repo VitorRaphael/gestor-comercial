@@ -11,17 +11,27 @@
 </head>
 <body>
 
-  <header class="topbar">
+  <header id="topbar" class="topbar" hidden>
     <button id="btn-voltar" class="btn-voltar" hidden>&larr;</button>
     <h1 id="titulo-topo">Mesas</h1>
+    <span id="topbar-usuario" class="topbar-usuario"></span>
+    <button id="btn-sair" class="btn-sair" title="Sair">Sair</button>
   </header>
 
   <main id="app">
 
+    <!-- Tela: login -->
+    <section id="view-login" class="view view-login">
+      <h1 class="login-titulo">Gestor Comercial</h1>
+      <p class="login-subtitulo">Digite seu PIN para entrar</p>
+      <input id="input-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="PIN" autocomplete="off">
+      <button id="btn-entrar" class="btn-primario btn-full">Entrar</button>
+    </section>
+
     <!-- Tela: lista de mesas -->
-    <section id="view-mesas" class="view">
+    <section id="view-mesas" class="view" hidden>
       <div id="lista-mesas" class="grid-mesas"></div>
-      <button id="btn-nova-mesa" class="btn-fab" title="Nova mesa">+</button>
+      <button id="btn-nova-mesa" class="btn-fab" title="Nova mesa" hidden>+</button>
     </section>
 
     <!-- Tela: comanda aberta -->

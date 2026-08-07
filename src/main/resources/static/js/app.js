@@ -7,14 +7,38 @@ const state = {
   categoriaSelecionadaId: null,
   produtoSelecionado: null,
   quantidade: 1,
+  sessao: null, // { token, funcionarioId, nome, perfil }
 };
 
 const el = (id) => document.getElementById(id);
 
+function carregarSessaoSalva() {
+  const bruta = localStorage.getItem("sessao");
+  if (!bruta) return null;
+  try {
+    return JSON.parse(bruta);
+  } catch (_) {
+    return null;
+  }
+}
+
+function salvarSessao(sessao) {
+  state.sessao = sessao;
+  localStorage.setItem("sessao", JSON.stringify(sessao));
+}
+
+function limparSessao() {
+  state.sessao = null;
+  localStorage.removeItem("sessao");
+}
+
 async function api(metodo, caminho, corpo) {
+  const headers = corpo ? { "Content-Type": "application/json" } : {};
+  if (state.sessao) headers["Authorization"] = `Bearer ${state.sessao.token}`;
+
   const resposta = await fetch(caminho, {
     method: metodo,
-    headers: corpo ? { "Content-Type": "application/json" } : undefined,
+    headers,
     body: corpo ? JSON.stringify(corpo) : undefined,
   });
 
@@ -24,6 +48,12 @@ async function api(metodo, caminho, corpo) {
       const dados = await resposta.json();
       mensagem = dados.mensagem || mensagem;
     } catch (_) { /* corpo vazio ou não-JSON */ }
+
+    if (resposta.status === 401) {
+      limparSessao();
+      mostrarViewLogin();
+    }
+
     throw new Error(mensagem);
   }
 
@@ -47,16 +77,59 @@ function formatarMoeda(valor) {
 // ---------- Navegação entre telas ----------
 
 function mostrarView(nome) {
+  el("view-login").hidden = nome !== "login";
   el("view-mesas").hidden = nome !== "mesas";
   el("view-comanda").hidden = nome !== "comanda";
+  el("topbar").hidden = nome === "login";
   el("btn-voltar").hidden = nome === "mesas";
   el("titulo-topo").textContent = nome === "mesas" ? "Mesas" : `Mesa ${state.comandaAtual?.mesaNumero ?? ""}`;
+}
+
+function mostrarViewLogin() {
+  el("input-pin").value = "";
+  mostrarView("login");
 }
 
 el("btn-voltar").addEventListener("click", () => {
   state.comandaAtual = null;
   mostrarView("mesas");
   carregarMesas();
+});
+
+// ---------- Autenticação ----------
+
+function aplicarPermissoesDeInterface() {
+  const ehGerente = state.sessao?.perfil === "GERENTE";
+  el("btn-nova-mesa").hidden = !ehGerente;
+}
+
+async function entrar() {
+  const pin = el("input-pin").value.trim();
+  if (!pin) { mostrarToast("Informe o PIN.", true); return; }
+
+  try {
+    const resposta = await api("POST", "/api/auth/login", { pin });
+    salvarSessao(resposta);
+    el("topbar-usuario").textContent = `${resposta.nome} (${resposta.perfil === "GERENTE" ? "gerente" : "atendente"})`;
+    aplicarPermissoesDeInterface();
+    mostrarView("mesas");
+    await carregarMesas();
+  } catch (erro) {
+    mostrarToast(erro.message, true);
+  }
+}
+
+el("btn-entrar").addEventListener("click", entrar);
+el("input-pin").addEventListener("keydown", (evento) => {
+  if (evento.key === "Enter") entrar();
+});
+
+el("btn-sair").addEventListener("click", async () => {
+  try {
+    await api("POST", "/api/auth/logout");
+  } catch (_) { /* mesmo se falhar no servidor, encerra localmente */ }
+  limparSessao();
+  mostrarViewLogin();
 });
 
 // ---------- Mesas ----------
@@ -285,7 +358,16 @@ el("btn-confirmar-item").addEventListener("click", async () => {
 
 // ---------- Inicialização ----------
 
-carregarMesas();
+const sessaoSalva = carregarSessaoSalva();
+if (sessaoSalva) {
+  state.sessao = sessaoSalva;
+  el("topbar-usuario").textContent = `${sessaoSalva.nome} (${sessaoSalva.perfil === "GERENTE" ? "gerente" : "atendente"})`;
+  aplicarPermissoesDeInterface();
+  mostrarView("mesas");
+  carregarMesas();
+} else {
+  mostrarViewLogin();
+}
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {

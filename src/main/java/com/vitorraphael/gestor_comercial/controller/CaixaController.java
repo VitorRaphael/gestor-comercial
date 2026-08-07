@@ -15,6 +15,7 @@ import com.vitorraphael.gestor_comercial.dto.AbrirCaixaRequest;
 import com.vitorraphael.gestor_comercial.dto.CaixaResponse;
 import com.vitorraphael.gestor_comercial.dto.FecharCaixaRequest;
 import com.vitorraphael.gestor_comercial.model.Caixa;
+import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.CaixaService;
 
 import jakarta.validation.Valid;
@@ -29,12 +30,14 @@ public class CaixaController {
         this.caixaService = caixaService;
     }
 
+    @ExigeGerente
     @PostMapping("/abrir")
     public ResponseEntity<CaixaResponse> abrir(@Valid @RequestBody AbrirCaixaRequest request) {
         Caixa caixa = caixaService.abrir(request.valorAbertura());
         return ResponseEntity.status(HttpStatus.CREATED).body(CaixaResponse.de(caixa));
     }
 
+    @ExigeGerente
     @PostMapping("/{id}/fechar")
     public ResponseEntity<CaixaResponse> fechar(@PathVariable Long id, @Valid @RequestBody FecharCaixaRequest request) {
         Caixa caixa = caixaService.fechar(id, request.valorFechamento(), request.observacao());

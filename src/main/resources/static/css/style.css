@@ -41,7 +41,38 @@ button, input, textarea {
   z-index: 5;
 }
 
-.topbar h1 { font-size: 1.2rem; margin: 0; }
+.topbar h1 { font-size: 1.2rem; margin: 0; flex: 1; }
+
+.topbar-usuario { font-size: 0.8rem; color: var(--cor-texto-fraco); }
+
+.btn-sair {
+  background: none;
+  border: none;
+  color: var(--cor-texto-fraco);
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.btn-sair:active { background: var(--cor-superficie-alt); }
+
+.view-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  gap: 6px;
+}
+.login-titulo { margin: 0 0 4px; font-size: 1.6rem; }
+.login-subtitulo { margin: 0 0 20px; color: var(--cor-texto-fraco); }
+.view-login input {
+  max-width: 220px;
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: 6px;
+}
+.view-login .btn-primario { max-width: 220px; }
 
 .btn-voltar {
   background: none;

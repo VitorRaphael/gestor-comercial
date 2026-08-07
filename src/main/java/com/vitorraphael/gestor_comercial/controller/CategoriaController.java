@@ -16,6 +16,7 @@ import com.vitorraphael.gestor_comercial.dto.AssociarImpressoraRequest;
 import com.vitorraphael.gestor_comercial.dto.CategoriaRequest;
 import com.vitorraphael.gestor_comercial.dto.CategoriaResponse;
 import com.vitorraphael.gestor_comercial.model.Categoria;
+import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.CategoriaService;
 
 import jakarta.validation.Valid;
@@ -30,6 +31,7 @@ public class CategoriaController {
         this.categoriaService = categoriaService;
     }
 
+    @ExigeGerente
     @PostMapping
     public ResponseEntity<CategoriaResponse> criar(@Valid @RequestBody CategoriaRequest request) {
         Categoria categoria = categoriaService.criar(request.nome());
@@ -44,6 +46,7 @@ public class CategoriaController {
         return ResponseEntity.ok(categorias);
     }
 
+    @ExigeGerente
     @PatchMapping("/{id}/impressora")
     public ResponseEntity<CategoriaResponse> associarImpressora(@PathVariable Long id,
             @Valid @RequestBody AssociarImpressoraRequest request) {

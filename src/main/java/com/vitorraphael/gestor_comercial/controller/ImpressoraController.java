@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vitorraphael.gestor_comercial.dto.ImpressoraRequest;
 import com.vitorraphael.gestor_comercial.dto.ImpressoraResponse;
 import com.vitorraphael.gestor_comercial.model.Impressora;
+import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.ImpressoraService;
 
 import jakarta.validation.Valid;
@@ -27,6 +28,7 @@ public class ImpressoraController {
         this.impressoraService = impressoraService;
     }
 
+    @ExigeGerente
     @PostMapping
     public ResponseEntity<ImpressoraResponse> criar(@Valid @RequestBody ImpressoraRequest request) {
         Impressora impressora = impressoraService.criar(request.nome());

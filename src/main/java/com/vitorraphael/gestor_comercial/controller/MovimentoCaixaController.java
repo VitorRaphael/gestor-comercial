@@ -16,6 +16,7 @@ import com.vitorraphael.gestor_comercial.dto.MovimentoCaixaResponse;
 import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
 import com.vitorraphael.gestor_comercial.model.MovimentoCaixa;
 import com.vitorraphael.gestor_comercial.model.TipoMovimento;
+import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.MovimentoCaixaService;
 
 import jakarta.validation.Valid;
@@ -30,6 +31,7 @@ public class MovimentoCaixaController {
         this.movimentoCaixaService = movimentoCaixaService;
     }
 
+    @ExigeGerente
     @PostMapping("/movimentos")
     public ResponseEntity<MovimentoCaixaResponse> registrar(@Valid @RequestBody MovimentoCaixaRequest request) {
         TipoMovimento tipo = converterTipo(request.tipo());

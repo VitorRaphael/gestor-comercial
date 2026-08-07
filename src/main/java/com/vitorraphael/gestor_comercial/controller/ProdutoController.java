@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vitorraphael.gestor_comercial.dto.ProdutoRequest;
 import com.vitorraphael.gestor_comercial.dto.ProdutoResponse;
 import com.vitorraphael.gestor_comercial.model.Produto;
+import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.ProdutoService;
 
 import jakarta.validation.Valid;
@@ -29,6 +30,7 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
+    @ExigeGerente
     @PostMapping
     public ResponseEntity<ProdutoResponse> criar(@Valid @RequestBody ProdutoRequest request) {
         Produto produto = produtoService.criar(request.nome(), request.preco(), request.categoriaId());
@@ -47,6 +49,7 @@ public class ProdutoController {
      * Não deleta o produto de fato — apenas o marca como inativo, preservando
      * o histórico de comandas que já o referenciam. Por isso PATCH, não DELETE.
      */
+    @ExigeGerente
     @PatchMapping("/{id}/desativar")
     public ResponseEntity<ProdutoResponse> desativar(@PathVariable Long id) {
         Produto produto = produtoService.desativar(id);

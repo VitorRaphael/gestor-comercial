@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vitorraphael.gestor_comercial.dto.MesaRequest;
 import com.vitorraphael.gestor_comercial.dto.MesaResponse;
 import com.vitorraphael.gestor_comercial.model.Mesa;
+import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.MesaService;
 
 import jakarta.validation.Valid;
@@ -27,6 +28,7 @@ public class MesaController {
         this.mesaService = mesaService;
     }
 
+    @ExigeGerente
     @PostMapping
     public ResponseEntity<MesaResponse> criar(@Valid @RequestBody MesaRequest request) {
         Mesa mesa = mesaService.criar(request.numero());
