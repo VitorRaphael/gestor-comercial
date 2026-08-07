@@ -228,5 +228,90 @@
     "mtime": 1786126763.5401711,
     "ast_hash": "0df3dd792d97b20b70319cd31fff6b56",
     "semantic_hash": "0df3dd792d97b20b70319cd31fff6b56"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/controller/CaixaController.java": {
+    "mtime": 1786127207.648165,
+    "ast_hash": "1b743ed94152c5e47934f9e153ddc1b6",
+    "semantic_hash": "1b743ed94152c5e47934f9e153ddc1b6"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/controller/MovimentoCaixaController.java": {
+    "mtime": 1786127213.81664,
+    "ast_hash": "cdcacd333785fe740e9055f304636463",
+    "semantic_hash": "cdcacd333785fe740e9055f304636463"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/dto/AbrirCaixaRequest.java": {
+    "mtime": 1786127190.4363482,
+    "ast_hash": "35d58b978242adab9ad0f28610236532",
+    "semantic_hash": "35d58b978242adab9ad0f28610236532"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/dto/CaixaResponse.java": {
+    "mtime": 1786127194.8631315,
+    "ast_hash": "647523cf75e361579a06b2b7d50a5875",
+    "semantic_hash": "647523cf75e361579a06b2b7d50a5875"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/dto/FecharCaixaRequest.java": {
+    "mtime": 1786127192.080793,
+    "ast_hash": "435bca1a5d81ccc688cee62db9b7227d",
+    "semantic_hash": "435bca1a5d81ccc688cee62db9b7227d"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/dto/MovimentoCaixaRequest.java": {
+    "mtime": 1786127196.9753444,
+    "ast_hash": "540d06b86c66f828d480eb78ac0cdaab",
+    "semantic_hash": "540d06b86c66f828d480eb78ac0cdaab"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/dto/MovimentoCaixaResponse.java": {
+    "mtime": 1786127199.04311,
+    "ast_hash": "d1cd2bc7b24e6ce361768ec4dd1e0015",
+    "semantic_hash": "d1cd2bc7b24e6ce361768ec4dd1e0015"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/Caixa.java": {
+    "mtime": 1786127154.7381516,
+    "ast_hash": "86ece4efcc1257dc057310c324db1dfb",
+    "semantic_hash": "86ece4efcc1257dc057310c324db1dfb"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/MovimentoCaixa.java": {
+    "mtime": 1786127162.1797168,
+    "ast_hash": "9a8da585a693b9a2fe17a79cc59ce4d7",
+    "semantic_hash": "9a8da585a693b9a2fe17a79cc59ce4d7"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/StatusCaixa.java": {
+    "mtime": 1786127145.485561,
+    "ast_hash": "9a8cf77b113b75661bbf55b3bcd3a1f8",
+    "semantic_hash": "9a8cf77b113b75661bbf55b3bcd3a1f8"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/model/TipoMovimento.java": {
+    "mtime": 1786127147.117945,
+    "ast_hash": "d295907354b9a40bb100beecf4cd1030",
+    "semantic_hash": "d295907354b9a40bb100beecf4cd1030"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/repository/CaixaRepository.java": {
+    "mtime": 1786127167.475205,
+    "ast_hash": "8ccd31af0a629773b099ef1b4faa1cac",
+    "semantic_hash": "8ccd31af0a629773b099ef1b4faa1cac"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/repository/MovimentoCaixaRepository.java": {
+    "mtime": 1786127168.4279745,
+    "ast_hash": "49f314e9b925d4c3acea366e07274ca1",
+    "semantic_hash": "49f314e9b925d4c3acea366e07274ca1"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/service/CaixaService.java": {
+    "mtime": 1786127181.1313028,
+    "ast_hash": "304de44c845d6ab201d51f3d0f72a5f5",
+    "semantic_hash": "304de44c845d6ab201d51f3d0f72a5f5"
+  },
+  "src/main/java/com/vitorraphael/gestor_comercial/service/MovimentoCaixaService.java": {
+    "mtime": 1786127186.410865,
+    "ast_hash": "fed5c0afaa5f0078b3a70c93d54610bd",
+    "semantic_hash": "fed5c0afaa5f0078b3a70c93d54610bd"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/service/CaixaServiceTest.java": {
+    "mtime": 1786127231.6745167,
+    "ast_hash": "75f821fb85176826d962066e4210520a",
+    "semantic_hash": "75f821fb85176826d962066e4210520a"
+  },
+  "src/test/java/com/vitorraphael/gestor_comercial/service/MovimentoCaixaServiceTest.java": {
+    "mtime": 1786127244.6720946,
+    "ast_hash": "13402221a716b86ddbf040bd30a7b40f",
+    "semantic_hash": "13402221a716b86ddbf040bd30a7b40f"
   }
 }
