@@ -1,0 +1,55 @@
+package com.vitorraphael.gestor_comercial.controller;
+
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.vitorraphael.gestor_comercial.dto.ProdutoRequest;
+import com.vitorraphael.gestor_comercial.dto.ProdutoResponse;
+import com.vitorraphael.gestor_comercial.model.Produto;
+import com.vitorraphael.gestor_comercial.service.ProdutoService;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/api/produtos")
+public class ProdutoController {
+
+    private final ProdutoService produtoService;
+
+    public ProdutoController(ProdutoService produtoService) {
+        this.produtoService = produtoService;
+    }
+
+    @PostMapping
+    public ResponseEntity<ProdutoResponse> criar(@Valid @RequestBody ProdutoRequest request) {
+        Produto produto = produtoService.criar(request.nome(), request.preco(), request.categoriaId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(ProdutoResponse.de(produto));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProdutoResponse>> listarAtivos() {
+        List<ProdutoResponse> produtos = produtoService.listarAtivos().stream()
+                .map(ProdutoResponse::de)
+                .toList();
+        return ResponseEntity.ok(produtos);
+    }
+
+    /**
+     * Não deleta o produto de fato — apenas o marca como inativo, preservando
+     * o histórico de comandas que já o referenciam. Por isso PATCH, não DELETE.
+     */
+    @PatchMapping("/{id}/desativar")
+    public ResponseEntity<ProdutoResponse> desativar(@PathVariable Long id) {
+        Produto produto = produtoService.desativar(id);
+        return ResponseEntity.ok(ProdutoResponse.de(produto));
+    }
+}
