@@ -244,20 +244,6 @@ async function abrirComandaDaMesa(mesa) {
   }
 }
 
-el("btn-nova-mesa").addEventListener("click", () => {
-  abrirModalFormulario(
-    "Nova mesa",
-    [{ nome: "numero", label: "Número da mesa", tipo: "number", attrs: "min='1'" }],
-    "Criar",
-    async (valores) => {
-      const numero = Number(valores.numero);
-      if (!numero || numero <= 0) throw new Error("Informe um número de mesa válido.");
-      await api("POST", "/api/mesas", { numero });
-      await carregarMesas();
-    },
-  );
-});
-
 // ---------- Comandas ----------
 
 async function carregarComandasAbertas() {

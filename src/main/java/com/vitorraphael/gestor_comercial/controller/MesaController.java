@@ -2,22 +2,19 @@ package com.vitorraphael.gestor_comercial.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vitorraphael.gestor_comercial.dto.MesaRequest;
 import com.vitorraphael.gestor_comercial.dto.MesaResponse;
-import com.vitorraphael.gestor_comercial.model.Mesa;
-import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.MesaService;
 
-import jakarta.validation.Valid;
-
+/**
+ * As 60 mesas do food truck são uma ferramenta fixa do ambiente
+ * (criadas pelo {@code MesaSeeder} na inicialização) — não há
+ * cadastro/exclusão de mesa pela API.
+ */
 @RestController
 @RequestMapping("/api/mesas")
 public class MesaController {
@@ -26,13 +23,6 @@ public class MesaController {
 
     public MesaController(MesaService mesaService) {
         this.mesaService = mesaService;
-    }
-
-    @ExigeGerente
-    @PostMapping
-    public ResponseEntity<MesaResponse> criar(@Valid @RequestBody MesaRequest request) {
-        Mesa mesa = mesaService.criar(request.numero());
-        return ResponseEntity.status(HttpStatus.CREATED).body(MesaResponse.de(mesa));
     }
 
     @GetMapping

@@ -105,8 +105,7 @@ el("btn-voltar").addEventListener("click", () => {
 // ---------- Autenticação ----------
 
 function aplicarPermissoesDeInterface() {
-  const ehGerente = state.sessao?.perfil === "GERENTE";
-  el("btn-nova-mesa").hidden = !ehGerente;
+  // As 60 mesas são fixas no ambiente; não há permissão de criação para gerenciar.
 }
 
 async function entrar() {
@@ -179,24 +178,6 @@ async function abrirMesa(mesa) {
     mostrarToast(erro.message, true);
   }
 }
-
-el("btn-nova-mesa").addEventListener("click", () => {
-  fecharTodosModais();
-  el("input-numero-mesa").value = "";
-  el("modal-nova-mesa").hidden = false;
-});
-el("btn-fechar-modal-mesa").addEventListener("click", () => { el("modal-nova-mesa").hidden = true; });
-el("btn-confirmar-mesa").addEventListener("click", async () => {
-  const numero = Number(el("input-numero-mesa").value);
-  if (!numero || numero <= 0) { mostrarToast("Informe um número de mesa válido.", true); return; }
-  try {
-    await api("POST", "/api/mesas", { numero });
-    el("modal-nova-mesa").hidden = true;
-    await carregarMesas();
-  } catch (erro) {
-    mostrarToast(erro.message, true);
-  }
-});
 
 // ---------- Comanda ----------
 
