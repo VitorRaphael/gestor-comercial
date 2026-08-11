@@ -1,6 +1,7 @@
 package com.vitorraphael.gestor_comercial.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,6 +50,19 @@ public class ItemComanda {
     @Column(nullable = false)
     private BigDecimal precoUnitario;
 
+    @Column(nullable = false, columnDefinition = "boolean not null default false")
+    private boolean cancelado = false;
+
+    @Column
+    private LocalDateTime dataCancelamento;
+
+    @Column
+    private String motivoCancelamento;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cancelado_por_id")
+    private Funcionario canceladoPor;
+
     public Long getId() {
         return id;
     }
@@ -95,6 +109,38 @@ public class ItemComanda {
 
     public void setPrecoUnitario(BigDecimal precoUnitario) {
         this.precoUnitario = precoUnitario;
+    }
+
+    public boolean isCancelado() {
+        return cancelado;
+    }
+
+    public void setCancelado(boolean cancelado) {
+        this.cancelado = cancelado;
+    }
+
+    public LocalDateTime getDataCancelamento() {
+        return dataCancelamento;
+    }
+
+    public void setDataCancelamento(LocalDateTime dataCancelamento) {
+        this.dataCancelamento = dataCancelamento;
+    }
+
+    public String getMotivoCancelamento() {
+        return motivoCancelamento;
+    }
+
+    public void setMotivoCancelamento(String motivoCancelamento) {
+        this.motivoCancelamento = motivoCancelamento;
+    }
+
+    public Funcionario getCanceladoPor() {
+        return canceladoPor;
+    }
+
+    public void setCanceladoPor(Funcionario canceladoPor) {
+        this.canceladoPor = canceladoPor;
     }
 
     @Override

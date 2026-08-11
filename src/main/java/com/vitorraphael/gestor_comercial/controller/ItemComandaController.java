@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vitorraphael.gestor_comercial.dto.CancelamentoRequest;
 import com.vitorraphael.gestor_comercial.dto.ItemComandaRequest;
 import com.vitorraphael.gestor_comercial.dto.ItemComandaResponse;
 import com.vitorraphael.gestor_comercial.model.ItemComanda;
@@ -51,5 +52,12 @@ public class ItemComandaController {
     public ResponseEntity<Void> remover(@PathVariable Long comandaId, @PathVariable Long itemId) {
         itemComandaService.removerItem(itemId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{itemId}/cancelar")
+    public ResponseEntity<ItemComandaResponse> cancelar(@PathVariable Long comandaId, @PathVariable Long itemId,
+            @Valid @RequestBody CancelamentoRequest request) {
+        ItemComanda item = itemComandaService.cancelarItem(itemId, request.motivo(), request.pin());
+        return ResponseEntity.ok(ItemComandaResponse.de(item));
     }
 }

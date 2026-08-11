@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vitorraphael.gestor_comercial.dto.LoginRequest;
 import com.vitorraphael.gestor_comercial.dto.LoginResponse;
+import com.vitorraphael.gestor_comercial.dto.ValidarPinGerenteRequest;
+import com.vitorraphael.gestor_comercial.dto.ValidarPinGerenteResponse;
 import com.vitorraphael.gestor_comercial.model.Funcionario;
 import com.vitorraphael.gestor_comercial.service.FuncionarioService;
 import com.vitorraphael.gestor_comercial.service.SessaoService;
@@ -33,6 +35,13 @@ public class AuthController {
         String token = sessaoService.criarSessao(funcionario);
         return ResponseEntity.ok(new LoginResponse(token, funcionario.getId(), funcionario.getNome(),
                 funcionario.getPerfil().name()));
+    }
+
+    @PostMapping("/validar-pin-gerente")
+    public ResponseEntity<ValidarPinGerenteResponse> validarPinGerente(
+            @Valid @RequestBody ValidarPinGerenteRequest request) {
+        Funcionario funcionario = funcionarioService.validarPinGerente(request.pin());
+        return ResponseEntity.ok(new ValidarPinGerenteResponse(true, funcionario.getNome()));
     }
 
     @PostMapping("/logout")

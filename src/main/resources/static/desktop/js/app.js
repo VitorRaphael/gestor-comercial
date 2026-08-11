@@ -6,6 +6,7 @@ const state = {
   comandaSelecionadaId: null,
   itensComandaSelecionada: [],
   itemModal: { categoriaId: null, produto: null, quantidade: 1 },
+  pagamentoModal: { comandaId: null, totalConta: 0, totalPago: 0, restante: 0, troco: null },
 };
 
 const el = (id) => document.getElementById(id);
@@ -161,7 +162,7 @@ function setView(nome) {
   if (nome === "caixa") carregarCaixa();
   if (nome === "estoque") carregarEstoque();
   if (nome === "analytics") carregarAnalytics();
-  if (nome === "funcionarios") carregarFuncionarios();
+  if (nome === "funcionarios") { carregarFuncionarios(); carregarSaldoDevedor(); }
 }
 
 for (const item of document.querySelectorAll(".nav-item")) {
@@ -300,7 +301,7 @@ function renderizarDetalheComanda(comanda, itens) {
   el("detalhe-mesa-numero").textContent = `Mesa ${comanda.mesaNumero}`;
   const badge = el("detalhe-status");
   badge.textContent = comanda.status;
-  badge.className = "badge" + (comanda.status === "FECHADA" ? " fechada" : "");
+  badge.className = "badge" + (comanda.status === "FECHADA" ? " fechada" : comanda.status === "CANCELADA" ? " cancelada" : "");
 
   const tbody = el("detalhe-itens-tbody");
   tbody.innerHTML = "";
@@ -308,21 +309,30 @@ function renderizarDetalheComanda(comanda, itens) {
 
   for (const item of itens) {
     const subtotal = item.precoUnitario * item.quantidade;
-    total += subtotal;
+    if (!item.cancelado) total += subtotal;
     const tr = document.createElement("tr");
+    if (item.cancelado) tr.classList.add("item-comanda-cancelado");
     tr.innerHTML = `
-      <td>${item.produtoNome}${item.observacao ? `<br><span style="color:var(--texto-fraco);font-size:0.8rem">${item.observacao}</span>` : ""}</td>
+      <td>${item.produtoNome}${item.observacao ? `<br><span style="color:var(--texto-fraco);font-size:0.8rem">${item.observacao}</span>` : ""}${item.cancelado ? `<br><span class="item-comanda-cancelado-motivo">Cancelado: ${item.motivoCancelamento || ""}</span>` : ""}</td>
       <td>${formatarMoeda(item.precoUnitario)}</td>
       <td>${item.quantidade}</td>
       <td>${formatarMoeda(subtotal)}</td>
       <td></td>
     `;
     const tdAcoes = tr.lastElementChild;
-    const btnRemover = document.createElement("button");
-    btnRemover.className = "botao-link perigo";
-    btnRemover.textContent = "Remover";
-    btnRemover.addEventListener("click", () => removerItem(item.id));
-    tdAcoes.appendChild(btnRemover);
+    if (!item.cancelado) {
+      const btnRemover = document.createElement("button");
+      btnRemover.className = "botao-link perigo";
+      btnRemover.textContent = "Remover";
+      btnRemover.addEventListener("click", () => removerItem(item.id));
+      tdAcoes.appendChild(btnRemover);
+
+      const btnCancelar = document.createElement("button");
+      btnCancelar.className = "botao-link perigo";
+      btnCancelar.textContent = "Cancelar";
+      btnCancelar.addEventListener("click", () => abrirModalCancelarItem(item.id));
+      tdAcoes.appendChild(btnCancelar);
+    }
     tbody.appendChild(tr);
   }
 
@@ -332,9 +342,10 @@ function renderizarDetalheComanda(comanda, itens) {
 
   el("detalhe-total-valor").textContent = formatarMoeda(total);
 
-  const comandaFechada = comanda.status === "FECHADA";
+  const comandaFechada = comanda.status !== "ABERTA";
   el("btn-detalhe-add-item").hidden = comandaFechada;
   el("btn-detalhe-fechar").hidden = comandaFechada;
+  el("btn-detalhe-cancelar-mesa").hidden = comandaFechada;
 }
 
 async function removerItem(itemId) {
@@ -346,19 +357,165 @@ async function removerItem(itemId) {
   }
 }
 
-el("btn-detalhe-fechar").addEventListener("click", async () => {
-  if (!confirm("Fechar esta comanda?")) return;
+el("btn-detalhe-fechar").addEventListener("click", () => {
+  abrirModalPagamento(state.comandaSelecionadaId);
+});
+
+// ---------- Cancelamento (item / mesa) ----------
+
+function corpoModalCancelamento() {
+  return `
+    <div>
+      <label>PIN do gerente</label>
+      <input id="campo-pin-gerente" type="password" inputmode="numeric" autocomplete="off">
+    </div>
+    <div>
+      <label>Motivo</label>
+      <textarea id="campo-motivo-cancelamento" placeholder="ex: cliente saiu sem pagar"></textarea>
+    </div>
+  `;
+}
+
+function abrirModalCancelarItem(itemId) {
+  abrirModalBase("Cancelar item", corpoModalCancelamento(), "Cancelar item", async () => {
+    try {
+      const pin = el("campo-pin-gerente").value.trim();
+      const motivo = el("campo-motivo-cancelamento").value.trim();
+      if (!pin || !motivo) { mostrarToast("Informe o PIN do gerente e o motivo.", true); return; }
+
+      await api("POST", `/api/comandas/${state.comandaSelecionadaId}/itens/${itemId}/cancelar`, { pin, motivo });
+      fecharModal();
+      await carregarItensDaComandaSelecionada();
+      mostrarToast("Item cancelado.");
+    } catch (erro) {
+      mostrarToast(erro.message, true);
+    }
+  });
+}
+
+el("btn-detalhe-cancelar-mesa").addEventListener("click", () => {
+  abrirModalBase("Cancelar mesa", corpoModalCancelamento(), "Cancelar mesa", async () => {
+    try {
+      const pin = el("campo-pin-gerente").value.trim();
+      const motivo = el("campo-motivo-cancelamento").value.trim();
+      if (!pin || !motivo) { mostrarToast("Informe o PIN do gerente e o motivo.", true); return; }
+
+      await api("POST", `/api/comandas/${state.comandaSelecionadaId}/cancelar`, { pin, motivo });
+      fecharModal();
+      state.comandaSelecionadaId = null;
+      el("comanda-detalhe").hidden = true;
+      el("comanda-vazia").hidden = false;
+      await carregarComandasAbertas();
+      await carregarMesas();
+      mostrarToast("Mesa cancelada.");
+    } catch (erro) {
+      mostrarToast(erro.message, true);
+    }
+  });
+});
+
+function corpoModalPagamento() {
+  const pg = state.pagamentoModal;
+  return `
+    <div class="pagamento-resumo">
+      <div><span>Total da conta</span><strong>${formatarMoeda(pg.totalConta)}</strong></div>
+      <div><span>Total pago</span><strong>${formatarMoeda(pg.totalPago)}</strong></div>
+      <div><span>Restante</span><strong>${formatarMoeda(pg.restante)}</strong></div>
+      ${pg.troco != null ? `<div><span>Troco</span><strong>${formatarMoeda(pg.troco)}</strong></div>` : ""}
+    </div>
+    <div>
+      <label>Forma de pagamento</label>
+      <select id="campo-forma-pagamento">
+        <option value="CREDITO">Crédito</option>
+        <option value="DEBITO">Débito</option>
+        <option value="DINHEIRO">Dinheiro</option>
+        <option value="PIX">Pix</option>
+        <option value="CONSUMO_INTERNO">Consumo Interno</option>
+      </select>
+    </div>
+    <div>
+      <label>Valor</label>
+      <input id="campo-valor-pagamento" type="number" min="0.01" step="0.01" value="${pg.restante.toFixed(2)}">
+    </div>
+    <div id="campos-consumo-interno" hidden>
+      <div>
+        <label>PIN do gerente</label>
+        <input id="campo-pin-consumo-interno" type="password" inputmode="numeric" autocomplete="off">
+      </div>
+      <div>
+        <label>Funcionário consumidor</label>
+        <select id="campo-funcionario-consumidor"></select>
+      </div>
+    </div>
+  `;
+}
+
+async function popularFuncionarioConsumidor() {
   try {
-    await api("POST", `/api/comandas/${state.comandaSelecionadaId}/fechar`);
-    state.comandaSelecionadaId = null;
-    el("comanda-detalhe").hidden = true;
-    el("comanda-vazia").hidden = false;
-    await carregarComandasAbertas();
-    await carregarMesas();
+    const funcionarios = await api("GET", "/api/funcionarios");
+    const select = el("campo-funcionario-consumidor");
+    select.innerHTML = funcionarios
+      .filter((f) => f.ativo)
+      .map((f) => `<option value="${f.id}">${f.nome}</option>`)
+      .join("");
   } catch (erro) {
     mostrarToast(erro.message, true);
   }
-});
+}
+
+function abrirModalPagamento(comandaId) {
+  const totalConta = state.itensComandaSelecionada
+    .filter((item) => !item.cancelado)
+    .reduce((soma, item) => soma + item.precoUnitario * item.quantidade, 0);
+  state.pagamentoModal = { comandaId, totalConta, totalPago: 0, restante: totalConta, troco: null };
+  abrirModalBase("Pagamento da comanda", corpoModalPagamento(), "Registrar pagamento", confirmarPagamento);
+  el("campo-forma-pagamento").addEventListener("change", (ev) => {
+    const consumoInterno = ev.target.value === "CONSUMO_INTERNO";
+    el("campos-consumo-interno").hidden = !consumoInterno;
+    if (consumoInterno) popularFuncionarioConsumidor();
+  });
+}
+
+async function confirmarPagamento() {
+  const formaPagamento = el("campo-forma-pagamento").value;
+  const valor = Number(el("campo-valor-pagamento").value);
+  const corpo = { formaPagamento, valor };
+  if (formaPagamento === "CONSUMO_INTERNO") {
+    corpo.pin = el("campo-pin-consumo-interno").value.trim();
+    corpo.funcionarioConsumidorId = Number(el("campo-funcionario-consumidor").value);
+    if (!corpo.pin || !corpo.funcionarioConsumidorId) {
+      mostrarToast("Informe o PIN do gerente e o funcionário consumidor.", true);
+      return;
+    }
+  }
+  try {
+    const resposta = await api("POST", `/api/comandas/${state.pagamentoModal.comandaId}/pagamentos`, corpo);
+    state.pagamentoModal.totalConta = resposta.totalConta;
+    state.pagamentoModal.totalPago = resposta.totalPago;
+    state.pagamentoModal.restante = resposta.restante;
+    state.pagamentoModal.troco = resposta.troco;
+
+    if (resposta.comandaFechada) {
+      fecharModal();
+      state.comandaSelecionadaId = null;
+      el("comanda-detalhe").hidden = true;
+      el("comanda-vazia").hidden = false;
+      await carregarComandasAbertas();
+      await carregarMesas();
+      const trocoFinal = resposta.troco;
+      mostrarToast(trocoFinal ? `Comanda fechada. Troco: ${formatarMoeda(trocoFinal)}` : "Comanda fechada.");
+    } else {
+      el("modal-corpo").innerHTML = corpoModalPagamento();
+      el("campo-forma-pagamento").addEventListener("change", (ev) => {
+        const consumoInterno = ev.target.value === "CONSUMO_INTERNO";
+        el("campos-consumo-interno").hidden = !consumoInterno;
+        if (consumoInterno) popularFuncionarioConsumidor();
+      });
+    }
+  } catch (erro) {
+    mostrarToast(erro.message, true);
+  }
+}
 
 el("btn-detalhe-imprimir").addEventListener("click", async () => {
   try {
@@ -376,7 +533,7 @@ async function abrirModalAdicionarItem() {
     if (state.categorias.length === 0) state.categorias = await api("GET", "/api/categorias");
     state.produtos = await api("GET", "/api/produtos");
 
-    state.itemModal = { categoriaId: state.categorias[0]?.id ?? null, produto: null, quantidade: 1 };
+    state.itemModal = { busca: "", produto: null, quantidade: 1 };
 
     abrirModalBase("Adicionar item", corpoModalItem(), "Adicionar", confirmarAdicionarItem);
     renderCorpoModalItem();
@@ -387,7 +544,9 @@ async function abrirModalAdicionarItem() {
 
 function corpoModalItem() {
   return `
-    <div id="item-modal-categorias" class="categorias-tabs" style="display:flex;gap:8px;overflow-x:auto;"></div>
+    <div>
+      <input type="text" id="item-modal-busca" placeholder="Buscar produto..." autocomplete="off" />
+    </div>
     <div id="item-modal-produtos" class="produto-picker"></div>
     <div id="item-modal-stepper" class="stepper"></div>
     <div>
@@ -398,24 +557,23 @@ function corpoModalItem() {
 }
 
 function renderCorpoModalItem() {
-  const tabsEl = el("item-modal-categorias");
-  tabsEl.innerHTML = "";
-  for (const categoria of state.categorias) {
-    const botao = document.createElement("button");
-    botao.className = "botao botao-secundario";
-    if (categoria.id === state.itemModal.categoriaId) botao.style.boxShadow = "inset 0 0 0 2px var(--roxo)";
-    botao.textContent = categoria.nome;
-    botao.addEventListener("click", () => {
-      state.itemModal.categoriaId = categoria.id;
+  const buscaEl = el("item-modal-busca");
+  if (buscaEl.value !== state.itemModal.busca) buscaEl.value = state.itemModal.busca;
+  if (!buscaEl.dataset.ligado) {
+    buscaEl.dataset.ligado = "1";
+    buscaEl.addEventListener("input", () => {
+      state.itemModal.busca = buscaEl.value;
       renderCorpoModalItem();
     });
-    tabsEl.appendChild(botao);
   }
 
+  const termo = state.itemModal.busca.trim().toLowerCase();
   const produtosEl = el("item-modal-produtos");
   produtosEl.innerHTML = "";
-  const produtosDaCategoria = state.produtos.filter((p) => p.categoriaId === state.itemModal.categoriaId);
-  for (const produto of produtosDaCategoria) {
+  const produtosFiltrados = termo
+    ? state.produtos.filter((p) => p.nome.toLowerCase().includes(termo))
+    : state.produtos;
+  for (const produto of produtosFiltrados) {
     const div = document.createElement("div");
     div.className = "produto-picker-item" + (state.itemModal.produto?.id === produto.id ? " selecionado" : "");
     div.innerHTML = `<span>${produto.nome}</span><span>${formatarMoeda(produto.preco)}</span>`;
@@ -425,8 +583,8 @@ function renderCorpoModalItem() {
     });
     produtosEl.appendChild(div);
   }
-  if (produtosDaCategoria.length === 0) {
-    produtosEl.innerHTML = `<p style="color:var(--texto-fraco)">Nenhum produto nesta categoria.</p>`;
+  if (produtosFiltrados.length === 0) {
+    produtosEl.innerHTML = `<p style="color:var(--texto-fraco)">Nenhum produto encontrado.</p>`;
   }
 
   const stepperEl = el("item-modal-stepper");
@@ -784,21 +942,41 @@ function abrirModalAbrirCaixa() {
 }
 
 function abrirModalFecharCaixa(caixaId) {
-  abrirModalFormulario(
-    "Fechar caixa",
-    [
-      { nome: "valorFechamento", label: "Valor contado no fechamento", tipo: "number", attrs: "min='0' step='0.01'" },
-      { nome: "observacao", label: "Observação (opcional)", tipo: "text" },
-    ],
-    "Fechar",
-    async (valores) => {
+  const corpoHtml = `
+    <div><label>Valor contado no fechamento</label><input id="campo-valorFechamento" type="number" min="0" step="0.01"></div>
+    <div><label>Vendido nas maquininhas</label><input id="campo-vendidoMaquininha" type="number" min="0" step="0.01"></div>
+    <div><label>Observação (opcional)</label><input id="campo-observacao" type="text"></div>
+    <button id="btn-completar-fechamento" type="button" class="botao-link">Completar</button>
+  `;
+
+  abrirModalBase("Fechar caixa", corpoHtml, "Fechar", async () => {
+    const valorFechamento = Number(el("campo-valorFechamento").value);
+    const observacao = el("campo-observacao").value;
+    try {
       await api("POST", `/api/caixa/${caixaId}/fechar`, {
-        valorFechamento: Number(valores.valorFechamento),
-        observacao: valores.observacao || null,
+        valorFechamento,
+        observacao: observacao || null,
       });
+      fecharModal();
       await carregarCaixa();
-    },
-  );
+    } catch (erro) {
+      mostrarToast(erro.message, true);
+    }
+  });
+
+  // TODO remover em produção
+  el("btn-completar-fechamento").addEventListener("click", async () => {
+    try {
+      const [saldo, vendidoMaquininha] = await Promise.all([
+        api("GET", `/api/caixa/${caixaId}/saldo`),
+        api("GET", `/api/caixa/${caixaId}/vendas-maquininha`),
+      ]);
+      el("campo-valorFechamento").value = Number(saldo).toFixed(2);
+      el("campo-vendidoMaquininha").value = Number(vendidoMaquininha).toFixed(2);
+    } catch (erro) {
+      mostrarToast(erro.message, true);
+    }
+  });
 }
 
 function abrirModalNovoMovimento(caixaId) {
@@ -884,6 +1062,115 @@ el("btn-novo-funcionario").addEventListener("click", () => {
     },
   );
 });
+
+// ---------- Saldo devedor (consumo interno) ----------
+
+async function carregarSaldoDevedor() {
+  try {
+    const lista = await api("GET", "/api/funcionarios/saldo-devedor");
+    const tbody = el("saldo-devedor-tbody");
+    tbody.innerHTML = "";
+
+    for (const item of lista) {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.nome}</td>
+        <td>${formatarMoeda(item.saldoDevedor)}</td>
+        <td></td>
+      `;
+      const tdAcoes = tr.lastElementChild;
+
+      const btnDetalhe = document.createElement("button");
+      btnDetalhe.className = "botao-link";
+      btnDetalhe.textContent = "Detalhes";
+      btnDetalhe.addEventListener("click", () => alternarDetalheConsumo(item.funcionarioId, trDetalhe));
+      tdAcoes.appendChild(btnDetalhe);
+
+      const btnQuitar = document.createElement("button");
+      btnQuitar.className = "botao-link";
+      btnQuitar.textContent = "Quitar";
+      btnQuitar.addEventListener("click", () => abrirModalQuitarConsumo(item.funcionarioId, item.nome, item.saldoDevedor));
+      tdAcoes.appendChild(btnQuitar);
+
+      tbody.appendChild(tr);
+
+      const trDetalhe = document.createElement("tr");
+      trDetalhe.hidden = true;
+      trDetalhe.innerHTML = `<td colspan="3"></td>`;
+      tbody.appendChild(trDetalhe);
+    }
+
+    if (lista.length === 0) {
+      tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="3">Nenhum funcionário com saldo devedor.</td></tr>`;
+    }
+  } catch (erro) {
+    mostrarToast(erro.message, true);
+  }
+}
+
+async function alternarDetalheConsumo(funcionarioId, trDetalhe) {
+  if (!trDetalhe.hidden) {
+    trDetalhe.hidden = true;
+    return;
+  }
+  try {
+    const dados = await api("GET", `/api/funcionarios/${funcionarioId}/consumos`);
+    const linhasConsumo = dados.consumos
+      .map((c) => `<tr><td>${new Date(c.dataHora).toLocaleString("pt-BR")}</td><td>${c.mesa}</td><td>${formatarMoeda(c.valor)}</td><td>${formatarMoeda(c.valorQuitado)}</td></tr>`)
+      .join("");
+    const linhasQuitacao = dados.quitacoes
+      .map((q) => `<tr><td>${new Date(q.dataHora).toLocaleString("pt-BR")}</td><td>${formatarMoeda(q.valor)}</td><td>${q.autorizadoPor}</td></tr>`)
+      .join("");
+    trDetalhe.querySelector("td").innerHTML = `
+      <div class="detalhe-consumo">
+        <strong>Consumos</strong>
+        <table class="tabela">
+          <thead><tr><th>Data</th><th>Origem</th><th>Valor</th><th>Quitado</th></tr></thead>
+          <tbody>${linhasConsumo || `<tr class="tabela-vazia"><td colspan="4">Nenhum consumo.</td></tr>`}</tbody>
+        </table>
+        <strong>Quitações</strong>
+        <table class="tabela">
+          <thead><tr><th>Data</th><th>Valor</th><th>Autorizado por</th></tr></thead>
+          <tbody>${linhasQuitacao || `<tr class="tabela-vazia"><td colspan="3">Nenhuma quitação.</td></tr>`}</tbody>
+        </table>
+      </div>
+    `;
+    trDetalhe.hidden = false;
+  } catch (erro) {
+    mostrarToast(erro.message, true);
+  }
+}
+
+function abrirModalQuitarConsumo(funcionarioId, nome, saldoDevedor) {
+  const corpoHtml = `
+    <div class="pagamento-resumo">
+      <div><span>Funcionário</span><strong>${nome}</strong></div>
+      <div><span>Saldo devedor</span><strong>${formatarMoeda(saldoDevedor)}</strong></div>
+    </div>
+    <div>
+      <label>Valor a quitar</label>
+      <input id="campo-valor-quitar" type="number" min="0.01" step="0.01" value="${saldoDevedor.toFixed(2)}">
+    </div>
+    <div>
+      <label>PIN do gerente</label>
+      <input id="campo-pin-quitar" type="password" inputmode="numeric" autocomplete="off">
+    </div>
+  `;
+  abrirModalBase("Quitar consumo interno", corpoHtml, "Quitar", async () => {
+    try {
+      const valor = Number(el("campo-valor-quitar").value);
+      const pin = el("campo-pin-quitar").value.trim();
+      if (!valor || !pin) { mostrarToast("Informe o valor e o PIN do gerente.", true); return; }
+
+      await api("POST", `/api/funcionarios/${funcionarioId}/quitar`, { valor, pin });
+      fecharModal();
+      await carregarSaldoDevedor();
+      mostrarToast("Consumo quitado.");
+    } catch (erro) {
+      mostrarToast(erro.message, true);
+    }
+  });
+}
 
 // ---------- Estoque ----------
 
@@ -1088,10 +1375,37 @@ function destruirGraficosAnalytics() {
 async function carregarAnalytics() {
   try {
     const dias = el("analytics-periodo-select").value;
-    const dados = await api("GET", `/api/analytics/dashboard?dias=${dias}`);
+    const [dados, cancelamentos] = await Promise.all([
+      api("GET", `/api/analytics/dashboard?dias=${dias}`),
+      api("GET", `/api/analytics/cancelamentos?dias=${dias}`),
+    ]);
     renderizarAnalytics(dados);
+    renderizarCancelamentos(cancelamentos);
   } catch (erro) {
     mostrarToast(erro.message, true);
+  }
+}
+
+function renderizarCancelamentos(cancelamentos) {
+  const tbody = el("analytics-cancelamentos-tbody");
+  tbody.innerHTML = "";
+
+  if (cancelamentos.length === 0) {
+    tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="6">Nenhum cancelamento no período.</td></tr>`;
+    return;
+  }
+
+  for (const c of cancelamentos) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${formatarDataHora(c.dataHora)}</td>
+      <td>${c.tipo === "MESA" ? "Mesa inteira" : "Item"}</td>
+      <td>${c.descricao}</td>
+      <td>${formatarMoeda(c.valor)}</td>
+      <td>${c.motivo || ""}</td>
+      <td>${c.canceladoPorNome || ""}</td>
+    `;
+    tbody.appendChild(tr);
   }
 }
 

@@ -16,4 +16,6 @@ public interface ComandaRepository extends JpaRepository<Comanda, Long> {
     List<Comanda> findByStatus(StatusComanda status);
 
     List<Comanda> findByStatusAndDataFechamentoBetween(StatusComanda status, LocalDateTime inicio, LocalDateTime fim);
+
+    List<Comanda> findByStatusAndDataCancelamentoBetween(StatusComanda status, LocalDateTime inicio, LocalDateTime fim);
 }

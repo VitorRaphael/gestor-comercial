@@ -11,7 +11,10 @@ public record ItemComandaResponse(
         String produtoNome,
         Integer quantidade,
         String observacao,
-        BigDecimal precoUnitario) {
+        BigDecimal precoUnitario,
+        boolean cancelado,
+        String motivoCancelamento,
+        String canceladoPorNome) {
 
     public static ItemComandaResponse de(ItemComanda item) {
         return new ItemComandaResponse(
@@ -21,6 +24,9 @@ public record ItemComandaResponse(
                 item.getProduto().getNome(),
                 item.getQuantidade(),
                 item.getObservacao(),
-                item.getPrecoUnitario());
+                item.getPrecoUnitario(),
+                item.isCancelado(),
+                item.getMotivoCancelamento(),
+                item.getCanceladoPor() != null ? item.getCanceladoPor().getNome() : null);
     }
 }

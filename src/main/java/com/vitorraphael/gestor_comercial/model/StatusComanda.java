@@ -5,5 +5,6 @@ package com.vitorraphael.gestor_comercial.model;
  */
 public enum StatusComanda {
     ABERTA,
-    FECHADA
+    FECHADA,
+    CANCELADA
 }

@@ -9,21 +9,30 @@ import org.springframework.stereotype.Service;
 import com.vitorraphael.gestor_comercial.exception.RecursoNaoEncontradoException;
 import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
 import com.vitorraphael.gestor_comercial.model.Caixa;
+import com.vitorraphael.gestor_comercial.model.FormaPagamento;
 import com.vitorraphael.gestor_comercial.model.MovimentoCaixa;
+import com.vitorraphael.gestor_comercial.model.Pagamento;
 import com.vitorraphael.gestor_comercial.model.StatusCaixa;
 import com.vitorraphael.gestor_comercial.model.TipoMovimento;
 import com.vitorraphael.gestor_comercial.repository.CaixaRepository;
 import com.vitorraphael.gestor_comercial.repository.MovimentoCaixaRepository;
+import com.vitorraphael.gestor_comercial.repository.PagamentoRepository;
 
 @Service
 public class CaixaService {
 
+    private static final List<FormaPagamento> FORMAS_MAQUININHA = List.of(
+            FormaPagamento.CREDITO, FormaPagamento.DEBITO, FormaPagamento.PIX);
+
     private final CaixaRepository caixaRepository;
     private final MovimentoCaixaRepository movimentoCaixaRepository;
+    private final PagamentoRepository pagamentoRepository;
 
-    public CaixaService(CaixaRepository caixaRepository, MovimentoCaixaRepository movimentoCaixaRepository) {
+    public CaixaService(CaixaRepository caixaRepository, MovimentoCaixaRepository movimentoCaixaRepository,
+            PagamentoRepository pagamentoRepository) {
         this.caixaRepository = caixaRepository;
         this.movimentoCaixaRepository = movimentoCaixaRepository;
+        this.pagamentoRepository = pagamentoRepository;
     }
 
     public Caixa abrir(BigDecimal valorAbertura) {
@@ -67,9 +76,6 @@ public class CaixaService {
                 .orElseThrow(() -> new RegraDeNegocioException("Nenhum caixa foi fechado ainda."));
     }
 
-    // Saldo esperado de dinheiro físico movimentado manualmente no caixa.
-    // NÃO inclui receita de vendas das comandas — cálculo de vendas fica
-    // para uma fase futura.
     public BigDecimal calcularSaldoEsperado(Long caixaId) {
         Caixa caixa = buscarPorId(caixaId);
         List<MovimentoCaixa> movimentos = movimentoCaixaRepository.findByCaixaId(caixaId);
@@ -82,6 +88,26 @@ public class CaixaService {
                 default -> throw new IllegalStateException("Tipo de movimento não tratado: " + movimento.getTipo());
             }
         }
+
+        List<Pagamento> pagamentosDinheiro = pagamentoRepository
+                .findByFormaPagamentoAndDataHoraGreaterThanEqual(FormaPagamento.DINHEIRO, caixa.getDataAbertura());
+        for (Pagamento pagamento : pagamentosDinheiro) {
+            saldo = saldo.add(pagamento.getValor());
+        }
+
         return saldo;
+    }
+
+    public BigDecimal calcularVendasMaquininha(Long caixaId) {
+        Caixa caixa = buscarPorId(caixaId);
+
+        List<Pagamento> pagamentosMaquininha = pagamentoRepository
+                .findByFormaPagamentoInAndDataHoraGreaterThanEqual(FORMAS_MAQUININHA, caixa.getDataAbertura());
+
+        BigDecimal total = BigDecimal.ZERO;
+        for (Pagamento pagamento : pagamentosMaquininha) {
+            total = total.add(pagamento.getValor());
+        }
+        return total;
     }
 }

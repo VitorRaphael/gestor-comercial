@@ -10,7 +10,10 @@ public record ComandaResponse(
         Integer mesaNumero,
         String status,
         LocalDateTime dataAbertura,
-        LocalDateTime dataFechamento) {
+        LocalDateTime dataFechamento,
+        LocalDateTime dataCancelamento,
+        String motivoCancelamento,
+        String canceladoPorNome) {
 
     public static ComandaResponse de(Comanda comanda) {
         return new ComandaResponse(
@@ -19,6 +22,9 @@ public record ComandaResponse(
                 comanda.getMesa().getNumero(),
                 comanda.getStatus().name(),
                 comanda.getDataAbertura(),
-                comanda.getDataFechamento());
+                comanda.getDataFechamento(),
+                comanda.getDataCancelamento(),
+                comanda.getMotivoCancelamento(),
+                comanda.getCanceladoPor() != null ? comanda.getCanceladoPor().getNome() : null);
     }
 }

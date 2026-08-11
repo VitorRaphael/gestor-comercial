@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.vitorraphael.gestor_comercial.exception.AcessoNegadoException;
 import com.vitorraphael.gestor_comercial.exception.NaoAutorizadoException;
 import com.vitorraphael.gestor_comercial.exception.RecursoNaoEncontradoException;
 import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
@@ -59,5 +60,17 @@ public class FuncionarioService {
                 .filter(f -> pinHashService.confere(pin, f.getPinSalt(), f.getPinHash()))
                 .findFirst()
                 .orElseThrow(() -> new NaoAutorizadoException("PIN inválido."));
+    }
+
+    /**
+     * Valida um PIN de gerente sem afetar a sessão atual — usado em fluxos de
+     * reautenticação (ex: cancelamento de item/mesa).
+     */
+    public Funcionario validarPinGerente(String pin) {
+        Funcionario funcionario = autenticarPorPin(pin);
+        if (funcionario.getPerfil() != PerfilFuncionario.GERENTE) {
+            throw new AcessoNegadoException("PIN informado não pertence a um gerente.");
+        }
+        return funcionario;
     }
 }

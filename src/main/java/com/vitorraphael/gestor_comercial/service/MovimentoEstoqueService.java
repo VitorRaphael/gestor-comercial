@@ -49,6 +49,9 @@ public class MovimentoEstoqueService {
 
     public void darBaixaPorFechamentoDeComanda(Comanda comanda, List<ItemComanda> itens) {
         for (ItemComanda item : itens) {
+            if (item.isCancelado()) {
+                continue;
+            }
             List<FichaTecnica> ficha = fichaTecnicaService.listarPorProduto(item.getProduto().getId());
             for (FichaTecnica vinculo : ficha) {
                 BigDecimal quantidadeConsumida = vinculo.getQuantidadeUsada()

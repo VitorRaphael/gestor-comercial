@@ -364,6 +364,10 @@ button, input, select, textarea {
 .caixa-status-aberto, .caixa-status-fechado { display: flex; align-items: center; }
 
 .badge.perigo { background: var(--erro, #ef4444); color: white; }
+.badge.cancelada { background: var(--erro, #ef4444); color: white; }
+
+.item-comanda-cancelado { text-decoration: line-through; color: var(--texto-fraco); }
+.item-comanda-cancelado-motivo { color: var(--texto-fraco); font-size: 0.78rem; }
 
 .ficha-tecnica-selector { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
 
@@ -434,6 +438,17 @@ button, input, select, textarea {
   padding: 10px 12px;
 }
 .modal-corpo textarea { min-height: 70px; resize: vertical; }
+.pagamento-resumo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-sm);
+  padding: 10px 12px;
+}
+.pagamento-resumo div { display: flex; justify-content: space-between; }
+.pagamento-resumo span { color: var(--texto-fraco); }
 .modal-rodape { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
 
 .produto-picker { display: flex; flex-direction: column; gap: 6px; max-height: 260px; overflow-y: auto; }

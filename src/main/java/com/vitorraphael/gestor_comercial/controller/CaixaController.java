@@ -66,4 +66,9 @@ public class CaixaController {
     public ResponseEntity<BigDecimal> saldo(@PathVariable Long id) {
         return ResponseEntity.ok(caixaService.calcularSaldoEsperado(id));
     }
+
+    @GetMapping("/{id}/vendas-maquininha")
+    public ResponseEntity<BigDecimal> vendasMaquininha(@PathVariable Long id) {
+        return ResponseEntity.ok(caixaService.calcularVendasMaquininha(id));
+    }
 }

@@ -107,6 +107,7 @@
                 <div class="comanda-detalhe-acoes">
                   <button id="btn-detalhe-add-item" class="botao botao-secundario">+ Item</button>
                   <button id="btn-detalhe-imprimir" class="botao botao-secundario">Imprimir</button>
+                  <button id="btn-detalhe-cancelar-mesa" class="botao botao-secundario">Cancelar mesa</button>
                   <button id="btn-detalhe-fechar" class="botao botao-perigo">Fechar comanda</button>
                 </div>
               </div>
@@ -255,6 +256,23 @@
               <canvas id="grafico-categoria"></canvas>
             </div>
           </div>
+
+          <div class="secao-toolbar" style="margin-top: 2rem;">
+            <span class="secao-legenda">Cancelamentos</span>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Data/hora</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Motivo</th>
+                <th>Autorizado por</th>
+              </tr>
+            </thead>
+            <tbody id="analytics-cancelamentos-tbody"></tbody>
+          </table>
         </section>
 
         <!-- Funcionários -->
@@ -273,6 +291,20 @@
               </tr>
             </thead>
             <tbody id="funcionarios-tbody"></tbody>
+          </table>
+
+          <div class="secao-toolbar" style="margin-top:2rem">
+            <span class="secao-legenda">Saldo devedor de consumo interno.</span>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Saldo devedor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="saldo-devedor-tbody"></tbody>
           </table>
         </section>
 

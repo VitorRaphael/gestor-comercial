@@ -44,6 +44,16 @@ public class Comanda {
     @Column
     private LocalDateTime dataFechamento;
 
+    @Column
+    private LocalDateTime dataCancelamento;
+
+    @Column
+    private String motivoCancelamento;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cancelado_por_id")
+    private Funcionario canceladoPor;
+
     public Long getId() {
         return id;
     }
@@ -82,6 +92,30 @@ public class Comanda {
 
     public void setDataFechamento(LocalDateTime dataFechamento) {
         this.dataFechamento = dataFechamento;
+    }
+
+    public LocalDateTime getDataCancelamento() {
+        return dataCancelamento;
+    }
+
+    public void setDataCancelamento(LocalDateTime dataCancelamento) {
+        this.dataCancelamento = dataCancelamento;
+    }
+
+    public String getMotivoCancelamento() {
+        return motivoCancelamento;
+    }
+
+    public void setMotivoCancelamento(String motivoCancelamento) {
+        this.motivoCancelamento = motivoCancelamento;
+    }
+
+    public Funcionario getCanceladoPor() {
+        return canceladoPor;
+    }
+
+    public void setCanceladoPor(Funcionario canceladoPor) {
+        this.canceladoPor = canceladoPor;
     }
 
     @Override

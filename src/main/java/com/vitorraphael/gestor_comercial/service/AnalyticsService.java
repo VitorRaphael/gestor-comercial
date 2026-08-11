@@ -15,6 +15,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.vitorraphael.gestor_comercial.dto.AnalyticsDashboardResponse;
+import com.vitorraphael.gestor_comercial.dto.CancelamentoResponse;
 import com.vitorraphael.gestor_comercial.model.Comanda;
 import com.vitorraphael.gestor_comercial.model.ItemComanda;
 import com.vitorraphael.gestor_comercial.model.Produto;
@@ -74,6 +75,43 @@ public class AnalyticsService {
 
         return new AnalyticsDashboardResponse(faturamentoTotal, ticketMedio, numeroComandas, cmvPercentual,
                 faturamentoPorDia, curvaAbc, mapaCalor, mixPorCategoria, alertas);
+    }
+
+    public List<CancelamentoResponse> gerarRelatorioCancelamentos(int dias) {
+        LocalDateTime agora = LocalDateTime.now();
+        LocalDateTime inicio = agora.minusDays(dias);
+
+        List<CancelamentoResponse> relatorio = new ArrayList<>();
+
+        List<ItemComanda> itensCancelados = itemComandaRepository
+                .findByCanceladoTrueAndDataCancelamentoBetween(inicio, agora);
+        for (ItemComanda item : itensCancelados) {
+            relatorio.add(new CancelamentoResponse(
+                    item.getDataCancelamento(),
+                    "ITEM",
+                    item.getProduto().getNome(),
+                    receitaDoItem(item),
+                    item.getMotivoCancelamento(),
+                    item.getCanceladoPor() != null ? item.getCanceladoPor().getNome() : null));
+        }
+
+        List<Comanda> comandasCanceladas = comandaRepository
+                .findByStatusAndDataCancelamentoBetween(StatusComanda.CANCELADA, inicio, agora);
+        for (Comanda comanda : comandasCanceladas) {
+            BigDecimal valorComanda = itemComandaRepository.findByComandaId(comanda.getId()).stream()
+                    .map(this::receitaDoItem)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+            relatorio.add(new CancelamentoResponse(
+                    comanda.getDataCancelamento(),
+                    "MESA",
+                    "Mesa " + comanda.getMesa().getNumero(),
+                    valorComanda,
+                    comanda.getMotivoCancelamento(),
+                    comanda.getCanceladoPor() != null ? comanda.getCanceladoPor().getNome() : null));
+        }
+
+        relatorio.sort(Comparator.comparing(CancelamentoResponse::dataHora).reversed());
+        return relatorio;
     }
 
     private List<Comanda> buscarComandasFechadas(LocalDateTime inicio, LocalDateTime fim) {
