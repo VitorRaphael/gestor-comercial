@@ -10,4 +10,6 @@ import com.vitorraphael.gestor_comercial.model.StatusCaixa;
 public interface CaixaRepository extends JpaRepository<Caixa, Long> {
 
     Optional<Caixa> findByStatus(StatusCaixa status);
+
+    Optional<Caixa> findFirstByStatusOrderByDataFechamentoDesc(StatusCaixa status);
 }

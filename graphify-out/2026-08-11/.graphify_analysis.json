@@ -1,6 +1,7 @@
 {
   "communities": {
     "0": [
+      "jparepository",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_caixaresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_caixaresponse_caixaresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_caixaresponse_caixaresponse_de",
@@ -58,8 +59,12 @@
       "src_main_java_com_vitorraphael_gestor_comercial_repository_caixarepository",
       "src_main_java_com_vitorraphael_gestor_comercial_repository_caixarepository_caixarepository",
       "src_main_java_com_vitorraphael_gestor_comercial_repository_caixarepository_caixarepository_findbystatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_funcionariorepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentocaixarepository",
       "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentocaixarepository_movimentocaixarepository",
       "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentocaixarepository_movimentocaixarepository_findbycaixaid",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_produtorepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_produtorepository_produtorepository",
       "src_main_java_com_vitorraphael_gestor_comercial_service_caixaservice",
       "src_main_java_com_vitorraphael_gestor_comercial_service_caixaservice_caixaservice",
       "src_main_java_com_vitorraphael_gestor_comercial_service_caixaservice_caixaservice_abrir",
@@ -101,7 +106,7 @@
       "src_test_java_com_vitorraphael_gestor_comercial_service_movimentocaixaservicetest_movimentocaixaservicetest_setup"
     ],
     "1": [
-      "jparepository",
+      "com_vitorraphael_gestor_comercial_model_produto",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_impressoraresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_impressoraresponse_impressoraresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_impressoraresponse_impressoraresponse_de",
@@ -133,9 +138,6 @@
       "src_main_java_com_vitorraphael_gestor_comercial_repository_impressorarepository",
       "src_main_java_com_vitorraphael_gestor_comercial_repository_impressorarepository_impressorarepository",
       "src_main_java_com_vitorraphael_gestor_comercial_repository_impressorarepository_impressorarepository_findbynome",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentocaixarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_produtorepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_produtorepository_produtorepository",
       "src_main_java_com_vitorraphael_gestor_comercial_service_categoriaservice",
       "src_main_java_com_vitorraphael_gestor_comercial_service_categoriaservice_categoriaservice",
       "src_main_java_com_vitorraphael_gestor_comercial_service_categoriaservice_categoriaservice_associarimpressora",
@@ -172,6 +174,8 @@
       "src_test_java_com_vitorraphael_gestor_comercial_service_categoriaservicetest_java_categoriarepository",
       "src_test_java_com_vitorraphael_gestor_comercial_service_categoriaservicetest_java_extendwith",
       "src_test_java_com_vitorraphael_gestor_comercial_service_categoriaservicetest_java_test",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_criarproduto",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_produto",
       "src_test_java_com_vitorraphael_gestor_comercial_service_roteamentoimpressaoservicetest",
       "src_test_java_com_vitorraphael_gestor_comercial_service_roteamentoimpressaoservicetest_java_beforeeach",
       "src_test_java_com_vitorraphael_gestor_comercial_service_roteamentoimpressaoservicetest_java_extendwith",
@@ -188,58 +192,6 @@
       "src_test_java_com_vitorraphael_gestor_comercial_service_roteamentoimpressaoservicetest_roteamentoimpressaoservicetest_setup"
     ],
     "2": [
-      "abrircaixarequest",
-      "associarimpressorarequest",
-      "caixaresponse",
-      "caixaservice",
-      "categoriarequest",
-      "categoriaresponse",
-      "categoriaservice",
-      "fecharcaixarequest",
-      "impressorarequest",
-      "impressoraresponse",
-      "impressoraservice",
-      "retention",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_abrir",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_buscaraberto",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_buscarporid",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_caixacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_fechar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_saldo",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_getmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_postmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_requestmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_responseentity",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_restcontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_associarimpressora",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_categoriacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_criar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_listar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_getmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_patchmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_postmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_requestmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_responseentity",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_restcontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller_criar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller_impressoracontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller_listar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_getmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_postmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_requestmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_responseentity",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_restcontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_security_exigegerente",
-      "src_main_java_com_vitorraphael_gestor_comercial_security_exigegerente_exigegerente",
-      "target"
-    ],
-    "3": [
       "src_main_resources_static_desktop_js_app",
       "src_main_resources_static_desktop_js_app_abrircomandadamesa",
       "src_main_resources_static_desktop_js_app_abrirmodalabrircaixa",
@@ -289,6 +241,49 @@
       "src_main_resources_static_desktop_js_app_setview",
       "src_main_resources_static_desktop_js_app_state"
     ],
+    "3": [
+      "autenticacaointerceptor",
+      "categoria",
+      "configuration",
+      "interceptorregistry",
+      "override",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_mesaseeder_run",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig_addinterceptors",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig_addviewcontrollers",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig_webconfig",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriaresponse_categoriaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriaresponse_categoriaresponse_de",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_produtoresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_produtoresponse_produtoresponse_de",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_equals",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getcategoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getcusto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getpreco",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_hashcode",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_isativo",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setativo",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setcategoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setcusto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setpreco",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_atualizar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_buscarporid",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_criar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_desativar",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_devecriarprodutocomcategoriaexistente",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_devedesativarprodutosemremoverdorepositorio",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_develancarexcecaoaobuscarprodutocomidinexistente",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_develancarexcecaoaocriarprodutocomcategoriainexistente",
+      "viewcontrollerregistry",
+      "webmvcconfigurer"
+    ],
     "4": [
       "claude_gestor_comercial",
       "claude_graph_report",
@@ -331,22 +326,22 @@
     "5": [
       "com_vitorraphael_gestor_comercial_security_exigegerente",
       "org_springframework_http_responseentity",
-      "org_springframework_web_bind_annotation_deletemapping",
       "org_springframework_web_bind_annotation_getmapping",
       "org_springframework_web_bind_annotation_patchmapping",
       "org_springframework_web_bind_annotation_postmapping",
       "org_springframework_web_bind_annotation_putmapping",
       "org_springframework_web_bind_annotation_requestmapping",
       "org_springframework_web_bind_annotation_restcontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_analyticscontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_analyticscontroller_analyticscontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_analyticscontroller_analyticscontroller_dashboard",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller_listarporproduto",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller_remover",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller_materiaprimacontroller",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller_materiaprimacontroller_atualizar",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller_materiaprimacontroller_criar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller_materiaprimacontroller_listar",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_movimentoestoquecontroller",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_movimentoestoquecontroller_movimentoestoquecontroller",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_movimentoestoquecontroller_movimentoestoquecontroller_listar",
@@ -358,7 +353,6 @@
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_produtocontroller_desativar",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_produtocontroller_listarativos",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimarequest_materiaprimarequest",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimaresponse_materiaprimaresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_movimentoestoquerequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_movimentoestoquerequest_movimentoestoquerequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_produtorequest",
@@ -366,10 +360,43 @@
       "src_main_java_com_vitorraphael_gestor_comercial_dto_produtoresponse_produtoresponse"
     ],
     "6": [
+      "com_vitorraphael_gestor_comercial_model_categoria",
+      "com_vitorraphael_gestor_comercial_model_mesa",
+      "com_vitorraphael_gestor_comercial_model_statusmesa",
+      "com_vitorraphael_gestor_comercial_repository_categoriarepository",
+      "com_vitorraphael_gestor_comercial_repository_comandarepository",
+      "com_vitorraphael_gestor_comercial_repository_itemcomandarepository",
+      "com_vitorraphael_gestor_comercial_repository_mesarepository",
+      "com_vitorraphael_gestor_comercial_repository_produtorepository",
+      "mesaservice",
+      "org_junit_jupiter_api_beforeeach",
+      "org_junit_jupiter_api_extension_extendwith",
+      "recursonaoencontradoexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_produtocontroller_produtocontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_comandaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_itemcomandaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_java_service",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_listarativos",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_produtoservice",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_setup",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_setup",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_setup"
+    ],
+    "7": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_movimentoestoqueresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_movimentoestoqueresponse_movimentoestoqueresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_movimentoestoqueresponse_movimentoestoqueresponse_de",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setquantidadeestoque",
       "src_main_java_com_vitorraphael_gestor_comercial_model_movimentoestoque_java_comanda",
       "src_main_java_com_vitorraphael_gestor_comercial_model_movimentoestoque_java_override",
       "src_main_java_com_vitorraphael_gestor_comercial_model_movimentoestoque_movimentoestoque",
@@ -400,189 +427,68 @@
       "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice_registrarajuste",
       "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice_registrarcompra"
     ],
-    "7": [
-      "categoria",
-      "com_vitorraphael_gestor_comercial_model_produto",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriaresponse_categoriaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriaresponse_categoriaresponse_de",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_produtoresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_produtoresponse_produtoresponse_de",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getcategoria",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getcusto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getnome",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_getpreco",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_isativo",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setativo",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setcategoria",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setcusto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setnome",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_setpreco",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_atualizar",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_buscarporid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_criar",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_desativar",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_criarproduto",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_produto",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_devecriarprodutocomcategoriaexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_devedesativarprodutosemremoverdorepositorio",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_develancarexcecaoaobuscarprodutocomidinexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_develancarexcecaoaocriarprodutocomcategoriainexistente"
-    ],
     "8": [
-      "autenticacaointerceptor",
-      "commandlinerunner",
-      "component",
-      "configuration",
-      "funcionariorepository",
-      "funcionarioservice",
-      "interceptorregistry",
-      "mesarepository",
-      "override",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_funcionarioseeder",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_funcionarioseeder_funcionarioseeder",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_funcionarioseeder_run",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_java_component",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_java_override",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_java_mesaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_mesaseeder",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_mesaseeder_mesaseeder",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_mesaseeder_run",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig_addinterceptors",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig_addviewcontrollers",
-      "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_webconfig_webconfig",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_equals",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto_produto_hashcode",
-      "viewcontrollerregistry",
-      "webmvcconfigurer"
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller_materiaprimacontroller_listar",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimarequest",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimaresponse_materiaprimaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimaresponse_materiaprimaresponse_de",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_java_override",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_equals",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getquantidadeestoque",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getquantidademinima",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getunidademedida",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_hashcode",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_isabaixodominimo",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setquantidadeestoque",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setquantidademinima",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setunidademedida",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_g",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_kg",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_l",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_un",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_materiaprimarepository_materiaprimarepository_findbynome",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_atualizar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_criar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_listartodas"
     ],
     "9": [
-      "org_junit_jupiter_api_test",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_equals",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getcomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getobservacao",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getprecounitario",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getproduto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getquantidade",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_hashcode",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setcomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setobservacao",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setprecounitario",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setproduto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setquantidade",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_java_entity",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_java_override",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_adicionaritem",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_removeritem",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_criarcomanda",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_deveadicionaritemcomprecounitarioigualaoprecoatualdoproduto",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoadicionaritememcomandafechada",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoadicionarprodutoinativo",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoremoveritemdecomandafechada",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoremoveriteminexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_comanda"
+      "com_vitorraphael_gestor_comercial_model_itemcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_analyticscontroller_analyticscontroller_analyticscontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_analyticsdashboardresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_analyticsdashboardresponse_analyticsdashboardresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_analyticsdashboardresponse_itemcurvaabc",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_analyticsdashboardresponse_itemmixcategoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_analyticsdashboardresponse_pontofaturamento",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_analyticsdashboardresponse_pontomapacalor",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getdataabertura",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository_itemcomandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository_itemcomandarepository_findbycomandaid",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository_itemcomandarepository_findbycomandaidin",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_agruparfaturamentopordia",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_analyticsservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_buscaritens",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_calcularcmvpercentual",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_calcularcurvaabc",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_calcularmapacalor",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_calcularmixporcategoria",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_diasemanaestilojs",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_geraralertas",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_gerardashboard",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_receitadoitem",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_somarreceita"
     ],
     "10": [
-      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setdataabertura",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_java_entity",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_java_override",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_equals",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getnumero",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getstatus",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_hashcode",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setnumero",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setstatus",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository_mesarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository_mesarepository_findbynumero",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_abrir",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_java_comanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_java_service",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_buscarporid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_criar",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_listartodas",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_mesaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_salvar",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_criarmesa",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_develancarexcecaoaoabrircomandaemmesajaocupada",
-      "statusmesa"
-    ],
-    "11": [
-      "com_vitorraphael_gestor_comercial_model_comanda",
-      "com_vitorraphael_gestor_comercial_model_itemcomanda",
-      "com_vitorraphael_gestor_comercial_model_mesa",
-      "com_vitorraphael_gestor_comercial_model_statuscomanda",
-      "com_vitorraphael_gestor_comercial_model_statusmesa",
-      "com_vitorraphael_gestor_comercial_repository_comandarepository",
-      "com_vitorraphael_gestor_comercial_repository_itemcomandarepository",
-      "com_vitorraphael_gestor_comercial_repository_mesarepository",
-      "mesaservice",
-      "org_junit_jupiter_api_beforeeach",
-      "org_junit_jupiter_api_extension_extendwith",
-      "recursonaoencontradoexception",
-      "regradenegocioexception",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_movimentoestoquecontroller_movimentoestoquecontroller_movimentoestoquecontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_buscarporid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_comandaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_listarabertas",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice_darbaixaporfechamentodecomanda",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_develancarexcecaoaobuscarcomandacomidinexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_setup",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest"
-    ],
-    "12": [
-      "jakarta_persistence_entity",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller_associar",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicarequest",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicarequest_fichatecnicarequest",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicaresponse_fichatecnicaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicaresponse_fichatecnicaresponse_de",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_equals",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getmateriaprima",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getproduto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getquantidadeusada",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_hashcode",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setmateriaprima",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setproduto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setquantidadeusada",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_java_override",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_java_produto",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_movimentoestoque",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_produto",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_fichatecnicarepository_fichatecnicarepository_findbyprodutoid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_associar",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_listarporproduto"
-    ],
-    "13": [
       "logger",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_impressaocontroller",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_impressaocontroller_impressaocontroller",
@@ -609,43 +515,42 @@
       "src_main_java_com_vitorraphael_gestor_comercial_service_pedidoagrupado_java_itemcomanda",
       "src_main_java_com_vitorraphael_gestor_comercial_service_pedidoagrupado_pedidoagrupado"
     ],
-    "14": [
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimarequest",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_materiaprimaresponse_materiaprimaresponse_de",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_java_override",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_equals",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getnome",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getquantidadeestoque",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getquantidademinima",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_getunidademedida",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_hashcode",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_isabaixodominimo",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setid",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setnome",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setquantidademinima",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima_materiaprima_setunidademedida",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_g",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_kg",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_l",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_unidademedida_unidademedida_un",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_atualizar",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_criar"
+    "11": [
+      "org_springframework_data_jpa_repository_jparepository",
+      "org_springframework_stereotype_service",
+      "produto",
+      "produtoservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller_fichatecnicacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller_materiaprimacontroller_materiaprimacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_movimentoestoquecontroller_movimentoestoquecontroller_movimentoestoquecontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_fichatecnicarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_fichatecnicarepository_fichatecnicarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_fichatecnicarepository_fichatecnicarepository_findbyprodutoid",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_materiaprimarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_materiaprimarepository_materiaprimarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentoestoquerepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentoestoquerepository_movimentoestoquerepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_fichatecnicaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_listarporproduto",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_materiaprimaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice_darbaixaporfechamentodecomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice_movimentoestoqueservice"
     ],
-    "15": [
+    "12": [
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_equals",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getdataabertura",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getdatafechamento",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getid",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getmesa",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_getstatus",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_hashcode",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setdataabertura",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setdatafechamento",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setid",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_comanda_setmesa",
@@ -653,17 +558,18 @@
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_java_entity",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_java_override",
       "src_main_java_com_vitorraphael_gestor_comercial_model_comanda_java_statuscomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_comandarepository",
       "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_comandarepository_findbymesaidandstatus",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_comandarepository_findbystatus",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_java_statuscomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_abrir",
       "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_fechar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_java_comanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_salvar",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_criarmesa",
       "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_deveabrircomandaemmesalivre",
       "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_devefecharcomandaabertaeliberarmesa",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_develancarexcecaoaoabrircomandaemmesajaocupada",
       "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_develancarexcecaoaofecharcomandajafechada"
     ],
-    "16": [
+    "13": [
       "src_main_resources_static_js_app",
       "src_main_resources_static_js_app_abrirmesa",
       "src_main_resources_static_js_app_abrirmodalproduto",
@@ -690,33 +596,56 @@
       "src_main_resources_static_js_app_sessaosalva",
       "src_main_resources_static_js_app_state"
     ],
-    "17": [
-      "org_springframework_data_jpa_repository_jparepository",
-      "org_springframework_stereotype_service",
-      "produto",
-      "produtoservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller_fichatecnicacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_materiaprimacontroller_materiaprimacontroller_materiaprimacontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_fichatecnicarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_fichatecnicarepository_fichatecnicarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_materiaprimarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_materiaprimarepository_materiaprimarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_materiaprimarepository_materiaprimarepository_findbynome",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentoestoquerepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_movimentoestoquerepository_movimentoestoquerepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_buscarporid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_fichatecnicaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_remover",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_listartodas",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_materiaprimaservice_materiaprimaservice_materiaprimaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_movimentoestoqueservice_movimentoestoqueservice_movimentoestoqueservice"
+    "14": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_equals",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getobservacao",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getprecounitario",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getproduto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_getquantidade",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_hashcode",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setcomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setobservacao",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setprecounitario",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setproduto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda_setquantidade",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_java_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_java_override",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_adicionaritem",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_removeritem",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_deveadicionaritemcomprecounitarioigualaoprecoatualdoproduto",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoremoveritemdecomandafechada",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoremoveriteminexistente"
     ],
-    "18": [
+    "15": [
+      "beforeeach",
+      "extendwith",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getpinhash",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getpinsalt",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_isativo",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_funcionariorepository_funcionariorepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_funcionariorepository_funcionariorepository_findbyativotrue",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_autenticarporpin",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_funcionarioservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_java_service",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_deveautenticarporpincorreto",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_devecriarfuncionarioquandopinnaoestaemuso",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_devedesativarfuncionario",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_develancarexcecaoaoautenticarcompinincorreto",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_develancarexcecaoaobuscarfuncionariocomidinexistente",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_develancarexcecaoaocriarfuncionariocompinjausadoporoutroativo",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_setup",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_java_test"
+    ],
+    "16": [
       "entity",
       "handlerinterceptor",
       "httpservletrequest",
@@ -727,6 +656,7 @@
       "src_main_java_com_vitorraphael_gestor_comercial_exception_naoautorizadoexception_naoautorizadoexception",
       "src_main_java_com_vitorraphael_gestor_comercial_exception_naoautorizadoexception_naoautorizadoexception_naoautorizadoexception",
       "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getperfil",
       "src_main_java_com_vitorraphael_gestor_comercial_model_perfilfuncionario",
       "src_main_java_com_vitorraphael_gestor_comercial_model_perfilfuncionario_perfilfuncionario",
       "src_main_java_com_vitorraphael_gestor_comercial_model_perfilfuncionario_perfilfuncionario_atendente",
@@ -739,28 +669,74 @@
       "src_main_java_com_vitorraphael_gestor_comercial_security_autenticacaointerceptor_java_override",
       "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest"
     ],
-    "19": [
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller_authcontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller_login",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller_logout",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_postmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_requestmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_responseentity",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_restcontroller",
+    "17": [
+      "retention",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_criar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_desativar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_funcionariocontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_listar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_getmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_patchmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_postmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_requestmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_responseentity",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_restcontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_funcionarioresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_funcionarioresponse_funcionarioresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_funcionarioresponse_funcionarioresponse_de",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginrequest",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginrequest_loginrequest",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginresponse_loginresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getid",
       "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getnome",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getperfil",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_java_service",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice_encerrar"
+      "src_main_java_com_vitorraphael_gestor_comercial_security_exigegerente",
+      "src_main_java_com_vitorraphael_gestor_comercial_security_exigegerente_exigegerente",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_listarativos",
+      "target"
+    ],
+    "18": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_equals",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_hashcode",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setativo",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setnome",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setperfil",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setpinhash",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setpinsalt",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_java_override",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_buscarporid",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_criar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_desativar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice_autenticar",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice_criarsessao",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_criarfuncionariocompin",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_java_test",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest_deveautenticarcomtokendesessaovalido",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest_develancarexcecaoparatokeninexistente",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest_naodeveautenticaraposencerrarsessao"
+    ],
+    "19": [
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller_associar",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicarequest",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicarequest_fichatecnicarequest",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicaresponse_fichatecnicaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_fichatecnicaresponse_fichatecnicaresponse_de",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_equals",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getmateriaprima",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getproduto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_getquantidadeusada",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_hashcode",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setmateriaprima",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setproduto",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica_setquantidadeusada",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_java_override",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_java_produto",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_associar"
     ],
     "20": [
       "deletemapping",
@@ -781,70 +757,28 @@
       "src_main_java_com_vitorraphael_gestor_comercial_dto_itemcomandarequest_itemcomandarequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_itemcomandaresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_itemcomandaresponse_itemcomandaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_itemcomandaresponse_itemcomandaresponse_de",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_setup"
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_itemcomandaresponse_itemcomandaresponse_de"
     ],
     "21": [
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_criar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_desativar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_funcionariocontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_funcionariocontroller_listar",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_getmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_patchmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_postmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_requestmapping",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_responseentity",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_funcionariocontroller_java_restcontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_funcionarioresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_funcionarioresponse_funcionarioresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_listarativos",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_java_service"
+      "abrircaixarequest",
+      "caixaresponse",
+      "caixaservice",
+      "fecharcaixarequest",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_abrir",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_buscaraberto",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_buscarporid",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_caixacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_fechar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_caixacontroller_saldo",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_getmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_postmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_requestmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_responseentity",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_caixacontroller_java_restcontroller"
     ],
     "22": [
-      "src_main_java_com_vitorraphael_gestor_comercial_exception_recursonaoencontradoexception",
-      "src_main_java_com_vitorraphael_gestor_comercial_exception_recursonaoencontradoexception_recursonaoencontradoexception",
-      "src_main_java_com_vitorraphael_gestor_comercial_exception_recursonaoencontradoexception_recursonaoencontradoexception_recursonaoencontradoexception",
-      "src_main_java_com_vitorraphael_gestor_comercial_exception_regradenegocioexception",
-      "src_main_java_com_vitorraphael_gestor_comercial_exception_regradenegocioexception_regradenegocioexception",
-      "src_main_java_com_vitorraphael_gestor_comercial_exception_regradenegocioexception_regradenegocioexception_regradenegocioexception",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda_aberta",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda_fechada",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository_itemcomandarepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_itemcomandarepository_itemcomandarepository_findbycomandaid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_itemcomandaservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_listarporcomanda",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_java_service"
-    ],
-    "23": [
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_equals",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getpinhash",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_getpinsalt",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_hashcode",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_isativo",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setativo",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setnome",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setperfil",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setpinhash",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setpinsalt",
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_java_override",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_buscarporid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_criar",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_desativar",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_criarfuncionariocompin",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_devecriarfuncionarioquandopinnaoestaemuso",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_devedesativarfuncionario"
-    ],
-    "24": [
       "comanda",
       "comandaservice",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_comandacontroller",
@@ -863,22 +797,59 @@
       "src_main_java_com_vitorraphael_gestor_comercial_dto_comandaresponse_comandaresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_comandaresponse_comandaresponse_de"
     ],
+    "23": [
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller_authcontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller_login",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_authcontroller_logout",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_postmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_requestmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_responseentity",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_authcontroller_java_restcontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginrequest",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginrequest_loginrequest",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_loginresponse_loginresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_java_service",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice_encerrar"
+    ],
+    "24": [
+      "associarimpressorarequest",
+      "categoriarequest",
+      "categoriaresponse",
+      "categoriaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_associarimpressora",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_categoriacontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_criar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_categoriacontroller_listar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_getmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_patchmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_postmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_requestmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_responseentity",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_categoriacontroller_java_restcontroller"
+    ],
     "25": [
-      "beforeeach",
-      "extendwith",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_funcionariorepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_funcionariorepository_funcionariorepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_repository_funcionariorepository_funcionariorepository_findbyativotrue",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_autenticarporpin",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_funcionarioservice_funcionarioservice_funcionarioservice",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_deveautenticarporpincorreto",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_develancarexcecaoaoautenticarcompinincorreto",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_develancarexcecaoaobuscarfuncionariocomidinexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_develancarexcecaoaocriarfuncionariocompinjausadoporoutroativo",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_funcionarioservicetest_setup",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_funcionarioservicetest_java_test"
+      "commandlinerunner",
+      "component",
+      "funcionariorepository",
+      "funcionarioservice",
+      "mesarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_funcionarioseeder",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_funcionarioseeder_funcionarioseeder",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_funcionarioseeder_run",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_java_component",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_funcionarioseeder_java_override",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_java_mesaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_mesaseeder",
+      "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_mesaseeder_mesaseeder"
     ],
     "26": [
       "erroresponse",
@@ -898,6 +869,23 @@
       "src_main_java_com_vitorraphael_gestor_comercial_exception_acessonegadoexception_acessonegadoexception_acessonegadoexception"
     ],
     "27": [
+      "mesa",
+      "regradenegocioexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_mesaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_mesaresponse_mesaresponse",
+      "src_main_java_com_vitorraphael_gestor_comercial_dto_mesaresponse_mesaresponse_de",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_beforeeach",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_extendwith",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_mesarepository",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_test",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_devecriarmesacomnumeroinexistenteestatuslivre",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_develancarexcecaoaobuscarmesacomidinexistente",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_develancarexcecaoaocriarmesacomnumerojaexistente",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_setup"
+    ],
+    "28": [
       "movimentocaixarequest",
       "movimentocaixaresponse",
       "movimentocaixaservice",
@@ -914,23 +902,24 @@
       "src_main_java_com_vitorraphael_gestor_comercial_controller_movimentocaixacontroller_movimentocaixacontroller_registrar",
       "tipomovimento"
     ],
-    "28": [
-      "mesa",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_mesaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_mesaresponse_mesaresponse",
-      "src_main_java_com_vitorraphael_gestor_comercial_dto_mesaresponse_mesaresponse_de",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_beforeeach",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_extendwith",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_mesarepository",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_java_test",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_devecriarmesacomnumeroinexistenteestatuslivre",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_develancarexcecaoaobuscarmesacomidinexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_develancarexcecaoaocriarmesacomnumerojaexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_mesaservicetest_mesaservicetest_setup"
-    ],
     "29": [
+      "src_main_java_com_vitorraphael_gestor_comercial_exception_recursonaoencontradoexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_exception_recursonaoencontradoexception_recursonaoencontradoexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_exception_recursonaoencontradoexception_recursonaoencontradoexception_recursonaoencontradoexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_exception_regradenegocioexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_exception_regradenegocioexception_regradenegocioexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_exception_regradenegocioexception_regradenegocioexception_regradenegocioexception",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository_mesarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_java_service",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_buscarporid",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_listartodas",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_mesaservice"
+    ],
+    "30": [
       "securerandom",
       "src_main_java_com_vitorraphael_gestor_comercial_service_pinhashservice",
       "src_main_java_com_vitorraphael_gestor_comercial_service_pinhashservice_java_service",
@@ -946,20 +935,38 @@
       "src_test_java_com_vitorraphael_gestor_comercial_service_pinhashservicetest_pinhashservicetest_mesmopincomsaltsdiferentesdevegerarhashesdiferentes",
       "src_test_java_com_vitorraphael_gestor_comercial_service_pinhashservicetest_pinhashservicetest_naodeveconferirquandopinestaerrado"
     ],
-    "30": [
-      "com_vitorraphael_gestor_comercial_model_categoria",
-      "com_vitorraphael_gestor_comercial_repository_categoriarepository",
-      "com_vitorraphael_gestor_comercial_repository_produtorepository",
-      "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_produtocontroller_produtocontroller",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_listarativos",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_produtoservice_produtoservice",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_produtoservicetest_setup"
-    ],
     "31": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_java_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_java_override",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_equals",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getid",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getnumero",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_getstatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_hashcode",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setnumero",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setstatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_mesarepository_mesarepository_findbynumero",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_mesaservice_mesaservice_criar",
+      "statusmesa"
+    ],
+    "32": [
+      "impressorarequest",
+      "impressoraresponse",
+      "impressoraservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller_criar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller_impressoracontroller",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_impressoracontroller_listar",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_getmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_postmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_requestmapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_responseentity",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_impressoracontroller_java_restcontroller"
+    ],
+    "33": [
       "getmapping",
       "mesaresponse",
       "requestmapping",
@@ -971,7 +978,7 @@
       "src_main_java_com_vitorraphael_gestor_comercial_controller_mesacontroller_mesacontroller_listar",
       "src_main_java_com_vitorraphael_gestor_comercial_controller_mesacontroller_mesacontroller_mesacontroller"
     ],
-    "32": [
+    "34": [
       "mvnw",
       "mvnw__entry",
       "mvnw_clean",
@@ -983,7 +990,7 @@
       "mvnw_trim",
       "mvnw_verbose"
     ],
-    "33": [
+    "35": [
       "src_main_resources_static_manifest",
       "src_main_resources_static_manifest_background_color",
       "src_main_resources_static_manifest_display",
@@ -995,258 +1002,292 @@
       "src_main_resources_static_manifest_start_url",
       "src_main_resources_static_manifest_theme_color"
     ],
-    "34": [
-      "src_main_java_com_vitorraphael_gestor_comercial_model_funcionario_funcionario_setid",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice_autenticar",
-      "src_main_java_com_vitorraphael_gestor_comercial_service_sessaoservice_sessaoservice_criarsessao",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_java_test",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest_deveautenticarcomtokendesessaovalido",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest_develancarexcecaoparatokeninexistente",
-      "src_test_java_com_vitorraphael_gestor_comercial_service_sessaoservicetest_sessaoservicetest_naodeveautenticaraposencerrarsessao"
+    "36": [
+      "com_vitorraphael_gestor_comercial_model_comanda",
+      "com_vitorraphael_gestor_comercial_model_statuscomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_comandarepository",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_comandarepository_findbystatus",
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_comandarepository_findbystatusanddatafechamentobetween",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_analyticsservice_analyticsservice_buscarcomandasfechadas",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_listarabertas"
     ],
-    "35": [
+    "37": [
+      "org_junit_jupiter_api_test",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_mesa_mesa_setid",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_comandaservice_buscarporid",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_itemcomandaservice_itemcomandaservice_listarporcomanda",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_comandaservicetest_develancarexcecaoaobuscarcomandacomidinexistente",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_criarcomanda",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoadicionaritememcomandafechada",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_itemcomandaservicetest_develancarexcecaoaoadicionarprodutoinativo",
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_comanda"
+    ],
+    "38": [
+      "jakarta_persistence_entity",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_materiaprima",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_movimentoestoque",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_produto"
+    ],
+    "39": [
       "springbootapplication",
       "src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication",
       "src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication",
       "src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_abrirnoedge",
       "src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main"
     ],
-    "36": [
+    "40": [
       "springboottest",
       "src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests",
       "src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests",
       "src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads",
       "test"
     ],
-    "37": [
+    "41": [
+      "org_springframework_web_bind_annotation_deletemapping",
+      "src_main_java_com_vitorraphael_gestor_comercial_controller_fichatecnicacontroller_fichatecnicacontroller_remover",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_buscarporid",
+      "src_main_java_com_vitorraphael_gestor_comercial_service_fichatecnicaservice_fichatecnicaservice_remover"
+    ],
+    "42": [
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda_aberta",
+      "src_main_java_com_vitorraphael_gestor_comercial_model_statuscomanda_statuscomanda_fechada"
+    ],
+    "43": [
       "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa",
       "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa_statusmesa",
       "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa_statusmesa_livre",
       "src_main_java_com_vitorraphael_gestor_comercial_model_statusmesa_statusmesa_ocupada"
     ],
-    "38": [
+    "44": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_abrircaixarequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_abrircaixarequest_abrircaixarequest"
     ],
-    "39": [
+    "45": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_associarimpressorarequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_associarimpressorarequest_associarimpressorarequest"
     ],
-    "40": [
+    "46": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriarequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_categoriarequest_categoriarequest"
     ],
-    "41": [
+    "47": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_erroresponse",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_erroresponse_erroresponse"
     ],
-    "42": [
+    "48": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_fecharcaixarequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_fecharcaixarequest_fecharcaixarequest"
     ],
-    "43": [
+    "49": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_impressorarequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_impressorarequest_impressorarequest"
     ],
-    "44": [
+    "50": [
       "src_main_java_com_vitorraphael_gestor_comercial_dto_movimentocaixarequest",
       "src_main_java_com_vitorraphael_gestor_comercial_dto_movimentocaixarequest_movimentocaixarequest"
     ],
-    "45": [
+    "51": [
       "src_main_resources_static_sw",
       "src_main_resources_static_sw_arquivos_shell"
     ],
-    "46": [
+    "52": [
       "com_vitorraphael_gestor_comercial_dto_produtorequest"
     ],
-    "47": [
+    "53": [
       "com_vitorraphael_gestor_comercial_dto_produtoresponse"
     ],
-    "48": [
+    "54": [
       "comandarepository"
     ],
-    "49": [
+    "55": [
       "itemcomandarepository"
     ],
-    "50": [
+    "56": [
       "mesarequest"
     ],
-    "51": [
+    "57": [
       "obsidian_app"
     ],
-    "52": [
+    "58": [
       "patchmapping"
     ],
-    "53": [
+    "59": [
       "pkg_com_vitorraphael_gestor_comercial"
     ],
-    "54": [
+    "60": [
       "produtorepository"
     ],
-    "55": [
+    "61": [
       "produtorequest"
     ],
-    "56": [
+    "62": [
       "produtoresponse"
     ],
-    "57": [
+    "63": [
       "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_java_component"
     ],
-    "58": [
+    "64": [
       "src_main_java_com_vitorraphael_gestor_comercial_config_mesaseeder_java_override"
     ],
-    "59": [
+    "65": [
       "src_main_java_com_vitorraphael_gestor_comercial_config_webconfig_java_override"
     ],
-    "60": [
+    "66": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_mesacontroller_java_getmapping"
     ],
-    "61": [
+    "67": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_mesacontroller_java_postmapping"
     ],
-    "62": [
+    "68": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_mesacontroller_java_requestmapping"
     ],
-    "63": [
+    "69": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_mesacontroller_java_responseentity"
     ],
-    "64": [
+    "70": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_mesacontroller_java_restcontroller"
     ],
-    "65": [
+    "71": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_java_getmapping"
     ],
-    "66": [
+    "72": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_java_patchmapping"
     ],
-    "67": [
+    "73": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_java_postmapping"
     ],
-    "68": [
+    "74": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_java_requestmapping"
     ],
-    "69": [
+    "75": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_java_responseentity"
     ],
-    "70": [
+    "76": [
       "src_main_java_com_vitorraphael_gestor_comercial_controller_produtocontroller_java_restcontroller"
     ],
-    "71": [
+    "77": [
       "src_main_java_com_vitorraphael_gestor_comercial_model_produto_java_entity"
     ],
-    "72": [
+    "78": [
       "src_main_java_com_vitorraphael_gestor_comercial_model_produto_java_override"
     ],
-    "73": [
-      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_java_service"
-    ],
-    "74": [
-      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_java_service"
-    ],
-    "75": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_beforeeach"
-    ],
-    "76": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_comandarepository"
-    ],
-    "77": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_extendwith"
-    ],
-    "78": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_mesarepository"
-    ],
     "79": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_test"
+      "src_main_java_com_vitorraphael_gestor_comercial_repository_comandarepository_java_statuscomanda"
     ],
     "80": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_beforeeach"
+      "src_main_java_com_vitorraphael_gestor_comercial_service_comandaservice_java_service"
     ],
     "81": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_categoriarepository"
+      "src_main_java_com_vitorraphael_gestor_comercial_service_produtoservice_java_service"
     ],
     "82": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_comandarepository"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_beforeeach"
     ],
     "83": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_extendwith"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_comandarepository"
     ],
     "84": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_itemcomandaservice"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_extendwith"
     ],
     "85": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_mesarepository"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_mesarepository"
     ],
     "86": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_produtorepository"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_comandaservicetest_java_test"
     ],
     "87": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_test"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_beforeeach"
     ],
     "88": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_beforeeach"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_categoriarepository"
     ],
     "89": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_categoriarepository"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_comandarepository"
     ],
     "90": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_extendwith"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_extendwith"
     ],
     "91": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_produtorepository"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_itemcomandaservice"
     ],
     "92": [
-      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_test"
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_mesarepository"
     ],
     "93": [
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_produtorepository"
+    ],
+    "94": [
+      "src_test_java_com_vitorraphael_gestor_comercial_service_itemcomandaservicetest_java_test"
+    ],
+    "95": [
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_beforeeach"
+    ],
+    "96": [
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_categoriarepository"
+    ],
+    "97": [
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_extendwith"
+    ],
+    "98": [
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_produtorepository"
+    ],
+    "99": [
+      "src_test_java_com_vitorraphael_gestor_comercial_service_produtoservicetest_java_test"
+    ],
+    "100": [
       "statuscomanda"
     ]
   },
   "cohesion": {
-    "0": 0.05554386703134862,
-    "1": 0.05322128851540616,
-    "2": 0.08326530612244898,
-    "3": 0.14804964539007093,
+    "0": 0.05216067009328003,
+    "1": 0.05364314400458979,
+    "2": 0.14804964539007093,
+    "3": 0.09634146341463415,
     "4": 0.06156156156156156,
-    "5": 0.16638655462184873,
-    "6": 0.10606060606060606,
-    "7": 0.1471264367816092,
-    "8": 0.11576354679802955,
-    "9": 0.14285714285714285,
-    "10": 0.12561576354679804,
-    "11": 0.18233618233618235,
-    "12": 0.12307692307692308,
-    "13": 0.14,
-    "14": 0.14,
-    "15": 0.16,
-    "16": 0.22,
-    "17": 0.14130434782608695,
-    "18": 0.14285714285714285,
-    "19": 0.1619047619047619,
-    "20": 0.18421052631578946,
-    "21": 0.20915032679738563,
-    "22": 0.1503267973856209,
-    "23": 0.22875816993464052,
-    "24": 0.27205882352941174,
+    "5": 0.17647058823529413,
+    "6": 0.15725806451612903,
+    "7": 0.11088709677419355,
+    "8": 0.11954022988505747,
+    "9": 0.15669515669515668,
+    "10": 0.14,
+    "11": 0.15666666666666668,
+    "12": 0.16333333333333333,
+    "13": 0.22,
+    "14": 0.15810276679841898,
+    "15": 0.18614718614718614,
+    "16": 0.13852813852813853,
+    "17": 0.16883116883116883,
+    "18": 0.21428571428571427,
+    "19": 0.16842105263157894,
+    "20": 0.19883040935672514,
+    "21": 0.2647058823529412,
+    "22": 0.27205882352941174,
+    "23": 0.20588235294117646,
+    "24": 0.25,
     "25": 0.24761904761904763,
     "26": 0.29523809523809524,
-    "27": 0.2571428571428571,
-    "28": 0.23076923076923078,
-    "29": 0.27472527472527475,
-    "30": 0.3090909090909091,
-    "31": 0.35555555555555557,
-    "32": 0.3333333333333333,
-    "33": 0.2,
-    "34": 0.4642857142857143,
-    "35": 0.6,
-    "36": 0.6,
-    "37": 0.5,
-    "38": 1.0,
-    "39": 1.0,
-    "40": 1.0,
-    "41": 1.0,
-    "42": 1.0,
-    "43": 1.0,
+    "27": 0.20952380952380953,
+    "28": 0.2571428571428571,
+    "29": 0.20952380952380953,
+    "30": 0.27472527472527475,
+    "31": 0.21978021978021978,
+    "32": 0.2948717948717949,
+    "33": 0.35555555555555557,
+    "34": 0.3333333333333333,
+    "35": 0.2,
+    "36": 0.4722222222222222,
+    "37": 0.25,
+    "38": 0.4,
+    "39": 0.6,
+    "40": 0.6,
+    "41": 0.5,
+    "42": 0.5,
+    "43": 0.5,
     "44": 1.0,
     "45": 1.0,
     "46": 1.0,
@@ -1296,7 +1337,14 @@
     "90": 1.0,
     "91": 1.0,
     "92": 1.0,
-    "93": 1.0
+    "93": 1.0,
+    "94": 1.0,
+    "95": 1.0,
+    "96": 1.0,
+    "97": 1.0,
+    "98": 1.0,
+    "99": 1.0,
+    "100": 1.0
   },
   "gods": [
     {
@@ -1340,13 +1388,13 @@
       "degree": 26
     },
     {
-      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_itemcomanda_itemcomanda",
-      "label": "ItemComanda",
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria",
+      "label": "Categoria",
       "degree": 25
     },
     {
-      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_categoria_categoria",
-      "label": "Categoria",
+      "id": "src_main_java_com_vitorraphael_gestor_comercial_model_fichatecnica_fichatecnica",
+      "label": "FichaTecnica",
       "degree": 25
     }
   ],

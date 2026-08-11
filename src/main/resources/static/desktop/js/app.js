@@ -709,7 +709,8 @@ async function carregarCaixa() {
 
     cartao.innerHTML = `
       <div class="caixa-valores">
-        <div><div class="caixa-valor-label">Status</div><div class="caixa-valor">Aberto</div></div>
+        <div><div class="caixa-valor-label">Status</div><div class="caixa-valor caixa-status-aberto"><span class="luz-status luz-verde"></span> Aberto</div></div>
+        <div><div class="caixa-valor-label">Aberto desde</div><div class="caixa-valor">${formatarDataHora(caixa.dataAbertura)}</div></div>
         <div><div class="caixa-valor-label">Abertura</div><div class="caixa-valor">${formatarMoeda(caixa.valorAbertura)}</div></div>
         <div><div class="caixa-valor-label">Saldo esperado</div><div class="caixa-valor">${formatarMoeda(saldo)}</div></div>
       </div>
@@ -741,8 +742,20 @@ async function carregarCaixa() {
       tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="4">Nenhum movimento registrado.</td></tr>`;
     }
   } catch (_) {
+    let auditoriaHtml = "";
+    try {
+      const ultimoFechado = await api("GET", "/api/caixa/ultimo-fechado");
+      auditoriaHtml = `
+        <div><div class="caixa-valor-label">Aberto em</div><div class="caixa-valor">${formatarDataHora(ultimoFechado.dataAbertura)}</div></div>
+        <div><div class="caixa-valor-label">Fechado em</div><div class="caixa-valor">${formatarDataHora(ultimoFechado.dataFechamento)}</div></div>
+      `;
+    } catch (_) { /* nenhum caixa foi fechado ainda */ }
+
     cartao.innerHTML = `
-      <div><div class="caixa-valor-label">Status</div><div class="caixa-valor">Fechado</div></div>
+      <div class="caixa-valores">
+        <div><div class="caixa-valor-label">Status</div><div class="caixa-valor caixa-status-fechado"><span class="luz-status luz-vermelha"></span> Fechado</div></div>
+        ${auditoriaHtml}
+      </div>
       <div class="caixa-acoes"></div>
     `;
     const acoes = cartao.querySelector(".caixa-acoes");

@@ -351,6 +351,18 @@ button, input, select, textarea {
 .cartao-caixa .caixa-valor { font-size: 1.4rem; font-weight: 700; }
 .cartao-caixa .caixa-acoes { display: flex; gap: 10px; }
 
+.luz-status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.luz-verde { background: var(--sucesso, #22c55e); box-shadow: 0 0 6px var(--sucesso, #22c55e); }
+.luz-vermelha { background: var(--erro, #ef4444); }
+.caixa-status-aberto, .caixa-status-fechado { display: flex; align-items: center; }
+
 .badge.perigo { background: var(--erro, #ef4444); color: white; }
 
 .ficha-tecnica-selector { display: flex; align-items: center; gap: 12px; margin: 12px 0; }

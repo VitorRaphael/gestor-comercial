@@ -62,6 +62,11 @@ public class CaixaService {
                 .orElseThrow(() -> new RegraDeNegocioException("Não há nenhum caixa aberto no momento."));
     }
 
+    public Caixa buscarUltimoFechado() {
+        return caixaRepository.findFirstByStatusOrderByDataFechamentoDesc(StatusCaixa.FECHADO)
+                .orElseThrow(() -> new RegraDeNegocioException("Nenhum caixa foi fechado ainda."));
+    }
+
     // Saldo esperado de dinheiro físico movimentado manualmente no caixa.
     // NÃO inclui receita de vendas das comandas — cálculo de vendas fica
     // para uma fase futura.

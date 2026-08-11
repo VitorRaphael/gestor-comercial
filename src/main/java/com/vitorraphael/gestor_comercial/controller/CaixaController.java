@@ -50,6 +50,12 @@ public class CaixaController {
         return ResponseEntity.ok(CaixaResponse.de(caixa));
     }
 
+    @GetMapping("/ultimo-fechado")
+    public ResponseEntity<CaixaResponse> buscarUltimoFechado() {
+        Caixa caixa = caixaService.buscarUltimoFechado();
+        return ResponseEntity.ok(CaixaResponse.de(caixa));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<CaixaResponse> buscarPorId(@PathVariable Long id) {
         Caixa caixa = caixaService.buscarPorId(id);

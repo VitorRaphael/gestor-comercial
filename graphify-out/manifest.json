@@ -225,9 +225,9 @@
     "semantic_hash": "d46b9135db58409c0daef590df4eb773"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/controller/CaixaController.java": {
-    "mtime": 1786129800.8539732,
-    "ast_hash": "e707b66f2aa81b48ff8b989b9447f366",
-    "semantic_hash": "e707b66f2aa81b48ff8b989b9447f366"
+    "mtime": 1786477688.4348257,
+    "ast_hash": "30c422eb8ef368801a55e565aab94ea0",
+    "semantic_hash": "30c422eb8ef368801a55e565aab94ea0"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/controller/MovimentoCaixaController.java": {
     "mtime": 1786129810.3165312,
@@ -280,9 +280,9 @@
     "semantic_hash": "d295907354b9a40bb100beecf4cd1030"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/repository/CaixaRepository.java": {
-    "mtime": 1786127167.475205,
-    "ast_hash": "8ccd31af0a629773b099ef1b4faa1cac",
-    "semantic_hash": "8ccd31af0a629773b099ef1b4faa1cac"
+    "mtime": 1786477678.8855155,
+    "ast_hash": "f8c8b58f6bb9c3fb05dbe5fc8ab63c0a",
+    "semantic_hash": "f8c8b58f6bb9c3fb05dbe5fc8ab63c0a"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/repository/MovimentoCaixaRepository.java": {
     "mtime": 1786127168.4279745,
@@ -290,9 +290,9 @@
     "semantic_hash": "49f314e9b925d4c3acea366e07274ca1"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/service/CaixaService.java": {
-    "mtime": 1786127181.1313028,
-    "ast_hash": "304de44c845d6ab201d51f3d0f72a5f5",
-    "semantic_hash": "304de44c845d6ab201d51f3d0f72a5f5"
+    "mtime": 1786477683.551267,
+    "ast_hash": "c7fad9a43bcb6c1db735cc601a18c888",
+    "semantic_hash": "c7fad9a43bcb6c1db735cc601a18c888"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/service/MovimentoCaixaService.java": {
     "mtime": 1786127186.410865,
@@ -505,9 +505,9 @@
     "semantic_hash": "862bf4bdad0ca3d2e043ad43214076be"
   },
   "src/main/resources/static/desktop/js/app.js": {
-    "mtime": 1786476606.7453742,
-    "ast_hash": "352fea1c359168c84cb24406f39da9a4",
-    "semantic_hash": "352fea1c359168c84cb24406f39da9a4"
+    "mtime": 1786477706.1995463,
+    "ast_hash": "6bd1e2c30e9f4af5bb9b555bbab209c2",
+    "semantic_hash": "6bd1e2c30e9f4af5bb9b555bbab209c2"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/config/MesaSeeder.java": {
     "mtime": 1786227519.3902597,
