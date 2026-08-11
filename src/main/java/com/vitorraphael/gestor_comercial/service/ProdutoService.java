@@ -38,6 +38,16 @@ public class ProdutoService {
                 .toList();
     }
 
+    public Produto atualizar(Long produtoId, String nome, BigDecimal preco, Long categoriaId) {
+        Produto produto = buscarPorId(produtoId);
+        Categoria categoria = categoriaService.buscarPorId(categoriaId);
+
+        produto.setNome(nome);
+        produto.setPreco(preco);
+        produto.setCategoria(categoria);
+        return produtoRepository.save(produto);
+    }
+
     public Produto desativar(Long produtoId) {
         Produto produto = buscarPorId(produtoId);
         produto.setAtivo(false);

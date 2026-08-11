@@ -103,10 +103,13 @@ function abrirModalBase(titulo, corpoHtml, textoConfirmar, aoConfirmar) {
 
 function campoHtml(campo) {
   if (campo.tipo === "select") {
-    const opcoes = campo.opcoes.map((o) => `<option value="${o.value}">${o.label}</option>`).join("");
+    const opcoes = campo.opcoes
+      .map((o) => `<option value="${o.value}" ${String(o.value) === String(campo.valor) ? "selected" : ""}>${o.label}</option>`)
+      .join("");
     return `<div><label>${campo.label}</label><select id="campo-${campo.nome}">${opcoes}</select></div>`;
   }
-  return `<div><label>${campo.label}</label><input id="campo-${campo.nome}" type="${campo.tipo}" ${campo.attrs || ""}></div>`;
+  const valor = campo.valor != null ? `value="${campo.valor}"` : "";
+  return `<div><label>${campo.label}</label><input id="campo-${campo.nome}" type="${campo.tipo}" ${valor} ${campo.attrs || ""}></div>`;
 }
 
 function abrirModalFormulario(titulo, campos, textoConfirmar, aoConfirmar) {
@@ -143,8 +146,7 @@ function setView(nome) {
   el("titulo-secao").textContent = {
     mesas: "Mesas",
     comandas: "Comandas",
-    produtos: "Produtos",
-    categorias: "Categorias",
+    cardapio: "Cardápio",
     impressoras: "Impressoras",
     caixa: "Caixa",
     funcionarios: "Funcionários",
@@ -152,8 +154,7 @@ function setView(nome) {
 
   if (nome === "mesas") carregarMesas();
   if (nome === "comandas") carregarComandasAbertas();
-  if (nome === "produtos") carregarProdutos();
-  if (nome === "categorias") carregarCategorias();
+  if (nome === "cardapio") carregarCardapio();
   if (nome === "impressoras") carregarImpressoras();
   if (nome === "caixa") carregarCaixa();
   if (nome === "funcionarios") carregarFuncionarios();
@@ -458,66 +459,117 @@ async function confirmarAdicionarItem() {
   }
 }
 
-// ---------- Produtos ----------
+// ---------- Cardápio (Categorias + Produtos) ----------
 
-async function carregarProdutos() {
+async function carregarCardapio() {
   try {
-    if (state.categorias.length === 0) state.categorias = await api("GET", "/api/categorias");
-    const produtos = await api("GET", "/api/produtos");
+    const [categorias, produtos] = await Promise.all([
+      api("GET", "/api/categorias"),
+      api("GET", "/api/produtos"),
+    ]);
+    state.categorias = categorias;
+    state.produtos = produtos;
 
-    el("produtos-legenda").textContent = `${produtos.length} produto(s) ativo(s).`;
-
-    const tbody = el("produtos-tbody");
-    tbody.innerHTML = "";
     const ehGerente = state.sessao?.perfil === "GERENTE";
+    const lista = el("cardapio-lista");
+    lista.innerHTML = "";
 
-    for (const produto of produtos) {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${produto.nome}</td>
-        <td>${produto.categoriaNome}</td>
-        <td>${formatarMoeda(produto.preco)}</td>
-        <td><span class="badge">${produto.ativo ? "ativo" : "inativo"}</span></td>
-        <td></td>
+    if (categorias.length === 0) {
+      lista.innerHTML = `<p class="secao-legenda">Nenhuma categoria cadastrada ainda.</p>`;
+      return;
+    }
+
+    for (const categoria of categorias) {
+      const produtosDaCategoria = produtos.filter((p) => p.categoriaId === categoria.id);
+
+      const secao = document.createElement("div");
+      secao.className = "cardapio-categoria";
+
+      const cabecalho = document.createElement("div");
+      cabecalho.className = "cardapio-categoria-header";
+      cabecalho.innerHTML = `
+        <div class="cardapio-categoria-titulo">
+          <strong>${categoria.nome}</strong>
+          <span class="badge">${categoria.impressoraNome ?? "sem impressora"}</span>
+        </div>
       `;
       if (ehGerente) {
-        const tdAcoes = tr.lastElementChild;
-        const btn = document.createElement("button");
-        btn.className = "botao-link perigo";
-        btn.textContent = "Desativar";
-        btn.hidden = !produto.ativo;
-        btn.addEventListener("click", async () => {
-          try {
-            await api("PATCH", `/api/produtos/${produto.id}/desativar`);
-            await carregarProdutos();
-          } catch (erro) {
-            mostrarToast(erro.message, true);
-          }
-        });
-        tdAcoes.appendChild(btn);
+        const btnNovoProduto = document.createElement("button");
+        btnNovoProduto.className = "botao botao-secundario";
+        btnNovoProduto.textContent = "+ Produto";
+        btnNovoProduto.addEventListener("click", () => abrirModalNovoProduto(categoria.id));
+        cabecalho.appendChild(btnNovoProduto);
       }
-      tbody.appendChild(tr);
+      secao.appendChild(cabecalho);
+
+      const tabela = document.createElement("table");
+      tabela.className = "tabela";
+      tabela.innerHTML = `
+        <thead><tr><th>Nome</th><th>Preço</th><th>Status</th><th data-gerente></th></tr></thead>
+        <tbody></tbody>
+      `;
+      const tbody = tabela.querySelector("tbody");
+
+      for (const produto of produtosDaCategoria) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${produto.nome}</td>
+          <td>${formatarMoeda(produto.preco)}</td>
+          <td><span class="badge">${produto.ativo ? "ativo" : "inativo"}</span></td>
+          <td></td>
+        `;
+        if (ehGerente) {
+          const tdAcoes = tr.lastElementChild;
+
+          const btnEditar = document.createElement("button");
+          btnEditar.className = "botao-link";
+          btnEditar.textContent = "Editar";
+          btnEditar.addEventListener("click", () => abrirModalEditarProduto(produto));
+          tdAcoes.appendChild(btnEditar);
+
+          const btnDesativar = document.createElement("button");
+          btnDesativar.className = "botao-link perigo";
+          btnDesativar.textContent = "Desativar";
+          btnDesativar.hidden = !produto.ativo;
+          btnDesativar.addEventListener("click", async () => {
+            try {
+              await api("PATCH", `/api/produtos/${produto.id}/desativar`);
+              await carregarCardapio();
+            } catch (erro) {
+              mostrarToast(erro.message, true);
+            }
+          });
+          tdAcoes.appendChild(btnDesativar);
+        }
+        tbody.appendChild(tr);
+      }
+      if (produtosDaCategoria.length === 0) {
+        tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="4">Nenhum produto nesta categoria.</td></tr>`;
+      }
+
+      secao.appendChild(tabela);
+      lista.appendChild(secao);
     }
-    if (produtos.length === 0) {
-      tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="5">Nenhum produto cadastrado.</td></tr>`;
-    }
+
+    aplicarPermissoesDeInterface();
   } catch (erro) {
     mostrarToast(erro.message, true);
   }
 }
 
-el("btn-novo-produto").addEventListener("click", async () => {
-  if (state.categorias.length === 0) state.categorias = await api("GET", "/api/categorias");
-  if (state.categorias.length === 0) {
-    mostrarToast("Cadastre uma categoria antes de criar um produto.", true);
-    return;
-  }
+function abrirModalNovoProduto(categoriaIdPreSelecionada) {
   abrirModalFormulario(
     "Novo produto",
     [
       { nome: "nome", label: "Nome", tipo: "text" },
       { nome: "preco", label: "Preço", tipo: "number", attrs: "min='0' step='0.01'" },
-      { nome: "categoriaId", label: "Categoria", tipo: "select", opcoes: state.categorias.map((c) => ({ value: c.id, label: c.nome })) },
+      {
+        nome: "categoriaId",
+        label: "Categoria",
+        tipo: "select",
+        opcoes: state.categorias.map((c) => ({ value: c.id, label: c.nome })),
+        valor: categoriaIdPreSelecionada,
+      },
     ],
     "Criar",
     async (valores) => {
@@ -526,59 +578,35 @@ el("btn-novo-produto").addEventListener("click", async () => {
         preco: Number(valores.preco),
         categoriaId: Number(valores.categoriaId),
       });
-      await carregarProdutos();
+      await carregarCardapio();
     },
   );
-});
+}
 
-// ---------- Categorias ----------
-
-async function carregarCategorias() {
-  try {
-    const [categorias, impressoras] = await Promise.all([
-      api("GET", "/api/categorias"),
-      api("GET", "/api/impressoras"),
-    ]);
-    state.categorias = categorias;
-
-    const ehGerente = state.sessao?.perfil === "GERENTE";
-    const tbody = el("categorias-tbody");
-    tbody.innerHTML = "";
-
-    for (const categoria of categorias) {
-      const tr = document.createElement("tr");
-      const tdNome = document.createElement("td");
-      tdNome.textContent = categoria.nome;
-      tr.appendChild(tdNome);
-
-      const tdImpressora = document.createElement("td");
-      if (ehGerente) {
-        const select = document.createElement("select");
-        select.innerHTML = `<option value="">Sem impressora</option>` +
-          impressoras.map((i) => `<option value="${i.id}" ${categoria.impressoraId === i.id ? "selected" : ""}>${i.nome}</option>`).join("");
-        select.addEventListener("change", async () => {
-          if (!select.value) return;
-          try {
-            await api("PATCH", `/api/categorias/${categoria.id}/impressora`, { impressoraId: Number(select.value) });
-            mostrarToast("Impressora associada.");
-          } catch (erro) {
-            mostrarToast(erro.message, true);
-          }
-        });
-        tdImpressora.appendChild(select);
-      } else {
-        tdImpressora.textContent = categoria.impressoraNome ?? "—";
-      }
-      tr.appendChild(tdImpressora);
-      tr.appendChild(document.createElement("td"));
-      tbody.appendChild(tr);
-    }
-    if (categorias.length === 0) {
-      tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="3">Nenhuma categoria cadastrada.</td></tr>`;
-    }
-  } catch (erro) {
-    mostrarToast(erro.message, true);
-  }
+function abrirModalEditarProduto(produto) {
+  abrirModalFormulario(
+    "Editar produto",
+    [
+      { nome: "nome", label: "Nome", tipo: "text", valor: produto.nome },
+      { nome: "preco", label: "Preço", tipo: "number", attrs: "min='0' step='0.01'", valor: produto.preco },
+      {
+        nome: "categoriaId",
+        label: "Categoria",
+        tipo: "select",
+        opcoes: state.categorias.map((c) => ({ value: c.id, label: c.nome })),
+        valor: produto.categoriaId,
+      },
+    ],
+    "Salvar",
+    async (valores) => {
+      await api("PUT", `/api/produtos/${produto.id}`, {
+        nome: valores.nome,
+        preco: Number(valores.preco),
+        categoriaId: Number(valores.categoriaId),
+      });
+      await carregarCardapio();
+    },
+  );
 }
 
 el("btn-nova-categoria").addEventListener("click", () => {
@@ -588,7 +616,7 @@ el("btn-nova-categoria").addEventListener("click", () => {
     "Criar",
     async (valores) => {
       await api("POST", "/api/categorias", { nome: valores.nome });
-      await carregarCategorias();
+      await carregarCardapio();
     },
   );
 });
@@ -597,28 +625,69 @@ el("btn-nova-categoria").addEventListener("click", () => {
 
 async function carregarImpressoras() {
   try {
-    const impressoras = await api("GET", "/api/impressoras");
+    const [impressoras, categorias] = await Promise.all([
+      api("GET", "/api/impressoras"),
+      api("GET", "/api/categorias"),
+    ]);
+    state.categorias = categorias;
+
     const tbody = el("impressoras-tbody");
-    tbody.innerHTML = impressoras.map((i) => `<tr><td>${i.nome}</td></tr>`).join("");
+    tbody.innerHTML = impressoras.map((i) => {
+      const vinculadas = categorias.filter((c) => c.impressoraId === i.id).map((c) => c.nome);
+      return `<tr><td>${i.nome}</td><td>${vinculadas.length > 0 ? vinculadas.join(", ") : "—"}</td></tr>`;
+    }).join("");
     if (impressoras.length === 0) {
-      tbody.innerHTML = `<tr class="tabela-vazia"><td>Nenhuma impressora cadastrada.</td></tr>`;
+      tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="2">Nenhuma impressora cadastrada.</td></tr>`;
     }
   } catch (erro) {
     mostrarToast(erro.message, true);
   }
 }
 
-el("btn-nova-impressora").addEventListener("click", () => {
-  abrirModalFormulario(
-    "Nova impressora",
-    [{ nome: "nome", label: "Nome", tipo: "text" }],
-    "Criar",
-    async (valores) => {
-      await api("POST", "/api/impressoras", { nome: valores.nome });
-      await carregarImpressoras();
-    },
-  );
+el("btn-nova-impressora").addEventListener("click", async () => {
+  if (state.categorias.length === 0) state.categorias = await api("GET", "/api/categorias");
+  abrirModalNovaImpressora();
 });
+
+function abrirModalNovaImpressora() {
+  const corpoHtml = `
+    <div><label>Nome</label><input id="campo-nome-impressora" type="text"></div>
+    <div>
+      <label>Categorias vinculadas a esta impressora</label>
+      <div id="impressora-categorias-checkboxes" class="checkbox-lista">
+        ${state.categorias.length === 0
+          ? `<p class="secao-legenda">Nenhuma categoria cadastrada ainda — crie categorias no Cardápio.</p>`
+          : state.categorias.map((c) => `
+              <label class="checkbox-item">
+                <input type="checkbox" value="${c.id}">
+                ${c.nome}${c.impressoraNome ? ` <span class="secao-legenda">(hoje: ${c.impressoraNome})</span>` : ""}
+              </label>
+            `).join("")}
+      </div>
+    </div>
+  `;
+
+  abrirModalBase("Nova impressora", corpoHtml, "Criar", async () => {
+    const nome = el("campo-nome-impressora").value.trim();
+    if (!nome) {
+      mostrarToast("Informe o nome da impressora.", true);
+      return;
+    }
+    const categoriaIdsSelecionadas = [...document.querySelectorAll("#impressora-categorias-checkboxes input:checked")]
+      .map((input) => Number(input.value));
+
+    try {
+      const impressora = await api("POST", "/api/impressoras", { nome });
+      for (const categoriaId of categoriaIdsSelecionadas) {
+        await api("PATCH", `/api/categorias/${categoriaId}/impressora`, { impressoraId: impressora.id });
+      }
+      fecharModal();
+      await carregarImpressoras();
+    } catch (erro) {
+      mostrarToast(erro.message, true);
+    }
+  });
+}
 
 // ---------- Caixa ----------
 
