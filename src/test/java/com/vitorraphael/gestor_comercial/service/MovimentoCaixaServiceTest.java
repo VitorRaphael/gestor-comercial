@@ -39,7 +39,7 @@ class MovimentoCaixaServiceTest {
 
     @BeforeEach
     void setUp() {
-        CaixaService caixaService = new CaixaService(caixaRepository, movimentoCaixaRepository);
+        CaixaService caixaService = new CaixaService(caixaRepository, movimentoCaixaRepository, null);
         movimentoCaixaService = new MovimentoCaixaService(movimentoCaixaRepository, caixaService);
     }
 

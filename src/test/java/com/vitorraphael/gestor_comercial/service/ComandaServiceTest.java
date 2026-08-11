@@ -42,12 +42,16 @@ class ComandaServiceTest {
     @Mock
     private MovimentoEstoqueService movimentoEstoqueService;
 
+    @Mock
+    private FuncionarioService funcionarioService;
+
     private ComandaService comandaService;
 
     @BeforeEach
     void setUp() {
         MesaService mesaService = new MesaService(mesaRepository);
-        comandaService = new ComandaService(comandaRepository, mesaService, itemComandaRepository, movimentoEstoqueService);
+        comandaService = new ComandaService(comandaRepository, mesaService, itemComandaRepository, movimentoEstoqueService,
+                funcionarioService);
         org.mockito.Mockito.lenient().when(itemComandaRepository.findByComandaId(org.mockito.ArgumentMatchers.any()))
                 .thenReturn(java.util.List.of());
     }

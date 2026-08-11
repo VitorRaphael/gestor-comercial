@@ -40,9 +40,9 @@
     "semantic_hash": "b68a58421a7ccaf79b642ecece4ea3f3"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/model/ItemComanda.java": {
-    "mtime": 1786484525.3123107,
-    "ast_hash": "207cdc281c37a668529158d4e96bc20d",
-    "semantic_hash": "207cdc281c37a668529158d4e96bc20d"
+    "mtime": 1786485125.3355267,
+    "ast_hash": "54031476ffff7be0e61d268c0b14ba64",
+    "semantic_hash": "54031476ffff7be0e61d268c0b14ba64"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/model/Mesa.java": {
     "mtime": 1786125515.1682274,
@@ -205,14 +205,14 @@
     "semantic_hash": "b36bb99cdbb0ec4d3b84d0a517c197cb"
   },
   "src/test/java/com/vitorraphael/gestor_comercial/service/ComandaServiceTest.java": {
-    "mtime": 1786464532.2646916,
-    "ast_hash": "e0ca6d700e9712cf1a647d12f813a9fe",
-    "semantic_hash": "e0ca6d700e9712cf1a647d12f813a9fe"
+    "mtime": 1786486312.5892332,
+    "ast_hash": "1f10180bf596c7831eaae5751ff73152",
+    "semantic_hash": "1f10180bf596c7831eaae5751ff73152"
   },
   "src/test/java/com/vitorraphael/gestor_comercial/service/ItemComandaServiceTest.java": {
-    "mtime": 1786464539.8740566,
-    "ast_hash": "d1aa9e909bef7c0d2491712d14022c1e",
-    "semantic_hash": "d1aa9e909bef7c0d2491712d14022c1e"
+    "mtime": 1786486324.807526,
+    "ast_hash": "1d23047d45b527d407cfb18f206a5c99",
+    "semantic_hash": "1d23047d45b527d407cfb18f206a5c99"
   },
   "src/test/java/com/vitorraphael/gestor_comercial/service/MesaServiceTest.java": {
     "mtime": 1786126771.8682585,
@@ -300,14 +300,14 @@
     "semantic_hash": "fed5c0afaa5f0078b3a70c93d54610bd"
   },
   "src/test/java/com/vitorraphael/gestor_comercial/service/CaixaServiceTest.java": {
-    "mtime": 1786127231.6745167,
-    "ast_hash": "75f821fb85176826d962066e4210520a",
-    "semantic_hash": "75f821fb85176826d962066e4210520a"
+    "mtime": 1786486283.418931,
+    "ast_hash": "0315d38479f54d8603b9e1e772fbe0f4",
+    "semantic_hash": "0315d38479f54d8603b9e1e772fbe0f4"
   },
   "src/test/java/com/vitorraphael/gestor_comercial/service/MovimentoCaixaServiceTest.java": {
-    "mtime": 1786127244.6720946,
-    "ast_hash": "13402221a716b86ddbf040bd30a7b40f",
-    "semantic_hash": "13402221a716b86ddbf040bd30a7b40f"
+    "mtime": 1786486332.5748146,
+    "ast_hash": "06d5b25039ca0cf37d50fc1f320fd147",
+    "semantic_hash": "06d5b25039ca0cf37d50fc1f320fd147"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/controller/ImpressaoController.java": {
     "mtime": 1786127820.4858654,
@@ -505,9 +505,9 @@
     "semantic_hash": "862bf4bdad0ca3d2e043ad43214076be"
   },
   "src/main/resources/static/desktop/js/app.js": {
-    "mtime": 1786485000.2839441,
-    "ast_hash": "d543d9cf834cf7becfd38e41b952d640",
-    "semantic_hash": "d543d9cf834cf7becfd38e41b952d640"
+    "mtime": 1786485834.7658474,
+    "ast_hash": "3d6fa34f557a0ec4c0acecb3e785ea44",
+    "semantic_hash": "3d6fa34f557a0ec4c0acecb3e785ea44"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/config/MesaSeeder.java": {
     "mtime": 1786227519.3902597,
@@ -655,9 +655,9 @@
     "semantic_hash": "2c27e58189c4dfafb494343c94eeafcb"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/model/Pagamento.java": {
-    "mtime": 1786484862.934361,
-    "ast_hash": "77bfd8a324f68e4dbf61111ee7efee0f",
-    "semantic_hash": "77bfd8a324f68e4dbf61111ee7efee0f"
+    "mtime": 1786485128.3260882,
+    "ast_hash": "0713799edfc2fa5a0116e5924370d83a",
+    "semantic_hash": "0713799edfc2fa5a0116e5924370d83a"
   },
   "src/main/java/com/vitorraphael/gestor_comercial/repository/PagamentoRepository.java": {
     "mtime": 1786484876.588586,

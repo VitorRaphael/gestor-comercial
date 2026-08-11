@@ -1488,7 +1488,20 @@ function renderizarAnalytics(dados) {
       labels: dados.mixPorCategoria.map((p) => p.categoriaNome),
       datasets: [{ data: dados.mixPorCategoria.map((p) => p.receita), backgroundColor: ["#a855f7", "#ec4899", "#3b82f6", "#f59e0b", "#10b981", "#ef4444"] }],
     },
-    options: { responsive: true },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const total = ctx.dataset.data.reduce((soma, v) => soma + v, 0);
+              const percentual = total > 0 ? (ctx.parsed / total) * 100 : 0;
+              return `${ctx.label}: ${percentual.toFixed(1)}%`;
+            },
+          },
+        },
+      },
+    },
   });
 }
 

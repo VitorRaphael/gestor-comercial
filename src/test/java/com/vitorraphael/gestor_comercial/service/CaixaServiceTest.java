@@ -3,6 +3,7 @@ package com.vitorraphael.gestor_comercial.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -19,11 +20,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.vitorraphael.gestor_comercial.exception.RecursoNaoEncontradoException;
 import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
 import com.vitorraphael.gestor_comercial.model.Caixa;
+import com.vitorraphael.gestor_comercial.model.FormaPagamento;
 import com.vitorraphael.gestor_comercial.model.MovimentoCaixa;
 import com.vitorraphael.gestor_comercial.model.StatusCaixa;
 import com.vitorraphael.gestor_comercial.model.TipoMovimento;
 import com.vitorraphael.gestor_comercial.repository.CaixaRepository;
 import com.vitorraphael.gestor_comercial.repository.MovimentoCaixaRepository;
+import com.vitorraphael.gestor_comercial.repository.PagamentoRepository;
 
 @ExtendWith(MockitoExtension.class)
 class CaixaServiceTest {
@@ -34,11 +37,14 @@ class CaixaServiceTest {
     @Mock
     private MovimentoCaixaRepository movimentoCaixaRepository;
 
+    @Mock
+    private PagamentoRepository pagamentoRepository;
+
     private CaixaService caixaService;
 
     @BeforeEach
     void setUp() {
-        caixaService = new CaixaService(caixaRepository, movimentoCaixaRepository);
+        caixaService = new CaixaService(caixaRepository, movimentoCaixaRepository, pagamentoRepository);
     }
 
     private Caixa criarCaixa(Long id, StatusCaixa status, BigDecimal valorAbertura) {
@@ -128,6 +134,8 @@ class CaixaServiceTest {
                 criarMovimento(caixa, TipoMovimento.DESPESA, new BigDecimal("20")),
                 criarMovimento(caixa, TipoMovimento.CONSUMO_FUNCIONARIO, new BigDecimal("10")));
         when(movimentoCaixaRepository.findByCaixaId(1L)).thenReturn(movimentos);
+        when(pagamentoRepository.findByFormaPagamentoAndDataHoraGreaterThanEqual(eq(FormaPagamento.DINHEIRO), any()))
+                .thenReturn(List.of());
 
         BigDecimal saldo = caixaService.calcularSaldoEsperado(1L);
 
