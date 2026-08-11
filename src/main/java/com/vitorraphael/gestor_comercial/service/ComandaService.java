@@ -8,20 +8,27 @@ import org.springframework.stereotype.Service;
 import com.vitorraphael.gestor_comercial.exception.RecursoNaoEncontradoException;
 import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
 import com.vitorraphael.gestor_comercial.model.Comanda;
+import com.vitorraphael.gestor_comercial.model.ItemComanda;
 import com.vitorraphael.gestor_comercial.model.Mesa;
 import com.vitorraphael.gestor_comercial.model.StatusComanda;
 import com.vitorraphael.gestor_comercial.model.StatusMesa;
 import com.vitorraphael.gestor_comercial.repository.ComandaRepository;
+import com.vitorraphael.gestor_comercial.repository.ItemComandaRepository;
 
 @Service
 public class ComandaService {
 
     private final ComandaRepository comandaRepository;
     private final MesaService mesaService;
+    private final ItemComandaRepository itemComandaRepository;
+    private final MovimentoEstoqueService movimentoEstoqueService;
 
-    public ComandaService(ComandaRepository comandaRepository, MesaService mesaService) {
+    public ComandaService(ComandaRepository comandaRepository, MesaService mesaService,
+            ItemComandaRepository itemComandaRepository, MovimentoEstoqueService movimentoEstoqueService) {
         this.comandaRepository = comandaRepository;
         this.mesaService = mesaService;
+        this.itemComandaRepository = itemComandaRepository;
+        this.movimentoEstoqueService = movimentoEstoqueService;
     }
 
     public Comanda abrir(Long mesaId) {
@@ -53,6 +60,9 @@ public class ComandaService {
         comanda.setStatus(StatusComanda.FECHADA);
         comanda.setDataFechamento(LocalDateTime.now());
         comanda = comandaRepository.save(comanda);
+
+        List<ItemComanda> itens = itemComandaRepository.findByComandaId(comanda.getId());
+        movimentoEstoqueService.darBaixaPorFechamentoDeComanda(comanda, itens);
 
         Mesa mesa = comanda.getMesa();
         mesa.setStatus(StatusMesa.LIVRE);

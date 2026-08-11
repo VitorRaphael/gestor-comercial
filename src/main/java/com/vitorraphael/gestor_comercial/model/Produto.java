@@ -36,6 +36,9 @@ public class Produto {
     @Column(nullable = false)
     private BigDecimal preco;
 
+    @jakarta.validation.constraints.PositiveOrZero
+    private BigDecimal custo;
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "categoria_id", nullable = false)
@@ -66,6 +69,14 @@ public class Produto {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public BigDecimal getCusto() {
+        return custo;
+    }
+
+    public void setCusto(BigDecimal custo) {
+        this.custo = custo;
     }
 
     public Categoria getCategoria() {

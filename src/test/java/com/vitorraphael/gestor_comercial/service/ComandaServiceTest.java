@@ -24,6 +24,7 @@ import com.vitorraphael.gestor_comercial.model.Mesa;
 import com.vitorraphael.gestor_comercial.model.StatusComanda;
 import com.vitorraphael.gestor_comercial.model.StatusMesa;
 import com.vitorraphael.gestor_comercial.repository.ComandaRepository;
+import com.vitorraphael.gestor_comercial.repository.ItemComandaRepository;
 import com.vitorraphael.gestor_comercial.repository.MesaRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -35,12 +36,20 @@ class ComandaServiceTest {
     @Mock
     private MesaRepository mesaRepository;
 
+    @Mock
+    private ItemComandaRepository itemComandaRepository;
+
+    @Mock
+    private MovimentoEstoqueService movimentoEstoqueService;
+
     private ComandaService comandaService;
 
     @BeforeEach
     void setUp() {
         MesaService mesaService = new MesaService(mesaRepository);
-        comandaService = new ComandaService(comandaRepository, mesaService);
+        comandaService = new ComandaService(comandaRepository, mesaService, itemComandaRepository, movimentoEstoqueService);
+        org.mockito.Mockito.lenient().when(itemComandaRepository.findByComandaId(org.mockito.ArgumentMatchers.any()))
+                .thenReturn(java.util.List.of());
     }
 
     private Mesa criarMesa(Long id, StatusMesa status) {

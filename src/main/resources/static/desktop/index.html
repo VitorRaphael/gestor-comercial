@@ -49,6 +49,12 @@
         <button class="nav-item" data-view="caixa" data-gerente>
           <span class="nav-icone">💰</span> Caixa
         </button>
+        <button class="nav-item" data-view="estoque" data-gerente>
+          <span class="nav-icone">📦</span> Estoque
+        </button>
+        <button class="nav-item" data-view="analytics" data-gerente>
+          <span class="nav-icone">📊</span> Sales Analytics
+        </button>
         <button class="nav-item" data-view="funcionarios" data-gerente>
           <span class="nav-icone">👤</span> Funcionários
         </button>
@@ -173,6 +179,84 @@
           </table>
         </section>
 
+        <!-- Estoque -->
+        <section id="view-estoque" class="secao" hidden>
+          <div class="secao-toolbar">
+            <span class="secao-legenda">Matérias-primas controladas em estoque. A baixa acontece automaticamente no fechamento da comanda, via ficha técnica.</span>
+            <button id="btn-nova-materia-prima" class="botao botao-primario">+ Nova matéria-prima</button>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Unidade</th>
+                <th>Saldo</th>
+                <th>Mínimo</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="materias-primas-tbody"></tbody>
+          </table>
+
+          <div class="secao-toolbar" style="margin-top: 2rem;">
+            <span class="secao-legenda">Ficha técnica — insumos consumidos por produto ao ser vendido.</span>
+          </div>
+          <div class="ficha-tecnica-selector">
+            <select id="ficha-tecnica-produto-select"></select>
+            <button id="btn-add-insumo-ficha" class="botao botao-secundario">+ Adicionar insumo</button>
+          </div>
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th>Matéria-prima</th>
+                <th>Quantidade usada</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="ficha-tecnica-tbody"></tbody>
+          </table>
+        </section>
+
+        <!-- Sales Analytics -->
+        <section id="view-analytics" class="secao" hidden>
+          <div class="secao-toolbar">
+            <span class="secao-legenda">Filtro de período</span>
+            <select id="analytics-periodo-select">
+              <option value="7">Últimos 7 dias</option>
+              <option value="30" selected>Últimos 30 dias</option>
+              <option value="90">Últimos 90 dias</option>
+            </select>
+          </div>
+
+          <div id="analytics-cards" class="analytics-cards"></div>
+
+          <div id="analytics-alertas" class="analytics-alertas"></div>
+
+          <div class="analytics-graficos-linha">
+            <div class="cartao-grafico">
+              <h3>Faturamento no tempo</h3>
+              <canvas id="grafico-faturamento"></canvas>
+            </div>
+            <div class="cartao-grafico">
+              <h3>Curva ABC de produtos</h3>
+              <canvas id="grafico-abc"></canvas>
+            </div>
+          </div>
+
+          <div class="cartao-grafico">
+            <h3>Pico de vendas — dia × hora</h3>
+            <canvas id="grafico-heatmap"></canvas>
+          </div>
+
+          <div class="analytics-graficos-linha">
+            <div class="cartao-grafico">
+              <h3>Mix por categoria</h3>
+              <canvas id="grafico-categoria"></canvas>
+            </div>
+          </div>
+        </section>
+
         <!-- Funcionários -->
         <section id="view-funcionarios" class="secao" hidden>
           <div class="secao-toolbar">
@@ -213,6 +297,7 @@
 
   <div id="toast" class="toast" hidden></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   <script src="/desktop/js/app.js"></script>
 </body>
 </html>

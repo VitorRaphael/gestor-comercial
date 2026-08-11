@@ -1,995 +1,137 @@
 {
-  "nodes": [
-    {
-      "id": "g0",
-      "type": "group",
-      "label": "Vis\u00e3o e Arquitetura do Projeto",
-      "x": 0,
-      "y": 0,
-      "width": 880,
-      "height": 520,
-      "color": "1"
-    },
-    {
-      "id": "n_planta_projeto_problema_produto_final_html",
-      "type": "file",
-      "file": "O problema do produto final e HTML (execu\u00e7\u00e3o desatendida no caixa).md",
-      "x": 20,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_arquitetura_local_first",
-      "type": "file",
-      "file": "Arquitetura Local-first (n\u00e3o cloud-first).md",
-      "x": 220,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_banco_sqlite",
-      "type": "file",
-      "file": "Banco de dados SQLite.md",
-      "x": 420,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_consumer_concorrente",
-      "type": "file",
-      "file": "Consumer (concorrente nacional, valida\u00e7\u00e3o de mercado).md",
-      "x": 620,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_licenca",
-      "type": "file",
-      "file": "Decis\u00e3o de licen\u00e7a (nenhuma definida por enquanto).md",
-      "x": 20,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_food_truck",
-      "type": "file",
-      "file": "Food truck do pai do Vitor (neg\u00f3cio real).md",
-      "x": 220,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_gestor_comercial",
-      "type": "file",
-      "file": "Gestor Comercial (sistema PDV).md",
-      "x": 420,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_interface_atendente_pwa",
-      "type": "file",
-      "file": "Interface do atendente (PWA).md",
-      "x": 620,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_perguntas_abertas",
-      "type": "file",
-      "file": "Perguntas em Aberto.md",
-      "x": 20,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_repositorio_github",
-      "type": "file",
-      "file": "Reposit\u00f3rio github.comVitorRaphaelgestor-comercial.md",
-      "x": 220,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_stack_tecnologica",
-      "type": "file",
-      "file": "Stack Tecnol\u00f3gica (Java 25, Spring Boot 4.1.0, Maven, JPAHibernate).md",
-      "x": 420,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_toast_pos",
-      "type": "file",
-      "file": "Toast POS (refer\u00eancia americana, hub local).md",
-      "x": 620,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_ifood_merchant_api",
-      "type": "file",
-      "file": "ifood-merchant-api (projeto irm\u00e3o).md",
-      "x": 20,
-      "y": 320,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "g1",
-      "type": "group",
-      "label": "Maven Wrapper (mvnw)",
-      "x": 960,
-      "y": 0,
-      "width": 880,
-      "height": 420,
-      "color": "2"
-    },
-    {
-      "id": "n_mvnw_clean",
-      "type": "file",
-      "file": "clean().md",
-      "x": 980,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw_die",
-      "type": "file",
-      "file": "die().md",
-      "x": 1180,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw_exec_maven",
-      "type": "file",
-      "file": "exec_maven().md",
-      "x": 1380,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw_hash_string",
-      "type": "file",
-      "file": "hash_string().md",
-      "x": 1580,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw",
-      "type": "file",
-      "file": "mvnw.md",
-      "x": 980,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw__entry",
-      "type": "file",
-      "file": "mvnw script.md",
-      "x": 1180,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw_native_path",
-      "type": "file",
-      "file": "native_path().md",
-      "x": 1380,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw_set_java_home",
-      "type": "file",
-      "file": "set_java_home().md",
-      "x": 1580,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw_trim",
-      "type": "file",
-      "file": "trim().md",
-      "x": 980,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_mvnw_verbose",
-      "type": "file",
-      "file": "verbose().md",
-      "x": 1180,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "g2",
-      "type": "group",
-      "label": "Card\u00e1pio e Impress\u00e3o T\u00e9rmica",
-      "x": 1920,
-      "y": 0,
-      "width": 880,
-      "height": 420,
-      "color": "3"
-    },
-    {
-      "id": "n_planta_projeto_entidade_produto",
-      "type": "file",
-      "file": "Entidade Produto.md",
-      "x": 1940,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_impressora_caixa",
-      "type": "file",
-      "file": "Impressora do caixa (fechamento de conta, bebidas).md",
-      "x": 2140,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_impressora_trailer_1",
-      "type": "file",
-      "file": "Impressora do trailer 1 (hamb\u00farguer, espetinhos, por\u00e7\u00f5es).md",
-      "x": 2340,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_impressora_trailer_2",
-      "type": "file",
-      "file": "Impressora do trailer 2 (caipirinha, a\u00e7a\u00ed, sorvete).md",
-      "x": 2540,
-      "y": 80,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_impressao_escpos",
-      "type": "file",
-      "file": "Impress\u00e3o centralizada via ESCPOS.md",
-      "x": 1940,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_modulo_cardapio",
-      "type": "file",
-      "file": "M\u00f3dulo Card\u00e1pio.md",
-      "x": 2140,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_modulo_impressao",
-      "type": "file",
-      "file": "M\u00f3dulo Impress\u00e3o.md",
-      "x": 2340,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_servidor_spring_boot",
-      "type": "file",
-      "file": "Servidor Spring Boot (caixa).md",
-      "x": 2540,
-      "y": 160,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_tabela_roteamento_impressoras",
-      "type": "file",
-      "file": "Tabela de roteamento de impress\u00e3o por categoria.md",
-      "x": 1940,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_escpos_coffee",
-      "type": "file",
-      "file": "escpos-coffee (biblioteca Java).md",
-      "x": 2140,
-      "y": 240,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "g3",
-      "type": "group",
-      "label": "Mesas, Caixa e Roadmap",
-      "x": 0,
-      "y": 600,
-      "width": 660,
-      "height": 420,
-      "color": "4"
-    },
-    {
-      "id": "n_planta_projeto_entidade_comanda",
-      "type": "file",
-      "file": "Entidade Comanda.md",
-      "x": 20,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_entidade_itemcomanda",
-      "type": "file",
-      "file": "Entidade ItemComanda.md",
-      "x": 220,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_entidade_mesa",
-      "type": "file",
-      "file": "Entidade Mesa.md",
-      "x": 420,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_grand_chef_pro",
-      "type": "file",
-      "file": "Grand Chef Pro (sistema pago concorrente a substituir).md",
-      "x": 20,
-      "y": 760,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_modulo_caixa",
-      "type": "file",
-      "file": "M\u00f3dulo Caixa.md",
-      "x": 220,
-      "y": 760,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_modulo_mesas_comandas",
-      "type": "file",
-      "file": "M\u00f3dulo MesasComandas.md",
-      "x": 420,
-      "y": 760,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_modulo_usuarios_funcionarios",
-      "type": "file",
-      "file": "M\u00f3dulo Usu\u00e1riosFuncion\u00e1rios.md",
-      "x": 20,
-      "y": 840,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_piloto_grand_chef_pro",
-      "type": "file",
-      "file": "Piloto em paralelo com Grand Chef Pro (Fase 6).md",
-      "x": 220,
-      "y": 840,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_planta_projeto_roadmap_fases",
-      "type": "file",
-      "file": "Roadmap por Fases (1 a 6).md",
-      "x": 420,
-      "y": 840,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "g4",
-      "type": "group",
-      "label": "Regra Graphify (CLAUDE.md)",
-      "x": 960,
-      "y": 600,
-      "width": 660,
-      "height": 400,
-      "color": "5"
-    },
-    {
-      "id": "n_claude_regra_graphify",
-      "type": "file",
-      "file": "Regra Inegoci\u00e1vel \u2014 Graphify.md",
-      "x": 980,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_claude_gestor_comercial",
-      "type": "file",
-      "file": "gestor-comercial (projeto, dono deste grafo).md",
-      "x": 1180,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_claude_graphify_out",
-      "type": "file",
-      "file": "graphify-out (diret\u00f3rio do grafo).md",
-      "x": 1380,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_claude_graph_report",
-      "type": "file",
-      "file": "graphify-outGRAPH_REPORT.md",
-      "x": 980,
-      "y": 760,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_claude_ifood_merchant_api",
-      "type": "file",
-      "file": "ifood-merchant-api (projeto irm\u00e3o, regra j\u00e1 estabelecida).md",
-      "x": 1180,
-      "y": 760,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "g5",
-      "type": "group",
-      "label": "Testes (Spring Boot)",
-      "x": 1920,
-      "y": 600,
-      "width": 660,
-      "height": 400,
-      "color": "6"
-    },
-    {
-      "id": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads",
-      "type": "file",
-      "file": "dot-contextLoads().md",
-      "x": 1940,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests",
-      "type": "file",
-      "file": "GestorComercialApplicationTests.md",
-      "x": 2140,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests",
-      "type": "file",
-      "file": "GestorComercialApplicationTests.java.md",
-      "x": 2340,
-      "y": 680,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_springboottest",
-      "type": "file",
-      "file": "SpringBootTest.md",
-      "x": 1940,
-      "y": 760,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_test",
-      "type": "file",
-      "file": "Test.md",
-      "x": 2140,
-      "y": 760,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "g6",
-      "type": "group",
-      "label": "Aplica\u00e7\u00e3o Principal (Spring Boot)",
-      "x": 0,
-      "y": 1100,
-      "width": 600,
-      "height": 400,
-      "color": "1"
-    },
-    {
-      "id": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main",
-      "type": "file",
-      "file": "dot-main().md",
-      "x": 20,
-      "y": 1180,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication",
-      "type": "file",
-      "file": "GestorComercialApplication.md",
-      "x": 220,
-      "y": 1180,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication",
-      "type": "file",
-      "file": "GestorComercialApplication.java.md",
-      "x": 20,
-      "y": 1260,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "n_springbootapplication",
-      "type": "file",
-      "file": "SpringBootApplication.md",
-      "x": 220,
-      "y": 1260,
-      "width": 180,
-      "height": 60
-    },
-    {
-      "id": "g7",
-      "type": "group",
-      "label": "Pacote Base Java",
-      "x": 960,
-      "y": 1100,
-      "width": 600,
-      "height": 400,
-      "color": "2"
-    },
-    {
-      "id": "n_pkg_com_vitorraphael_gestor_comercial",
-      "type": "file",
-      "file": "com.vitorraphaelgestor-comercial.md",
-      "x": 980,
-      "y": 1180,
-      "width": 180,
-      "height": 60
-    }
-  ],
-  "edges": [
-    {
-      "id": "e_mvnw_mvnw__entry",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw__entry",
-      "label": "contains [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_clean",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_clean",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_die",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_die",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_exec_maven",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_exec_maven",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_hash_string",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_hash_string",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_native_path",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_native_path",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_set_java_home",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_set_java_home",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_trim",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_trim",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_mvnw_verbose",
-      "fromNode": "n_mvnw",
-      "toNode": "n_mvnw_verbose",
-      "label": "defines [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw__entry_mvnw_clean",
-      "fromNode": "n_mvnw__entry",
-      "toNode": "n_mvnw_clean",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw__entry_mvnw_die",
-      "fromNode": "n_mvnw__entry",
-      "toNode": "n_mvnw_die",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw__entry_mvnw_exec_maven",
-      "fromNode": "n_mvnw__entry",
-      "toNode": "n_mvnw_exec_maven",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw__entry_mvnw_set_java_home",
-      "fromNode": "n_mvnw__entry",
-      "toNode": "n_mvnw_set_java_home",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw__entry_mvnw_verbose",
-      "fromNode": "n_mvnw__entry",
-      "toNode": "n_mvnw_verbose",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_mvnw_die_mvnw_exec_maven",
-      "fromNode": "n_mvnw_die",
-      "toNode": "n_mvnw_exec_maven",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_springbootapplication",
-      "fromNode": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication",
-      "toNode": "n_springbootapplication",
-      "label": "imports [EXTRACTED]"
-    },
-    {
-      "id": "e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication",
-      "fromNode": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication",
-      "toNode": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication",
-      "label": "contains [EXTRACTED]"
-    },
-    {
-      "id": "e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_springbootapplication",
-      "fromNode": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication",
-      "toNode": "n_springbootapplication",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main",
-      "fromNode": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication",
-      "toNode": "n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main",
-      "label": "method [EXTRACTED]"
-    },
-    {
-      "id": "e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_springboottest",
-      "fromNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests",
-      "toNode": "n_springboottest",
-      "label": "imports [EXTRACTED]"
-    },
-    {
-      "id": "e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests",
-      "fromNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests",
-      "toNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests",
-      "label": "contains [EXTRACTED]"
-    },
-    {
-      "id": "e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_test",
-      "fromNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests",
-      "toNode": "n_test",
-      "label": "imports [EXTRACTED]"
-    },
-    {
-      "id": "e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_springboottest",
-      "fromNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests",
-      "toNode": "n_springboottest",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads",
-      "fromNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests",
-      "toNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads",
-      "label": "method [EXTRACTED]"
-    },
-    {
-      "id": "e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads_test",
-      "fromNode": "n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads",
-      "toNode": "n_test",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_claude_regra_graphify_claude_gestor_comercial",
-      "fromNode": "n_claude_regra_graphify",
-      "toNode": "n_claude_gestor_comercial",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_claude_regra_graphify_claude_graph_report",
-      "fromNode": "n_claude_regra_graphify",
-      "toNode": "n_claude_graph_report",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_claude_regra_graphify_claude_graphify_out",
-      "fromNode": "n_claude_regra_graphify",
-      "toNode": "n_claude_graphify_out",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_claude_regra_graphify_claude_ifood_merchant_api",
-      "fromNode": "n_claude_regra_graphify",
-      "toNode": "n_claude_ifood_merchant_api",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_claude_gestor_comercial_planta_projeto_gestor_comercial",
-      "fromNode": "n_claude_gestor_comercial",
-      "toNode": "n_planta_projeto_gestor_comercial",
-      "label": "conceptually_related_to [INFERRED]"
-    },
-    {
-      "id": "e_planta_projeto_gestor_comercial_planta_projeto_arquitetura_local_first",
-      "fromNode": "n_planta_projeto_gestor_comercial",
-      "toNode": "n_planta_projeto_arquitetura_local_first",
-      "label": "implements [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_gestor_comercial_planta_projeto_food_truck",
-      "fromNode": "n_planta_projeto_gestor_comercial",
-      "toNode": "n_planta_projeto_food_truck",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_gestor_comercial_planta_projeto_grand_chef_pro",
-      "fromNode": "n_planta_projeto_gestor_comercial",
-      "toNode": "n_planta_projeto_grand_chef_pro",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_gestor_comercial_planta_projeto_ifood_merchant_api",
-      "fromNode": "n_planta_projeto_gestor_comercial",
-      "toNode": "n_planta_projeto_ifood_merchant_api",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_gestor_comercial_planta_projeto_perguntas_abertas",
-      "fromNode": "n_planta_projeto_gestor_comercial",
-      "toNode": "n_planta_projeto_perguntas_abertas",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_gestor_comercial_planta_projeto_repositorio_github",
-      "fromNode": "n_planta_projeto_gestor_comercial",
-      "toNode": "n_planta_projeto_repositorio_github",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_gestor_comercial_planta_projeto_stack_tecnologica",
-      "fromNode": "n_planta_projeto_gestor_comercial",
-      "toNode": "n_planta_projeto_stack_tecnologica",
-      "label": "implements [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_ifood_merchant_api_planta_projeto_banco_sqlite",
-      "fromNode": "n_planta_projeto_ifood_merchant_api",
-      "toNode": "n_planta_projeto_banco_sqlite",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_grand_chef_pro_planta_projeto_piloto_grand_chef_pro",
-      "fromNode": "n_planta_projeto_grand_chef_pro",
-      "toNode": "n_planta_projeto_piloto_grand_chef_pro",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_arquitetura_local_first_planta_projeto_banco_sqlite",
-      "fromNode": "n_planta_projeto_arquitetura_local_first",
-      "toNode": "n_planta_projeto_banco_sqlite",
-      "label": "rationale_for [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_arquitetura_local_first_planta_projeto_consumer_concorrente",
-      "fromNode": "n_planta_projeto_arquitetura_local_first",
-      "toNode": "n_planta_projeto_consumer_concorrente",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_arquitetura_local_first_planta_projeto_interface_atendente_pwa",
-      "fromNode": "n_planta_projeto_arquitetura_local_first",
-      "toNode": "n_planta_projeto_interface_atendente_pwa",
-      "label": "rationale_for [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_arquitetura_local_first_planta_projeto_servidor_spring_boot",
-      "fromNode": "n_planta_projeto_arquitetura_local_first",
-      "toNode": "n_planta_projeto_servidor_spring_boot",
-      "label": "rationale_for [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_arquitetura_local_first_planta_projeto_toast_pos",
-      "fromNode": "n_planta_projeto_arquitetura_local_first",
-      "toNode": "n_planta_projeto_toast_pos",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_servidor_spring_boot_planta_projeto_impressao_escpos",
-      "fromNode": "n_planta_projeto_servidor_spring_boot",
-      "toNode": "n_planta_projeto_impressao_escpos",
-      "label": "implements [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_interface_atendente_pwa_planta_projeto_perguntas_abertas",
-      "fromNode": "n_planta_projeto_interface_atendente_pwa",
-      "toNode": "n_planta_projeto_perguntas_abertas",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_interface_atendente_pwa_planta_projeto_roadmap_fases",
-      "fromNode": "n_planta_projeto_interface_atendente_pwa",
-      "toNode": "n_planta_projeto_roadmap_fases",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_impressao_escpos_planta_projeto_escpos_coffee",
-      "fromNode": "n_planta_projeto_impressao_escpos",
-      "toNode": "n_planta_projeto_escpos_coffee",
-      "label": "implements [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_impressao_escpos_planta_projeto_modulo_impressao",
-      "fromNode": "n_planta_projeto_impressao_escpos",
-      "toNode": "n_planta_projeto_modulo_impressao",
-      "label": "implements [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_modulo_cardapio",
-      "fromNode": "n_planta_projeto_tabela_roteamento_impressoras",
-      "toNode": "n_planta_projeto_modulo_cardapio",
-      "label": "shares_data_with [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_modulo_impressao",
-      "fromNode": "n_planta_projeto_tabela_roteamento_impressoras",
-      "toNode": "n_planta_projeto_modulo_impressao",
-      "label": "implements [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_impressora_caixa",
-      "fromNode": "n_planta_projeto_tabela_roteamento_impressoras",
-      "toNode": "n_planta_projeto_impressora_caixa",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_impressora_trailer_1",
-      "fromNode": "n_planta_projeto_tabela_roteamento_impressoras",
-      "toNode": "n_planta_projeto_impressora_trailer_1",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_impressora_trailer_2",
-      "fromNode": "n_planta_projeto_tabela_roteamento_impressoras",
-      "toNode": "n_planta_projeto_impressora_trailer_2",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_cardapio_planta_projeto_entidade_produto",
-      "fromNode": "n_planta_projeto_modulo_cardapio",
-      "toNode": "n_planta_projeto_entidade_produto",
-      "label": "shares_data_with [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_cardapio_planta_projeto_roadmap_fases",
-      "fromNode": "n_planta_projeto_modulo_cardapio",
-      "toNode": "n_planta_projeto_roadmap_fases",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_mesas_comandas_planta_projeto_entidade_comanda",
-      "fromNode": "n_planta_projeto_modulo_mesas_comandas",
-      "toNode": "n_planta_projeto_entidade_comanda",
-      "label": "shares_data_with [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_mesas_comandas_planta_projeto_entidade_itemcomanda",
-      "fromNode": "n_planta_projeto_modulo_mesas_comandas",
-      "toNode": "n_planta_projeto_entidade_itemcomanda",
-      "label": "shares_data_with [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_mesas_comandas_planta_projeto_entidade_mesa",
-      "fromNode": "n_planta_projeto_modulo_mesas_comandas",
-      "toNode": "n_planta_projeto_entidade_mesa",
-      "label": "shares_data_with [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_mesas_comandas_planta_projeto_roadmap_fases",
-      "fromNode": "n_planta_projeto_modulo_mesas_comandas",
-      "toNode": "n_planta_projeto_roadmap_fases",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_caixa_planta_projeto_roadmap_fases",
-      "fromNode": "n_planta_projeto_modulo_caixa",
-      "toNode": "n_planta_projeto_roadmap_fases",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_impressao_planta_projeto_roadmap_fases",
-      "fromNode": "n_planta_projeto_modulo_impressao",
-      "toNode": "n_planta_projeto_roadmap_fases",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_modulo_usuarios_funcionarios_planta_projeto_roadmap_fases",
-      "fromNode": "n_planta_projeto_modulo_usuarios_funcionarios",
-      "toNode": "n_planta_projeto_roadmap_fases",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_roadmap_fases_planta_projeto_piloto_grand_chef_pro",
-      "fromNode": "n_planta_projeto_roadmap_fases",
-      "toNode": "n_planta_projeto_piloto_grand_chef_pro",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_repositorio_github_planta_projeto_licenca",
-      "fromNode": "n_planta_projeto_repositorio_github",
-      "toNode": "n_planta_projeto_licenca",
-      "label": "references [EXTRACTED]"
-    },
-    {
-      "id": "e_planta_projeto_perguntas_abertas_planta_projeto_problema_produto_final_html",
-      "fromNode": "n_planta_projeto_perguntas_abertas",
-      "toNode": "n_planta_projeto_problema_produto_final_html",
-      "label": "references [EXTRACTED]"
-    }
-  ]
+	"nodes":[
+		{"id":"g0","type":"group","label":"Visão e Arquitetura do Projeto","x":0,"y":0,"width":880,"height":520,"color":"1"},
+		{"id":"n_planta_projeto_problema_produto_final_html","type":"file","file":"O problema do produto final e HTML (execução desatendida no caixa).md","x":20,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_arquitetura_local_first","type":"file","file":"Arquitetura Local-first (não cloud-first).md","x":220,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_banco_sqlite","type":"file","file":"Banco de dados SQLite.md","x":420,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_consumer_concorrente","type":"file","file":"Consumer (concorrente nacional, validação de mercado).md","x":620,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_licenca","type":"file","file":"Decisão de licença (nenhuma definida por enquanto).md","x":20,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_food_truck","type":"file","file":"Food truck do pai do Vitor (negócio real).md","x":220,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_gestor_comercial","type":"file","file":"Gestor Comercial (sistema PDV).md","x":420,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_interface_atendente_pwa","type":"file","file":"Interface do atendente (PWA).md","x":620,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_perguntas_abertas","type":"file","file":"Perguntas em Aberto.md","x":20,"y":240,"width":180,"height":60},
+		{"id":"n_planta_projeto_repositorio_github","type":"file","file":"Repositório github.comVitorRaphaelgestor-comercial.md","x":220,"y":240,"width":180,"height":60},
+		{"id":"n_planta_projeto_stack_tecnologica","type":"file","file":"Stack Tecnológica (Java 25, Spring Boot 4.1.0, Maven, JPAHibernate).md","x":420,"y":240,"width":180,"height":60},
+		{"id":"n_planta_projeto_toast_pos","type":"file","file":"Toast POS (referência americana, hub local).md","x":620,"y":240,"width":180,"height":60},
+		{"id":"n_planta_projeto_ifood_merchant_api","type":"file","file":"ifood-merchant-api (projeto irmão).md","x":20,"y":320,"width":180,"height":60},
+		{"id":"g1","type":"group","label":"Maven Wrapper (mvnw)","x":960,"y":0,"width":880,"height":420,"color":"2"},
+		{"id":"n_mvnw_clean","type":"file","file":"clean().md","x":980,"y":80,"width":180,"height":60},
+		{"id":"n_mvnw_die","type":"file","file":"die().md","x":1180,"y":80,"width":180,"height":60},
+		{"id":"n_mvnw_exec_maven","type":"file","file":"exec_maven().md","x":1380,"y":80,"width":180,"height":60},
+		{"id":"n_mvnw_hash_string","type":"file","file":"hash_string().md","x":1580,"y":80,"width":180,"height":60},
+		{"id":"n_mvnw","type":"file","file":"mvnw.md","x":980,"y":160,"width":180,"height":60},
+		{"id":"n_mvnw__entry","type":"file","file":"mvnw script.md","x":1180,"y":160,"width":180,"height":60},
+		{"id":"n_mvnw_native_path","type":"file","file":"native_path().md","x":1380,"y":160,"width":180,"height":60},
+		{"id":"n_mvnw_set_java_home","type":"file","file":"set_java_home().md","x":1580,"y":160,"width":180,"height":60},
+		{"id":"n_mvnw_trim","type":"file","file":"trim().md","x":980,"y":240,"width":180,"height":60},
+		{"id":"n_mvnw_verbose","type":"file","file":"verbose().md","x":1180,"y":240,"width":180,"height":60},
+		{"id":"g2","type":"group","label":"Cardápio e Impressão Térmica","x":1920,"y":0,"width":880,"height":420,"color":"3"},
+		{"id":"n_planta_projeto_entidade_produto","type":"file","file":"Entidade Produto.md","x":1940,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_impressora_caixa","type":"file","file":"Impressora do caixa (fechamento de conta, bebidas).md","x":2140,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_impressora_trailer_1","type":"file","file":"Impressora do trailer 1 (hambúrguer, espetinhos, porções).md","x":2340,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_impressora_trailer_2","type":"file","file":"Impressora do trailer 2 (caipirinha, açaí, sorvete).md","x":2540,"y":80,"width":180,"height":60},
+		{"id":"n_planta_projeto_impressao_escpos","type":"file","file":"Impressão centralizada via ESCPOS.md","x":1940,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_modulo_cardapio","type":"file","file":"Módulo Cardápio.md","x":2140,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_modulo_impressao","type":"file","file":"Módulo Impressão.md","x":2340,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_servidor_spring_boot","type":"file","file":"Servidor Spring Boot (caixa).md","x":2540,"y":160,"width":180,"height":60},
+		{"id":"n_planta_projeto_tabela_roteamento_impressoras","type":"file","file":"Tabela de roteamento de impressão por categoria.md","x":1940,"y":240,"width":180,"height":60},
+		{"id":"n_planta_projeto_escpos_coffee","type":"file","file":"escpos-coffee (biblioteca Java).md","x":2140,"y":240,"width":180,"height":60},
+		{"id":"g3","type":"group","label":"Mesas, Caixa e Roadmap","x":0,"y":600,"width":660,"height":420,"color":"4"},
+		{"id":"n_planta_projeto_entidade_comanda","type":"file","file":"Entidade Comanda.md","x":20,"y":680,"width":180,"height":60},
+		{"id":"n_planta_projeto_entidade_itemcomanda","type":"file","file":"Entidade ItemComanda.md","x":220,"y":680,"width":180,"height":60},
+		{"id":"n_planta_projeto_entidade_mesa","type":"file","file":"Entidade Mesa.md","x":420,"y":680,"width":180,"height":60},
+		{"id":"n_planta_projeto_grand_chef_pro","type":"file","file":"Grand Chef Pro (sistema pago concorrente a substituir).md","x":20,"y":760,"width":180,"height":60},
+		{"id":"n_planta_projeto_modulo_caixa","type":"file","file":"Módulo Caixa.md","x":220,"y":760,"width":180,"height":60},
+		{"id":"n_planta_projeto_modulo_mesas_comandas","type":"file","file":"Módulo MesasComandas.md","x":420,"y":760,"width":180,"height":60},
+		{"id":"n_planta_projeto_modulo_usuarios_funcionarios","type":"file","file":"Módulo UsuáriosFuncionários.md","x":20,"y":840,"width":180,"height":60},
+		{"id":"n_planta_projeto_piloto_grand_chef_pro","type":"file","file":"Piloto em paralelo com Grand Chef Pro (Fase 6).md","x":220,"y":840,"width":180,"height":60},
+		{"id":"n_planta_projeto_roadmap_fases","type":"file","file":"Roadmap por Fases (1 a 6).md","x":420,"y":840,"width":180,"height":60},
+		{"id":"g4","type":"group","label":"Regra Graphify (CLAUDE.md)","x":960,"y":600,"width":660,"height":400,"color":"5"},
+		{"id":"n_claude_regra_graphify","type":"file","file":"Regra Inegociável — Graphify.md","x":980,"y":680,"width":180,"height":60},
+		{"id":"n_claude_gestor_comercial","type":"file","file":"gestor-comercial (projeto, dono deste grafo).md","x":1180,"y":680,"width":180,"height":60},
+		{"id":"n_claude_graphify_out","type":"file","file":"graphify-out (diretório do grafo).md","x":1380,"y":680,"width":180,"height":60},
+		{"id":"n_claude_graph_report","type":"file","file":"graphify-outGRAPH_REPORT.md","x":980,"y":760,"width":180,"height":60},
+		{"id":"n_claude_ifood_merchant_api","type":"file","file":"ifood-merchant-api (projeto irmão, regra já estabelecida).md","x":1180,"y":760,"width":180,"height":60},
+		{"id":"g5","type":"group","label":"Testes (Spring Boot)","x":1920,"y":600,"width":660,"height":400,"color":"6"},
+		{"id":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads","type":"file","file":"dot-contextLoads().md","x":1940,"y":680,"width":180,"height":60},
+		{"id":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests","type":"file","file":"GestorComercialApplicationTests.md","x":2140,"y":680,"width":180,"height":60},
+		{"id":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests","type":"file","file":"GestorComercialApplicationTests.java.md","x":2340,"y":680,"width":180,"height":60},
+		{"id":"n_springboottest","type":"file","file":"SpringBootTest.md","x":1940,"y":760,"width":180,"height":60},
+		{"id":"n_test","type":"file","file":"Test.md","x":2140,"y":760,"width":180,"height":60},
+		{"id":"g6","type":"group","label":"Aplicação Principal (Spring Boot)","x":0,"y":1100,"width":600,"height":400,"color":"1"},
+		{"id":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main","type":"file","file":"dot-main().md","x":20,"y":1180,"width":180,"height":60},
+		{"id":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication","type":"file","file":"GestorComercialApplication.md","x":220,"y":1180,"width":180,"height":60},
+		{"id":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication","type":"file","file":"GestorComercialApplication.java.md","x":20,"y":1260,"width":180,"height":60},
+		{"id":"n_springbootapplication","type":"file","file":"SpringBootApplication.md","x":220,"y":1260,"width":180,"height":60},
+		{"id":"g7","type":"group","label":"Pacote Base Java","x":960,"y":1100,"width":600,"height":400,"color":"2"},
+		{"id":"n_pkg_com_vitorraphael_gestor_comercial","type":"file","file":"com.vitorraphaelgestor-comercial.md","x":980,"y":1180,"width":180,"height":60}
+	],
+	"edges":[
+		{"id":"e_mvnw_mvnw__entry","fromNode":"n_mvnw","toNode":"n_mvnw__entry","label":"contains [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_mvnw_mvnw_clean","fromNode":"n_mvnw","toNode":"n_mvnw_clean","label":"defines [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_mvnw_mvnw_die","fromNode":"n_mvnw","toNode":"n_mvnw_die","label":"defines [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_mvnw_mvnw_exec_maven","fromNode":"n_mvnw","toNode":"n_mvnw_exec_maven","label":"defines [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_mvnw_mvnw_hash_string","fromNode":"n_mvnw","toNode":"n_mvnw_hash_string","label":"defines [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_mvnw_mvnw_native_path","fromNode":"n_mvnw","toNode":"n_mvnw_native_path","label":"defines [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_mvnw_mvnw_set_java_home","fromNode":"n_mvnw","toNode":"n_mvnw_set_java_home","label":"defines [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_mvnw_mvnw_trim","fromNode":"n_mvnw","toNode":"n_mvnw_trim","label":"defines [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_mvnw_mvnw_verbose","fromNode":"n_mvnw","toNode":"n_mvnw_verbose","label":"defines [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_mvnw__entry_mvnw_clean","fromNode":"n_mvnw__entry","toNode":"n_mvnw_clean","label":"calls [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_mvnw__entry_mvnw_die","fromNode":"n_mvnw__entry","toNode":"n_mvnw_die","label":"calls [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_mvnw__entry_mvnw_exec_maven","fromNode":"n_mvnw__entry","toNode":"n_mvnw_exec_maven","label":"calls [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_mvnw__entry_mvnw_set_java_home","fromNode":"n_mvnw__entry","toNode":"n_mvnw_set_java_home","label":"calls [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_mvnw__entry_mvnw_verbose","fromNode":"n_mvnw__entry","toNode":"n_mvnw_verbose","label":"calls [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_mvnw_die_mvnw_exec_maven","fromNode":"n_mvnw_die","toNode":"n_mvnw_exec_maven","label":"calls [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_springbootapplication","fromNode":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication","toNode":"n_springbootapplication","label":"imports [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication","fromNode":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication","toNode":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication","label":"contains [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_springbootapplication","fromNode":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication","toNode":"n_springbootapplication","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main","fromNode":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication","toNode":"n_src_main_java_com_vitorraphael_gestor_comercial_gestorcomercialapplication_gestorcomercialapplication_main","label":"method [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_springboottest","fromNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests","toNode":"n_springboottest","label":"imports [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests","fromNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests","toNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests","label":"contains [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_test","fromNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests","toNode":"n_test","label":"imports [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_springboottest","fromNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests","toNode":"n_springboottest","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads","fromNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests","toNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads","label":"method [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads_test","fromNode":"n_src_test_java_com_vitorraphael_gestor_comercial_gestorcomercialapplicationtests_gestorcomercialapplicationtests_contextloads","toNode":"n_test","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_claude_regra_graphify_claude_gestor_comercial","fromNode":"n_claude_regra_graphify","toNode":"n_claude_gestor_comercial","label":"references [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_claude_regra_graphify_claude_graph_report","fromNode":"n_claude_regra_graphify","toNode":"n_claude_graph_report","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_claude_regra_graphify_claude_graphify_out","fromNode":"n_claude_regra_graphify","toNode":"n_claude_graphify_out","label":"references [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_claude_regra_graphify_claude_ifood_merchant_api","fromNode":"n_claude_regra_graphify","toNode":"n_claude_ifood_merchant_api","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_claude_gestor_comercial_planta_projeto_gestor_comercial","fromNode":"n_claude_gestor_comercial","toNode":"n_planta_projeto_gestor_comercial","label":"conceptually_related_to [INFERRED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_gestor_comercial_planta_projeto_arquitetura_local_first","fromNode":"n_planta_projeto_gestor_comercial","toNode":"n_planta_projeto_arquitetura_local_first","label":"implements [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_gestor_comercial_planta_projeto_food_truck","fromNode":"n_planta_projeto_gestor_comercial","toNode":"n_planta_projeto_food_truck","label":"references [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_planta_projeto_gestor_comercial_planta_projeto_grand_chef_pro","fromNode":"n_planta_projeto_gestor_comercial","toNode":"n_planta_projeto_grand_chef_pro","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_gestor_comercial_planta_projeto_ifood_merchant_api","fromNode":"n_planta_projeto_gestor_comercial","toNode":"n_planta_projeto_ifood_merchant_api","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_gestor_comercial_planta_projeto_perguntas_abertas","fromNode":"n_planta_projeto_gestor_comercial","toNode":"n_planta_projeto_perguntas_abertas","label":"references [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_planta_projeto_gestor_comercial_planta_projeto_repositorio_github","fromNode":"n_planta_projeto_gestor_comercial","toNode":"n_planta_projeto_repositorio_github","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_gestor_comercial_planta_projeto_stack_tecnologica","fromNode":"n_planta_projeto_gestor_comercial","toNode":"n_planta_projeto_stack_tecnologica","label":"implements [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_ifood_merchant_api_planta_projeto_banco_sqlite","fromNode":"n_planta_projeto_ifood_merchant_api","toNode":"n_planta_projeto_banco_sqlite","label":"references [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_grand_chef_pro_planta_projeto_piloto_grand_chef_pro","fromNode":"n_planta_projeto_grand_chef_pro","toNode":"n_planta_projeto_piloto_grand_chef_pro","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_arquitetura_local_first_planta_projeto_banco_sqlite","fromNode":"n_planta_projeto_arquitetura_local_first","toNode":"n_planta_projeto_banco_sqlite","label":"rationale_for [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_arquitetura_local_first_planta_projeto_consumer_concorrente","fromNode":"n_planta_projeto_arquitetura_local_first","toNode":"n_planta_projeto_consumer_concorrente","label":"references [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_arquitetura_local_first_planta_projeto_interface_atendente_pwa","fromNode":"n_planta_projeto_arquitetura_local_first","toNode":"n_planta_projeto_interface_atendente_pwa","label":"rationale_for [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_arquitetura_local_first_planta_projeto_servidor_spring_boot","fromNode":"n_planta_projeto_arquitetura_local_first","toNode":"n_planta_projeto_servidor_spring_boot","label":"rationale_for [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_arquitetura_local_first_planta_projeto_toast_pos","fromNode":"n_planta_projeto_arquitetura_local_first","toNode":"n_planta_projeto_toast_pos","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_servidor_spring_boot_planta_projeto_impressao_escpos","fromNode":"n_planta_projeto_servidor_spring_boot","toNode":"n_planta_projeto_impressao_escpos","label":"implements [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_planta_projeto_interface_atendente_pwa_planta_projeto_perguntas_abertas","fromNode":"n_planta_projeto_interface_atendente_pwa","toNode":"n_planta_projeto_perguntas_abertas","label":"references [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_planta_projeto_interface_atendente_pwa_planta_projeto_roadmap_fases","fromNode":"n_planta_projeto_interface_atendente_pwa","toNode":"n_planta_projeto_roadmap_fases","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_impressao_escpos_planta_projeto_escpos_coffee","fromNode":"n_planta_projeto_impressao_escpos","toNode":"n_planta_projeto_escpos_coffee","label":"implements [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_impressao_escpos_planta_projeto_modulo_impressao","fromNode":"n_planta_projeto_impressao_escpos","toNode":"n_planta_projeto_modulo_impressao","label":"implements [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_modulo_cardapio","fromNode":"n_planta_projeto_tabela_roteamento_impressoras","toNode":"n_planta_projeto_modulo_cardapio","label":"shares_data_with [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_modulo_impressao","fromNode":"n_planta_projeto_tabela_roteamento_impressoras","toNode":"n_planta_projeto_modulo_impressao","label":"implements [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_impressora_caixa","fromNode":"n_planta_projeto_tabela_roteamento_impressoras","toNode":"n_planta_projeto_impressora_caixa","label":"references [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_impressora_trailer_1","fromNode":"n_planta_projeto_tabela_roteamento_impressoras","toNode":"n_planta_projeto_impressora_trailer_1","label":"references [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_tabela_roteamento_impressoras_planta_projeto_impressora_trailer_2","fromNode":"n_planta_projeto_tabela_roteamento_impressoras","toNode":"n_planta_projeto_impressora_trailer_2","label":"references [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_modulo_cardapio_planta_projeto_entidade_produto","fromNode":"n_planta_projeto_modulo_cardapio","toNode":"n_planta_projeto_entidade_produto","label":"shares_data_with [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_modulo_cardapio_planta_projeto_roadmap_fases","fromNode":"n_planta_projeto_modulo_cardapio","toNode":"n_planta_projeto_roadmap_fases","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_modulo_mesas_comandas_planta_projeto_entidade_comanda","fromNode":"n_planta_projeto_modulo_mesas_comandas","toNode":"n_planta_projeto_entidade_comanda","label":"shares_data_with [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_planta_projeto_modulo_mesas_comandas_planta_projeto_entidade_itemcomanda","fromNode":"n_planta_projeto_modulo_mesas_comandas","toNode":"n_planta_projeto_entidade_itemcomanda","label":"shares_data_with [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_modulo_mesas_comandas_planta_projeto_entidade_mesa","fromNode":"n_planta_projeto_modulo_mesas_comandas","toNode":"n_planta_projeto_entidade_mesa","label":"shares_data_with [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_modulo_mesas_comandas_planta_projeto_roadmap_fases","fromNode":"n_planta_projeto_modulo_mesas_comandas","toNode":"n_planta_projeto_roadmap_fases","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_modulo_caixa_planta_projeto_roadmap_fases","fromNode":"n_planta_projeto_modulo_caixa","toNode":"n_planta_projeto_roadmap_fases","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_modulo_impressao_planta_projeto_roadmap_fases","fromNode":"n_planta_projeto_modulo_impressao","toNode":"n_planta_projeto_roadmap_fases","label":"references [EXTRACTED]","fromSide":"bottom","toSide":"top"},
+		{"id":"e_planta_projeto_modulo_usuarios_funcionarios_planta_projeto_roadmap_fases","fromNode":"n_planta_projeto_modulo_usuarios_funcionarios","toNode":"n_planta_projeto_roadmap_fases","label":"references [EXTRACTED]","fromSide":"right","toSide":"left"},
+		{"id":"e_planta_projeto_roadmap_fases_planta_projeto_piloto_grand_chef_pro","fromNode":"n_planta_projeto_roadmap_fases","toNode":"n_planta_projeto_piloto_grand_chef_pro","label":"references [EXTRACTED]","fromSide":"left","toSide":"right"},
+		{"id":"e_planta_projeto_repositorio_github_planta_projeto_licenca","fromNode":"n_planta_projeto_repositorio_github","toNode":"n_planta_projeto_licenca","label":"references [EXTRACTED]","fromSide":"top","toSide":"bottom"},
+		{"id":"e_planta_projeto_perguntas_abertas_planta_projeto_problema_produto_final_html","fromNode":"n_planta_projeto_perguntas_abertas","toNode":"n_planta_projeto_problema_produto_final_html","label":"references [EXTRACTED]","fromSide":"top","toSide":"bottom"}
+	]
 }

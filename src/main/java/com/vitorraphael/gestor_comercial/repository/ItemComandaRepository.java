@@ -9,4 +9,6 @@ import com.vitorraphael.gestor_comercial.model.ItemComanda;
 public interface ItemComandaRepository extends JpaRepository<ItemComanda, Long> {
 
     List<ItemComanda> findByComandaId(Long comandaId);
+
+    List<ItemComanda> findByComandaIdIn(List<Long> comandaIds);
 }

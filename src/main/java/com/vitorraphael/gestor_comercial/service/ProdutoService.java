@@ -21,12 +21,13 @@ public class ProdutoService {
         this.categoriaService = categoriaService;
     }
 
-    public Produto criar(String nome, BigDecimal preco, Long categoriaId) {
+    public Produto criar(String nome, BigDecimal preco, BigDecimal custo, Long categoriaId) {
         Categoria categoria = categoriaService.buscarPorId(categoriaId);
 
         Produto produto = new Produto();
         produto.setNome(nome);
         produto.setPreco(preco);
+        produto.setCusto(custo);
         produto.setCategoria(categoria);
         produto.setAtivo(true);
         return produtoRepository.save(produto);
@@ -38,12 +39,13 @@ public class ProdutoService {
                 .toList();
     }
 
-    public Produto atualizar(Long produtoId, String nome, BigDecimal preco, Long categoriaId) {
+    public Produto atualizar(Long produtoId, String nome, BigDecimal preco, BigDecimal custo, Long categoriaId) {
         Produto produto = buscarPorId(produtoId);
         Categoria categoria = categoriaService.buscarPorId(categoriaId);
 
         produto.setNome(nome);
         produto.setPreco(preco);
+        produto.setCusto(custo);
         produto.setCategoria(categoria);
         return produtoRepository.save(produto);
     }

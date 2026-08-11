@@ -149,6 +149,8 @@ function setView(nome) {
     cardapio: "Cardápio",
     impressoras: "Impressoras",
     caixa: "Caixa",
+    estoque: "Estoque",
+    analytics: "Sales Analytics",
     funcionarios: "Funcionários",
   }[nome];
 
@@ -157,6 +159,8 @@ function setView(nome) {
   if (nome === "cardapio") carregarCardapio();
   if (nome === "impressoras") carregarImpressoras();
   if (nome === "caixa") carregarCaixa();
+  if (nome === "estoque") carregarEstoque();
+  if (nome === "analytics") carregarAnalytics();
   if (nome === "funcionarios") carregarFuncionarios();
 }
 
@@ -563,6 +567,7 @@ function abrirModalNovoProduto(categoriaIdPreSelecionada) {
     [
       { nome: "nome", label: "Nome", tipo: "text" },
       { nome: "preco", label: "Preço", tipo: "number", attrs: "min='0' step='0.01'" },
+      { nome: "custo", label: "Custo (opcional)", tipo: "number", attrs: "min='0' step='0.01'" },
       {
         nome: "categoriaId",
         label: "Categoria",
@@ -576,6 +581,7 @@ function abrirModalNovoProduto(categoriaIdPreSelecionada) {
       await api("POST", "/api/produtos", {
         nome: valores.nome,
         preco: Number(valores.preco),
+        custo: valores.custo ? Number(valores.custo) : null,
         categoriaId: Number(valores.categoriaId),
       });
       await carregarCardapio();
@@ -589,6 +595,7 @@ function abrirModalEditarProduto(produto) {
     [
       { nome: "nome", label: "Nome", tipo: "text", valor: produto.nome },
       { nome: "preco", label: "Preço", tipo: "number", attrs: "min='0' step='0.01'", valor: produto.preco },
+      { nome: "custo", label: "Custo (opcional)", tipo: "number", attrs: "min='0' step='0.01'", valor: produto.custo },
       {
         nome: "categoriaId",
         label: "Categoria",
@@ -602,6 +609,7 @@ function abrirModalEditarProduto(produto) {
       await api("PUT", `/api/produtos/${produto.id}`, {
         nome: valores.nome,
         preco: Number(valores.preco),
+        custo: valores.custo ? Number(valores.custo) : null,
         categoriaId: Number(valores.categoriaId),
       });
       await carregarCardapio();
@@ -863,6 +871,299 @@ el("btn-novo-funcionario").addEventListener("click", () => {
     },
   );
 });
+
+// ---------- Estoque ----------
+
+state.materiasPrimas = [];
+
+async function carregarEstoque() {
+  try {
+    const [materiasPrimas, produtos] = await Promise.all([
+      api("GET", "/api/materias-primas"),
+      state.produtos.length ? Promise.resolve(state.produtos) : api("GET", "/api/produtos"),
+    ]);
+    state.materiasPrimas = materiasPrimas;
+    state.produtos = produtos;
+
+    const tbody = el("materias-primas-tbody");
+    tbody.innerHTML = "";
+    for (const materiaPrima of materiasPrimas) {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${materiaPrima.nome}</td>
+        <td>${materiaPrima.unidadeMedida}</td>
+        <td>${materiaPrima.quantidadeEstoque}${materiaPrima.abaixoDoMinimo ? ' <span class="badge perigo">abaixo do mínimo</span>' : ""}</td>
+        <td>${materiaPrima.quantidadeMinima}</td>
+        <td></td>
+        <td></td>
+      `;
+      const [tdCompra, tdEditar] = [tr.children[4], tr.children[5]];
+
+      const btnCompra = document.createElement("button");
+      btnCompra.className = "botao-link";
+      btnCompra.textContent = "+ Compra";
+      btnCompra.addEventListener("click", () => abrirModalCompraEstoque(materiaPrima));
+      tdCompra.appendChild(btnCompra);
+
+      const btnEditar = document.createElement("button");
+      btnEditar.className = "botao-link";
+      btnEditar.textContent = "Editar";
+      btnEditar.addEventListener("click", () => abrirModalEditarMateriaPrima(materiaPrima));
+      tdEditar.appendChild(btnEditar);
+
+      tbody.appendChild(tr);
+    }
+    if (materiasPrimas.length === 0) {
+      tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="6">Nenhuma matéria-prima cadastrada.</td></tr>`;
+    }
+
+    const select = el("ficha-tecnica-produto-select");
+    const produtoSelecionadoAnterior = select.value;
+    select.innerHTML = produtos.map((p) => `<option value="${p.id}">${p.nome}</option>`).join("");
+    if (produtoSelecionadoAnterior) select.value = produtoSelecionadoAnterior;
+
+    await carregarFichaTecnica();
+  } catch (erro) {
+    mostrarToast(erro.message, true);
+  }
+}
+
+async function carregarFichaTecnica() {
+  const produtoId = el("ficha-tecnica-produto-select").value;
+  if (!produtoId) return;
+
+  try {
+    const ficha = await api("GET", `/api/fichas-tecnicas?produtoId=${produtoId}`);
+    const tbody = el("ficha-tecnica-tbody");
+    tbody.innerHTML = "";
+    for (const item of ficha) {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.materiaPrimaNome}</td>
+        <td>${item.quantidadeUsada}</td>
+        <td></td>
+      `;
+      const btnRemover = document.createElement("button");
+      btnRemover.className = "botao-link perigo";
+      btnRemover.textContent = "Remover";
+      btnRemover.addEventListener("click", async () => {
+        try {
+          await api("DELETE", `/api/fichas-tecnicas/${item.id}`);
+          await carregarFichaTecnica();
+        } catch (erro) {
+          mostrarToast(erro.message, true);
+        }
+      });
+      tr.lastElementChild.appendChild(btnRemover);
+      tbody.appendChild(tr);
+    }
+    if (ficha.length === 0) {
+      tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="3">Nenhum insumo associado a este produto.</td></tr>`;
+    }
+  } catch (erro) {
+    mostrarToast(erro.message, true);
+  }
+}
+
+el("ficha-tecnica-produto-select").addEventListener("change", carregarFichaTecnica);
+
+el("btn-add-insumo-ficha").addEventListener("click", () => {
+  const produtoId = el("ficha-tecnica-produto-select").value;
+  if (!produtoId) {
+    mostrarToast("Cadastre um produto primeiro.", true);
+    return;
+  }
+  abrirModalFormulario(
+    "Adicionar insumo à ficha técnica",
+    [
+      {
+        nome: "materiaPrimaId",
+        label: "Matéria-prima",
+        tipo: "select",
+        opcoes: state.materiasPrimas.map((m) => ({ value: m.id, label: `${m.nome} (${m.unidadeMedida})` })),
+      },
+      { nome: "quantidadeUsada", label: "Quantidade usada por unidade vendida", tipo: "number", attrs: "min='0' step='0.001'" },
+    ],
+    "Adicionar",
+    async (valores) => {
+      await api("POST", "/api/fichas-tecnicas", {
+        produtoId: Number(produtoId),
+        materiaPrimaId: Number(valores.materiaPrimaId),
+        quantidadeUsada: Number(valores.quantidadeUsada),
+      });
+      await carregarFichaTecnica();
+    },
+  );
+});
+
+function abrirModalCompraEstoque(materiaPrima) {
+  abrirModalFormulario(
+    `Entrada de compra — ${materiaPrima.nome}`,
+    [{ nome: "quantidade", label: `Quantidade (${materiaPrima.unidadeMedida})`, tipo: "number", attrs: "min='0' step='0.001'" }],
+    "Registrar",
+    async (valores) => {
+      await api("POST", `/api/materias-primas/${materiaPrima.id}/movimentos/compra`, {
+        quantidade: Number(valores.quantidade),
+      });
+      await carregarEstoque();
+    },
+  );
+}
+
+function abrirModalEditarMateriaPrima(materiaPrima) {
+  abrirModalFormulario(
+    "Editar matéria-prima",
+    [
+      { nome: "nome", label: "Nome", tipo: "text", valor: materiaPrima.nome },
+      {
+        nome: "unidadeMedida",
+        label: "Unidade",
+        tipo: "select",
+        opcoes: ["KG", "G", "L", "UN"].map((u) => ({ value: u, label: u })),
+        valor: materiaPrima.unidadeMedida,
+      },
+      { nome: "quantidadeMinima", label: "Quantidade mínima (alerta)", tipo: "number", attrs: "min='0' step='0.001'", valor: materiaPrima.quantidadeMinima },
+    ],
+    "Salvar",
+    async (valores) => {
+      await api("PUT", `/api/materias-primas/${materiaPrima.id}`, {
+        nome: valores.nome,
+        unidadeMedida: valores.unidadeMedida,
+        quantidadeMinima: Number(valores.quantidadeMinima),
+      });
+      await carregarEstoque();
+    },
+  );
+}
+
+el("btn-nova-materia-prima").addEventListener("click", () => {
+  abrirModalFormulario(
+    "Nova matéria-prima",
+    [
+      { nome: "nome", label: "Nome", tipo: "text" },
+      {
+        nome: "unidadeMedida",
+        label: "Unidade",
+        tipo: "select",
+        opcoes: ["KG", "G", "L", "UN"].map((u) => ({ value: u, label: u })),
+      },
+      { nome: "quantidadeMinima", label: "Quantidade mínima (alerta)", tipo: "number", attrs: "min='0' step='0.001'" },
+    ],
+    "Criar",
+    async (valores) => {
+      await api("POST", "/api/materias-primas", {
+        nome: valores.nome,
+        unidadeMedida: valores.unidadeMedida,
+        quantidadeMinima: valores.quantidadeMinima ? Number(valores.quantidadeMinima) : 0,
+      });
+      await carregarEstoque();
+    },
+  );
+});
+
+// ---------- Sales Analytics ----------
+
+state.graficosAnalytics = {};
+
+function destruirGraficosAnalytics() {
+  for (const chave of Object.keys(state.graficosAnalytics)) {
+    state.graficosAnalytics[chave]?.destroy();
+  }
+  state.graficosAnalytics = {};
+}
+
+async function carregarAnalytics() {
+  try {
+    const dias = el("analytics-periodo-select").value;
+    const dados = await api("GET", `/api/analytics/dashboard?dias=${dias}`);
+    renderizarAnalytics(dados);
+  } catch (erro) {
+    mostrarToast(erro.message, true);
+  }
+}
+
+el("analytics-periodo-select").addEventListener("change", carregarAnalytics);
+
+function renderizarAnalytics(dados) {
+  el("analytics-cards").innerHTML = `
+    <div class="analytics-card">
+      <span class="analytics-card-label">Faturamento</span>
+      <strong>${formatarMoeda(dados.faturamentoTotal)}</strong>
+    </div>
+    <div class="analytics-card">
+      <span class="analytics-card-label">Ticket médio</span>
+      <strong>${formatarMoeda(dados.ticketMedio)}</strong>
+    </div>
+    <div class="analytics-card">
+      <span class="analytics-card-label">Nº de comandas</span>
+      <strong>${dados.numeroComandas}</strong>
+    </div>
+    <div class="analytics-card">
+      <span class="analytics-card-label">CMV %</span>
+      <strong>${dados.cmvPercentual != null ? dados.cmvPercentual.toFixed(1) + "%" : "—"}</strong>
+    </div>
+  `;
+
+  const alertasDiv = el("analytics-alertas");
+  if (dados.alertas.length === 0) {
+    alertasDiv.innerHTML = "";
+  } else {
+    alertasDiv.innerHTML = dados.alertas
+      .map((a) => `<div class="analytics-alerta">⚠️ ${a}</div>`)
+      .join("");
+  }
+
+  destruirGraficosAnalytics();
+
+  state.graficosAnalytics.faturamento = new Chart(el("grafico-faturamento"), {
+    type: "line",
+    data: {
+      labels: dados.faturamentoPorDia.map((p) => p.data),
+      datasets: [{ label: "Faturamento", data: dados.faturamentoPorDia.map((p) => p.valor), borderColor: "#a855f7", tension: 0.3 }],
+    },
+    options: { responsive: true, plugins: { legend: { display: false } } },
+  });
+
+  state.graficosAnalytics.abc = new Chart(el("grafico-abc"), {
+    type: "bar",
+    data: {
+      labels: dados.curvaAbc.map((p) => p.produtoNome),
+      datasets: [{ label: "Receita", data: dados.curvaAbc.map((p) => p.receita), backgroundColor: "#ec4899" }],
+    },
+    options: { indexAxis: "y", responsive: true, plugins: { legend: { display: false } } },
+  });
+
+  const horas = Array.from({ length: 24 }, (_, h) => h);
+  const dias7 = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+  const pontosHeatmap = dados.mapaCalor.map((p) => ({ x: p.hora, y: p.diaSemana, v: p.quantidade }));
+  state.graficosAnalytics.heatmap = new Chart(el("grafico-heatmap"), {
+    type: "bubble",
+    data: {
+      datasets: [{
+        label: "Pedidos",
+        data: pontosHeatmap.map((p) => ({ x: p.x, y: p.y, r: Math.min(20, 3 + p.v * 2) })),
+        backgroundColor: "rgba(168, 85, 247, 0.6)",
+      }],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { min: 0, max: 23, title: { display: true, text: "Hora" } },
+        y: { min: 0, max: 6, ticks: { callback: (v) => dias7[v] ?? "" }, title: { display: true, text: "Dia da semana" } },
+      },
+    },
+  });
+
+  state.graficosAnalytics.categoria = new Chart(el("grafico-categoria"), {
+    type: "doughnut",
+    data: {
+      labels: dados.mixPorCategoria.map((p) => p.categoriaNome),
+      datasets: [{ data: dados.mixPorCategoria.map((p) => p.receita), backgroundColor: ["#a855f7", "#ec4899", "#3b82f6", "#f59e0b", "#10b981", "#ef4444"] }],
+    },
+    options: { responsive: true },
+  });
+}
 
 // ---------- Inicialização ----------
 

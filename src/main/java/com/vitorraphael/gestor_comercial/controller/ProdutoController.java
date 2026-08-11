@@ -34,7 +34,7 @@ public class ProdutoController {
     @ExigeGerente
     @PostMapping
     public ResponseEntity<ProdutoResponse> criar(@Valid @RequestBody ProdutoRequest request) {
-        Produto produto = produtoService.criar(request.nome(), request.preco(), request.categoriaId());
+        Produto produto = produtoService.criar(request.nome(), request.preco(), request.custo(), request.categoriaId());
         return ResponseEntity.status(HttpStatus.CREATED).body(ProdutoResponse.de(produto));
     }
 
@@ -49,7 +49,7 @@ public class ProdutoController {
     @ExigeGerente
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> atualizar(@PathVariable Long id, @Valid @RequestBody ProdutoRequest request) {
-        Produto produto = produtoService.atualizar(id, request.nome(), request.preco(), request.categoriaId());
+        Produto produto = produtoService.atualizar(id, request.nome(), request.preco(), request.custo(), request.categoriaId());
         return ResponseEntity.ok(ProdutoResponse.de(produto));
     }
 
