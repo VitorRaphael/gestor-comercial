@@ -54,11 +54,11 @@ class ItemComandaServiceTest {
     @BeforeEach
     void setUp() {
         MesaService mesaService = new MesaService(mesaRepository);
-        MovimentoEstoqueService movimentoEstoqueService = new MovimentoEstoqueService(null, null, null);
+        MovimentoEstoqueService movimentoEstoqueService = new MovimentoEstoqueService(null, null, null, null);
         ComandaService comandaService = new ComandaService(comandaRepository, mesaService, itemComandaRepository,
                 movimentoEstoqueService, null);
         ImpressoraService impressoraService = new ImpressoraService(null);
-        CategoriaService categoriaService = new CategoriaService(categoriaRepository, impressoraService);
+        CategoriaService categoriaService = new CategoriaService(categoriaRepository, impressoraService, produtoRepository);
         ProdutoService produtoService = new ProdutoService(produtoRepository, categoriaService);
         itemComandaService = new ItemComandaService(itemComandaRepository, comandaService, produtoService, null);
     }

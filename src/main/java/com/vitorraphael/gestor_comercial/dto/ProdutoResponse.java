@@ -12,9 +12,14 @@ public record ProdutoResponse(
         BigDecimal margem,
         Long categoriaId,
         String categoriaNome,
-        boolean ativo) {
+        boolean ativo,
+        boolean temItensCombo) {
 
     public static ProdutoResponse de(Produto produto) {
+        return de(produto, false);
+    }
+
+    public static ProdutoResponse de(Produto produto, boolean temItensCombo) {
         BigDecimal margem = produto.getCusto() != null ? produto.getPreco().subtract(produto.getCusto()) : null;
         return new ProdutoResponse(
                 produto.getId(),
@@ -24,6 +29,7 @@ public record ProdutoResponse(
                 margem,
                 produto.getCategoria().getId(),
                 produto.getCategoria().getNome(),
-                produto.isAtivo());
+                produto.isAtivo(),
+                temItensCombo);
     }
 }

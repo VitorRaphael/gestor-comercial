@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vitorraphael.gestor_comercial.dto.ProdutoRequest;
 import com.vitorraphael.gestor_comercial.dto.ProdutoResponse;
 import com.vitorraphael.gestor_comercial.model.Produto;
+import com.vitorraphael.gestor_comercial.repository.ComboItemRepository;
 import com.vitorraphael.gestor_comercial.security.ExigeGerente;
 import com.vitorraphael.gestor_comercial.service.ProdutoService;
 
@@ -26,9 +27,11 @@ import jakarta.validation.Valid;
 public class ProdutoController {
 
     private final ProdutoService produtoService;
+    private final ComboItemRepository comboItemRepository;
 
-    public ProdutoController(ProdutoService produtoService) {
+    public ProdutoController(ProdutoService produtoService, ComboItemRepository comboItemRepository) {
         this.produtoService = produtoService;
+        this.comboItemRepository = comboItemRepository;
     }
 
     @ExigeGerente
@@ -41,7 +44,7 @@ public class ProdutoController {
     @GetMapping
     public ResponseEntity<List<ProdutoResponse>> listarAtivos() {
         List<ProdutoResponse> produtos = produtoService.listarAtivos().stream()
-                .map(ProdutoResponse::de)
+                .map(produto -> ProdutoResponse.de(produto, comboItemRepository.existsByProdutoComboId(produto.getId())))
                 .toList();
         return ResponseEntity.ok(produtos);
     }
@@ -50,7 +53,7 @@ public class ProdutoController {
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> atualizar(@PathVariable Long id, @Valid @RequestBody ProdutoRequest request) {
         Produto produto = produtoService.atualizar(id, request.nome(), request.preco(), request.custo(), request.categoriaId());
-        return ResponseEntity.ok(ProdutoResponse.de(produto));
+        return ResponseEntity.ok(ProdutoResponse.de(produto, comboItemRepository.existsByProdutoComboId(produto.getId())));
     }
 
     /**
@@ -61,6 +64,6 @@ public class ProdutoController {
     @PatchMapping("/{id}/desativar")
     public ResponseEntity<ProdutoResponse> desativar(@PathVariable Long id) {
         Produto produto = produtoService.desativar(id);
-        return ResponseEntity.ok(ProdutoResponse.de(produto));
+        return ResponseEntity.ok(ProdutoResponse.de(produto, comboItemRepository.existsByProdutoComboId(produto.getId())));
     }
 }

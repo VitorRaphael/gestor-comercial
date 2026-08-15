@@ -35,6 +35,7 @@ function limparSessao() {
 
 async function api(metodo, caminho, corpo) {
   const headers = corpo ? { "Content-Type": "application/json" } : {};
+  const tinhaSessao = !!state.sessao;
   if (state.sessao) headers["Authorization"] = `Bearer ${state.sessao.token}`;
 
   const resposta = await fetch(caminho, {
@@ -55,11 +56,21 @@ async function api(metodo, caminho, corpo) {
       mostrarTelaLogin();
     }
 
-    throw new Error(mensagem);
+    const erro = new Error(mensagem);
+    // Uma sessão salva que o servidor não reconhece mais (reiniciou, por
+    // exemplo) já leva o usuário de volta à tela de login acima — mostrar
+    // toast de erro nesse caso só confunde quem ainda nem tentou logar.
+    // Login com PIN errado não tem sessão prévia, então continua avisando.
+    if (resposta.status === 401 && tinhaSessao) erro.silencioso = true;
+    throw erro;
   }
 
   if (resposta.status === 204) return null;
   return resposta.json();
+}
+
+function mostrarToastDeErro(erro) {
+  if (!erro.silencioso) mostrarToast(erro.message, true);
 }
 
 function mostrarToast(mensagem, ehErro = false) {
@@ -122,7 +133,7 @@ function abrirModalFormulario(titulo, campos, textoConfirmar, aoConfirmar) {
       await aoConfirmar(valores);
       fecharModal();
     } catch (erro) {
-      mostrarToast(erro.message, true);
+      mostrarToastDeErro(erro);
     }
   });
 }
@@ -186,7 +197,7 @@ async function entrar() {
     salvarSessao(resposta);
     entrarNoApp();
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -228,7 +239,7 @@ async function carregarMesas() {
       grid.appendChild(botao);
     }
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -246,7 +257,7 @@ async function abrirComandaDaMesa(mesa) {
     await carregarComandasAbertas();
     await selecionarComanda(comanda.id);
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -270,7 +281,7 @@ async function carregarComandasAbertas() {
       lista.appendChild(li);
     }
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -290,7 +301,7 @@ async function carregarItensDaComandaSelecionada() {
     state.itensComandaSelecionada = itens;
     renderizarDetalheComanda(comanda, itens);
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -353,7 +364,7 @@ async function removerItem(itemId) {
     await api("DELETE", `/api/comandas/${state.comandaSelecionadaId}/itens/${itemId}`);
     await carregarItensDaComandaSelecionada();
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -388,7 +399,7 @@ function abrirModalCancelarItem(itemId) {
       await carregarItensDaComandaSelecionada();
       mostrarToast("Item cancelado.");
     } catch (erro) {
-      mostrarToast(erro.message, true);
+      mostrarToastDeErro(erro);
     }
   });
 }
@@ -409,7 +420,7 @@ el("btn-detalhe-cancelar-mesa").addEventListener("click", () => {
       await carregarMesas();
       mostrarToast("Mesa cancelada.");
     } catch (erro) {
-      mostrarToast(erro.message, true);
+      mostrarToastDeErro(erro);
     }
   });
 });
@@ -459,7 +470,7 @@ async function popularFuncionarioConsumidor() {
       .map((f) => `<option value="${f.id}">${f.nome}</option>`)
       .join("");
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -513,7 +524,7 @@ async function confirmarPagamento() {
       });
     }
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -522,7 +533,7 @@ el("btn-detalhe-imprimir").addEventListener("click", async () => {
     await api("POST", `/api/comandas/${state.comandaSelecionadaId}/imprimir`);
     mostrarToast("Enviado para impressão.");
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 });
 
@@ -538,7 +549,7 @@ async function abrirModalAdicionarItem() {
     abrirModalBase("Adicionar item", corpoModalItem(), "Adicionar", confirmarAdicionarItem);
     renderCorpoModalItem();
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -617,7 +628,7 @@ async function confirmarAdicionarItem() {
     fecharModal();
     await carregarItensDaComandaSelecionada();
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -656,6 +667,25 @@ async function carregarCardapio() {
         </div>
       `;
       if (ehGerente) {
+        const btnEditarCategoria = document.createElement("button");
+        btnEditarCategoria.className = "botao-link";
+        btnEditarCategoria.textContent = "Editar";
+        btnEditarCategoria.addEventListener("click", () => abrirModalEditarCategoria(categoria));
+        cabecalho.appendChild(btnEditarCategoria);
+
+        const btnExcluirCategoria = document.createElement("button");
+        btnExcluirCategoria.className = "botao-link perigo";
+        btnExcluirCategoria.textContent = "Excluir";
+        btnExcluirCategoria.addEventListener("click", async () => {
+          try {
+            await api("DELETE", `/api/categorias/${categoria.id}`);
+            await carregarCardapio();
+          } catch (erro) {
+            mostrarToastDeErro(erro);
+          }
+        });
+        cabecalho.appendChild(btnExcluirCategoria);
+
         const btnNovoProduto = document.createElement("button");
         btnNovoProduto.className = "botao botao-secundario";
         btnNovoProduto.textContent = "+ Produto";
@@ -677,7 +707,10 @@ async function carregarCardapio() {
         tr.innerHTML = `
           <td>${produto.nome}</td>
           <td>${formatarMoeda(produto.preco)}</td>
-          <td><span class="badge">${produto.ativo ? "ativo" : "inativo"}</span></td>
+          <td>
+            <span class="badge${produto.ativo ? "" : " inativo"}">${produto.ativo ? "ativo" : "inativo"}</span>
+            ${produto.temItensCombo ? `<span class="badge">combo</span>` : ""}
+          </td>
           <td></td>
         `;
         if (ehGerente) {
@@ -689,6 +722,12 @@ async function carregarCardapio() {
           btnEditar.addEventListener("click", () => abrirModalEditarProduto(produto));
           tdAcoes.appendChild(btnEditar);
 
+          const btnItensCombo = document.createElement("button");
+          btnItensCombo.className = "botao-link";
+          btnItensCombo.textContent = "Itens do combo";
+          btnItensCombo.addEventListener("click", () => abrirModalItensCombo(produto));
+          tdAcoes.appendChild(btnItensCombo);
+
           const btnDesativar = document.createElement("button");
           btnDesativar.className = "botao-link perigo";
           btnDesativar.textContent = "Desativar";
@@ -698,7 +737,7 @@ async function carregarCardapio() {
               await api("PATCH", `/api/produtos/${produto.id}/desativar`);
               await carregarCardapio();
             } catch (erro) {
-              mostrarToast(erro.message, true);
+              mostrarToastDeErro(erro);
             }
           });
           tdAcoes.appendChild(btnDesativar);
@@ -715,7 +754,7 @@ async function carregarCardapio() {
 
     aplicarPermissoesDeInterface();
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -775,6 +814,90 @@ function abrirModalEditarProduto(produto) {
   );
 }
 
+function abrirModalItensCombo(produtoCombo) {
+  const opcoesComponente = state.produtos.filter((p) => p.id !== produtoCombo.id);
+  const corpoHtml = `
+    <p class="secao-legenda">Produtos do cardápio que compõem "${produtoCombo.nome}". A venda do combo baixa o estoque e é contabilizada como venda de cada item aqui, na quantidade informada.</p>
+    <div class="ficha-tecnica-selector">
+      <select id="campo-item-combo-produto">
+        ${opcoesComponente.map((p) => `<option value="${p.id}">${p.nome}</option>`).join("")}
+      </select>
+      <input id="campo-item-combo-quantidade" type="number" min="1" step="1" value="1" style="width: 5rem;">
+      <button id="btn-confirmar-item-combo" class="botao botao-secundario">+ Adicionar</button>
+    </div>
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>Produto do cardápio</th>
+          <th>Quantidade no combo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="itens-combo-modal-tbody"></tbody>
+    </table>
+  `;
+  abrirModalBase(`Itens do combo — ${produtoCombo.nome}`, corpoHtml, "Fechar", () => fecharModal());
+
+  if (opcoesComponente.length === 0) {
+    el("btn-confirmar-item-combo").disabled = true;
+    el("campo-item-combo-produto").innerHTML = `<option>Nenhum outro produto cadastrado</option>`;
+  }
+
+  const recarregar = async () => {
+    try {
+      const itens = await api("GET", `/api/itens-combo?produtoComboId=${produtoCombo.id}`);
+      const tbody = el("itens-combo-modal-tbody");
+      tbody.innerHTML = "";
+      for (const item of itens) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${item.produtoComponenteNome}</td>
+          <td>${item.quantidade}</td>
+          <td></td>
+        `;
+        const btnRemover = document.createElement("button");
+        btnRemover.className = "botao-link perigo";
+        btnRemover.textContent = "Remover";
+        btnRemover.addEventListener("click", async () => {
+          try {
+            await api("DELETE", `/api/itens-combo/${item.id}`);
+            await recarregar();
+            await carregarCardapio();
+          } catch (erro) {
+            mostrarToastDeErro(erro);
+          }
+        });
+        tr.lastElementChild.appendChild(btnRemover);
+        tbody.appendChild(tr);
+      }
+      if (itens.length === 0) {
+        tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="3">Nenhum item associado — este produto ainda não é um combo.</td></tr>`;
+      }
+    } catch (erro) {
+      mostrarToastDeErro(erro);
+    }
+  };
+
+  if (opcoesComponente.length > 0) {
+    el("btn-confirmar-item-combo").addEventListener("click", async () => {
+      try {
+        await api("POST", "/api/itens-combo", {
+          produtoComboId: produtoCombo.id,
+          produtoComponenteId: Number(el("campo-item-combo-produto").value),
+          quantidade: Number(el("campo-item-combo-quantidade").value),
+        });
+        el("campo-item-combo-quantidade").value = "1";
+        await recarregar();
+        await carregarCardapio();
+      } catch (erro) {
+        mostrarToastDeErro(erro);
+      }
+    });
+  }
+
+  recarregar();
+}
+
 el("btn-nova-categoria").addEventListener("click", () => {
   abrirModalFormulario(
     "Nova categoria",
@@ -786,6 +909,18 @@ el("btn-nova-categoria").addEventListener("click", () => {
     },
   );
 });
+
+function abrirModalEditarCategoria(categoria) {
+  abrirModalFormulario(
+    "Editar categoria",
+    [{ nome: "nome", label: "Nome", tipo: "text", valor: categoria.nome }],
+    "Salvar",
+    async (valores) => {
+      await api("PUT", `/api/categorias/${categoria.id}`, { nome: valores.nome });
+      await carregarCardapio();
+    },
+  );
+}
 
 // ---------- Impressoras ----------
 
@@ -806,7 +941,7 @@ async function carregarImpressoras() {
       tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="2">Nenhuma impressora cadastrada.</td></tr>`;
     }
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -850,7 +985,7 @@ function abrirModalNovaImpressora() {
       fecharModal();
       await carregarImpressoras();
     } catch (erro) {
-      mostrarToast(erro.message, true);
+      mostrarToastDeErro(erro);
     }
   });
 }
@@ -960,7 +1095,7 @@ function abrirModalFecharCaixa(caixaId) {
       fecharModal();
       await carregarCaixa();
     } catch (erro) {
-      mostrarToast(erro.message, true);
+      mostrarToastDeErro(erro);
     }
   });
 
@@ -974,7 +1109,7 @@ function abrirModalFecharCaixa(caixaId) {
       el("campo-valorFechamento").value = Number(saldo).toFixed(2);
       el("campo-vendidoMaquininha").value = Number(vendidoMaquininha).toFixed(2);
     } catch (erro) {
-      mostrarToast(erro.message, true);
+      mostrarToastDeErro(erro);
     }
   });
 }
@@ -1030,7 +1165,7 @@ async function carregarFuncionarios() {
           await api("PATCH", `/api/funcionarios/${funcionario.id}/desativar`);
           await carregarFuncionarios();
         } catch (erro) {
-          mostrarToast(erro.message, true);
+          mostrarToastDeErro(erro);
         }
       });
       tdAcoes.appendChild(btn);
@@ -1040,7 +1175,7 @@ async function carregarFuncionarios() {
       tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="4">Nenhum funcionário cadastrado.</td></tr>`;
     }
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -1104,7 +1239,7 @@ async function carregarSaldoDevedor() {
       tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="3">Nenhum funcionário com saldo devedor.</td></tr>`;
     }
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -1137,7 +1272,7 @@ async function alternarDetalheConsumo(funcionarioId, trDetalhe) {
     `;
     trDetalhe.hidden = false;
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -1167,7 +1302,7 @@ function abrirModalQuitarConsumo(funcionarioId, nome, saldoDevedor) {
       await carregarSaldoDevedor();
       mostrarToast("Consumo quitado.");
     } catch (erro) {
-      mostrarToast(erro.message, true);
+      mostrarToastDeErro(erro);
     }
   });
 }
@@ -1224,7 +1359,7 @@ async function carregarEstoque() {
 
     await carregarFichaTecnica();
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -1251,7 +1386,7 @@ async function carregarFichaTecnica() {
           await api("DELETE", `/api/fichas-tecnicas/${item.id}`);
           await carregarFichaTecnica();
         } catch (erro) {
-          mostrarToast(erro.message, true);
+          mostrarToastDeErro(erro);
         }
       });
       tr.lastElementChild.appendChild(btnRemover);
@@ -1261,7 +1396,7 @@ async function carregarFichaTecnica() {
       tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="3">Nenhum insumo associado a este produto.</td></tr>`;
     }
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
@@ -1382,7 +1517,7 @@ async function carregarAnalytics() {
     renderizarAnalytics(dados);
     renderizarCancelamentos(cancelamentos);
   } catch (erro) {
-    mostrarToast(erro.message, true);
+    mostrarToastDeErro(erro);
   }
 }
 
