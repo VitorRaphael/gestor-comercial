@@ -65,12 +65,11 @@ class ComandaServiceTest {
     }
 
     @Test
-    void deveAbrirComandaEmMesaLivre() {
+    void deveAbrirComandaEmMesaLivreSemOcuparAMesa() {
         Mesa mesa = criarMesa(1L, StatusMesa.LIVRE);
         when(mesaRepository.findById(1L)).thenReturn(Optional.of(mesa));
         when(comandaRepository.findByMesaIdAndStatus(1L, StatusComanda.ABERTA)).thenReturn(Optional.empty());
         when(comandaRepository.save(any(Comanda.class))).thenAnswer(invocation -> invocation.getArgument(0));
-        when(mesaRepository.save(any(Mesa.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         Comanda comanda = comandaService.abrir(1L);
 
@@ -78,20 +77,24 @@ class ComandaServiceTest {
         assertThat(comanda.getMesa()).isEqualTo(mesa);
         assertThat(comanda.getDataAbertura()).isNotNull();
 
-        ArgumentCaptor<Mesa> mesaCaptor = ArgumentCaptor.forClass(Mesa.class);
-        verify(mesaRepository).save(mesaCaptor.capture());
-        assertThat(mesaCaptor.getValue().getStatus()).isEqualTo(StatusMesa.OCUPADA);
+        verify(mesaRepository, never()).save(any(Mesa.class));
+        assertThat(mesa.getStatus()).isEqualTo(StatusMesa.LIVRE);
     }
 
     @Test
-    void deveLancarExcecaoAoAbrirComandaEmMesaJaOcupada() {
-        Mesa mesa = criarMesa(1L, StatusMesa.OCUPADA);
+    void deveReabrirComandaJaAbertaDaMesaSemCriarOutra() {
+        Mesa mesa = criarMesa(1L, StatusMesa.LIVRE);
+        Comanda comandaExistente = new Comanda();
+        comandaExistente.setId(5L);
+        comandaExistente.setMesa(mesa);
+        comandaExistente.setStatus(StatusComanda.ABERTA);
         when(mesaRepository.findById(1L)).thenReturn(Optional.of(mesa));
         when(comandaRepository.findByMesaIdAndStatus(1L, StatusComanda.ABERTA))
-                .thenReturn(Optional.of(new Comanda()));
+                .thenReturn(Optional.of(comandaExistente));
 
-        assertThrows(RegraDeNegocioException.class, () -> comandaService.abrir(1L));
+        Comanda comanda = comandaService.abrir(1L);
 
+        assertThat(comanda).isEqualTo(comandaExistente);
         verify(comandaRepository, never()).save(any(Comanda.class));
         verify(mesaRepository, never()).save(any(Mesa.class));
     }

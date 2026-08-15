@@ -10,8 +10,10 @@ import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
 import com.vitorraphael.gestor_comercial.model.Comanda;
 import com.vitorraphael.gestor_comercial.model.Funcionario;
 import com.vitorraphael.gestor_comercial.model.ItemComanda;
+import com.vitorraphael.gestor_comercial.model.Mesa;
 import com.vitorraphael.gestor_comercial.model.Produto;
 import com.vitorraphael.gestor_comercial.model.StatusComanda;
+import com.vitorraphael.gestor_comercial.model.StatusMesa;
 import com.vitorraphael.gestor_comercial.repository.ItemComandaRepository;
 
 @Service
@@ -21,13 +23,15 @@ public class ItemComandaService {
     private final ComandaService comandaService;
     private final ProdutoService produtoService;
     private final FuncionarioService funcionarioService;
+    private final MesaService mesaService;
 
     public ItemComandaService(ItemComandaRepository itemComandaRepository, ComandaService comandaService,
-            ProdutoService produtoService, FuncionarioService funcionarioService) {
+            ProdutoService produtoService, FuncionarioService funcionarioService, MesaService mesaService) {
         this.itemComandaRepository = itemComandaRepository;
         this.comandaService = comandaService;
         this.produtoService = produtoService;
         this.funcionarioService = funcionarioService;
+        this.mesaService = mesaService;
     }
 
     public ItemComanda adicionarItem(Long comandaId, Long produtoId, Integer quantidade, String observacao) {
@@ -48,7 +52,15 @@ public class ItemComandaService {
         item.setObservacao(observacao);
         item.setPrecoUnitario(produto.getPreco());
 
-        return itemComandaRepository.save(item);
+        ItemComanda salvo = itemComandaRepository.save(item);
+
+        Mesa mesa = comanda.getMesa();
+        if (mesa != null && mesa.getStatus() == StatusMesa.LIVRE) {
+            mesa.setStatus(StatusMesa.OCUPADA);
+            mesaService.salvar(mesa);
+        }
+
+        return salvo;
     }
 
     public void removerItem(Long itemComandaId) {

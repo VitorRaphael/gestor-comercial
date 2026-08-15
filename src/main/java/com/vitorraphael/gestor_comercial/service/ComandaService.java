@@ -38,20 +38,32 @@ public class ComandaService {
     public Comanda abrir(Long mesaId) {
         Mesa mesa = mesaService.buscarPorId(mesaId);
 
-        comandaRepository.findByMesaIdAndStatus(mesaId, StatusComanda.ABERTA).ifPresent(c -> {
-            throw new RegraDeNegocioException("Já existe uma comanda aberta para a mesa " + mesaId + ".");
-        });
+        Comanda comandaAberta = comandaRepository.findByMesaIdAndStatus(mesaId, StatusComanda.ABERTA).orElse(null);
+        if (comandaAberta != null) {
+            return comandaAberta;
+        }
 
         Comanda comanda = new Comanda();
         comanda.setMesa(mesa);
         comanda.setStatus(StatusComanda.ABERTA);
         comanda.setDataAbertura(LocalDateTime.now());
-        comanda = comandaRepository.save(comanda);
+        return comandaRepository.save(comanda);
+    }
 
-        mesa.setStatus(StatusMesa.OCUPADA);
-        mesaService.salvar(mesa);
+    public Comanda abrirBalcao() {
+        Comanda balcaoVazio = comandaRepository.findByStatus(StatusComanda.ABERTA).stream()
+                .filter(c -> c.getMesa() == null && !itemComandaRepository.existsByComandaId(c.getId()))
+                .findFirst()
+                .orElse(null);
+        if (balcaoVazio != null) {
+            return balcaoVazio;
+        }
 
-        return comanda;
+        Comanda comanda = new Comanda();
+        comanda.setMesa(null);
+        comanda.setStatus(StatusComanda.ABERTA);
+        comanda.setDataAbertura(LocalDateTime.now());
+        return comandaRepository.save(comanda);
     }
 
     public Comanda fechar(Long comandaId) {
@@ -69,8 +81,10 @@ public class ComandaService {
         movimentoEstoqueService.darBaixaPorFechamentoDeComanda(comanda, itens);
 
         Mesa mesa = comanda.getMesa();
-        mesa.setStatus(StatusMesa.LIVRE);
-        mesaService.salvar(mesa);
+        if (mesa != null) {
+            mesa.setStatus(StatusMesa.LIVRE);
+            mesaService.salvar(mesa);
+        }
 
         return comanda;
     }
@@ -103,8 +117,10 @@ public class ComandaService {
         comanda = comandaRepository.save(comanda);
 
         Mesa mesa = comanda.getMesa();
-        mesa.setStatus(StatusMesa.LIVRE);
-        mesaService.salvar(mesa);
+        if (mesa != null) {
+            mesa.setStatus(StatusMesa.LIVRE);
+            mesaService.salvar(mesa);
+        }
 
         return comanda;
     }
@@ -115,6 +131,8 @@ public class ComandaService {
     }
 
     public List<Comanda> listarAbertas() {
-        return comandaRepository.findByStatus(StatusComanda.ABERTA);
+        return comandaRepository.findByStatus(StatusComanda.ABERTA).stream()
+                .filter(c -> itemComandaRepository.existsByComandaId(c.getId()))
+                .toList();
     }
 }

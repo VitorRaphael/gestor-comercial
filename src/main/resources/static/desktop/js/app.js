@@ -140,7 +140,7 @@ function campoHtml(campo) {
     return `<div><label>${campo.label}</label><textarea id="campo-${campo.nome}" ${campo.attrs || ""}>${campo.valor ?? ""}</textarea></div>`;
   }
   if (campo.tipo === "file") {
-    return `<div><label>${campo.label}</label>${campo.previaUrl ? `<img src="${campo.previaUrl}" class="foto-previa" alt="Foto atual">` : ""}<input id="campo-${campo.nome}" type="file" accept="image/png,image/jpeg,image/webp"></div>`;
+    return `<div><label>${campo.label}</label>${campo.previaUrl ? `<img src="${campo.previaUrl}" class="foto-previa" alt="Foto atual">` : ""}<input id="campo-${campo.nome}" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></div>`;
   }
   const valor = campo.valor != null ? `value="${campo.valor}"` : "";
   return `<div><label>${campo.label}</label><input id="campo-${campo.nome}" type="${campo.tipo}" ${valor} ${campo.attrs || ""}></div>`;
@@ -289,14 +289,7 @@ async function carregarMesas() {
 
 async function abrirComandaDaMesa(mesa) {
   try {
-    let comanda;
-    if (mesa.status === "OCUPADA") {
-      const abertas = await api("GET", "/api/comandas/abertas");
-      comanda = abertas.find((c) => c.mesaId === mesa.id);
-      if (!comanda) throw new Error("Mesa ocupada mas nenhuma comanda aberta foi encontrada.");
-    } else {
-      comanda = await api("POST", `/api/mesas/${mesa.id}/comandas`);
-    }
+    const comanda = await api("POST", `/api/mesas/${mesa.id}/comandas`);
     setView("comandas");
     await carregarComandasAbertas();
     await selecionarComanda(comanda.id);
@@ -304,6 +297,19 @@ async function abrirComandaDaMesa(mesa) {
     mostrarToastDeErro(erro);
   }
 }
+
+async function abrirComandaBalcao() {
+  try {
+    const comanda = await api("POST", "/api/comandas/balcao");
+    setView("comandas");
+    await carregarComandasAbertas();
+    await selecionarComanda(comanda.id);
+  } catch (erro) {
+    mostrarToastDeErro(erro);
+  }
+}
+
+el("btn-balcao").addEventListener("click", abrirComandaBalcao);
 
 // ---------- Comandas ----------
 
@@ -320,7 +326,7 @@ async function carregarComandasAbertas() {
     for (const comanda of comandas) {
       const li = document.createElement("li");
       li.className = "item-comanda-lista" + (comanda.id === state.comandaSelecionadaId ? " selecionada" : "");
-      li.innerHTML = `<span class="mesa-num">Mesa ${comanda.mesaNumero}</span>`;
+      li.innerHTML = `<span class="mesa-num">${comanda.mesaNumero ? `Mesa ${comanda.mesaNumero}` : "Balcão"}</span>`;
       li.addEventListener("click", () => selecionarComanda(comanda.id));
       lista.appendChild(li);
     }
@@ -353,7 +359,7 @@ function renderizarDetalheComanda(comanda, itens) {
   el("comanda-vazia").hidden = true;
   el("comanda-detalhe").hidden = false;
 
-  el("detalhe-mesa-numero").textContent = `Mesa ${comanda.mesaNumero}`;
+  el("detalhe-mesa-numero").textContent = comanda.mesaNumero ? `Mesa ${comanda.mesaNumero}` : "Balcão";
   const badge = el("detalhe-status");
   badge.textContent = comanda.status;
   badge.className = "badge" + (comanda.status === "FECHADA" ? " fechada" : comanda.status === "CANCELADA" ? " cancelada" : "");
@@ -400,13 +406,14 @@ function renderizarDetalheComanda(comanda, itens) {
   const comandaFechada = comanda.status !== "ABERTA";
   el("btn-detalhe-add-item").hidden = comandaFechada;
   el("btn-detalhe-fechar").hidden = comandaFechada;
-  el("btn-detalhe-cancelar-mesa").hidden = comandaFechada;
+  el("btn-detalhe-cancelar-mesa").hidden = comandaFechada || !comanda.mesaNumero;
 }
 
 async function removerItem(itemId) {
   try {
     await api("DELETE", `/api/comandas/${state.comandaSelecionadaId}/itens/${itemId}`);
     await carregarItensDaComandaSelecionada();
+    await carregarComandasAbertas();
   } catch (erro) {
     mostrarToastDeErro(erro);
   }
@@ -677,6 +684,7 @@ async function confirmarAdicionarItem() {
     });
     fecharModal();
     await carregarItensDaComandaSelecionada();
+    await carregarComandasAbertas();
   } catch (erro) {
     mostrarToastDeErro(erro);
   }

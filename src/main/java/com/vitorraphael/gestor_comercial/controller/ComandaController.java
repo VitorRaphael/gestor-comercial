@@ -34,6 +34,12 @@ public class ComandaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(ComandaResponse.de(comanda));
     }
 
+    @PostMapping("/comandas/balcao")
+    public ResponseEntity<ComandaResponse> abrirBalcao() {
+        Comanda comanda = comandaService.abrirBalcao();
+        return ResponseEntity.status(HttpStatus.CREATED).body(ComandaResponse.de(comanda));
+    }
+
     @PostMapping("/comandas/{id}/fechar")
     public ResponseEntity<ComandaResponse> fechar(@PathVariable Long id) {
         Comanda comanda = comandaService.fechar(id);

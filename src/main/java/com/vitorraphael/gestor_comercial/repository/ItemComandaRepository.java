@@ -16,4 +16,6 @@ public interface ItemComandaRepository extends JpaRepository<ItemComanda, Long> 
     List<ItemComanda> findByCanceladoTrueAndDataCancelamentoBetween(LocalDateTime inicio, LocalDateTime fim);
 
     boolean existsByProdutoId(Long produtoId);
+
+    boolean existsByComandaId(Long comandaId);
 }

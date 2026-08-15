@@ -18,8 +18,8 @@ public record ComandaResponse(
     public static ComandaResponse de(Comanda comanda) {
         return new ComandaResponse(
                 comanda.getId(),
-                comanda.getMesa().getId(),
-                comanda.getMesa().getNumero(),
+                comanda.getMesa() != null ? comanda.getMesa().getId() : null,
+                comanda.getMesa() != null ? comanda.getMesa().getNumero() : null,
                 comanda.getStatus().name(),
                 comanda.getDataAbertura(),
                 comanda.getDataFechamento(),

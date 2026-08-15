@@ -60,7 +60,8 @@ class ItemComandaServiceTest {
         ImpressoraService impressoraService = new ImpressoraService(null);
         CategoriaService categoriaService = new CategoriaService(categoriaRepository, impressoraService, produtoRepository);
         ProdutoService produtoService = new ProdutoService(produtoRepository, categoriaService, null, null, null);
-        itemComandaService = new ItemComandaService(itemComandaRepository, comandaService, produtoService, null);
+        itemComandaService = new ItemComandaService(itemComandaRepository, comandaService, produtoService, null,
+                mesaService);
     }
 
     private Comanda criarComanda(Long id, StatusComanda status) {
