@@ -136,6 +136,12 @@ function campoHtml(campo) {
       .join("");
     return `<div><label>${campo.label}</label><select id="campo-${campo.nome}">${opcoes}</select></div>`;
   }
+  if (campo.tipo === "textarea") {
+    return `<div><label>${campo.label}</label><textarea id="campo-${campo.nome}" ${campo.attrs || ""}>${campo.valor ?? ""}</textarea></div>`;
+  }
+  if (campo.tipo === "file") {
+    return `<div><label>${campo.label}</label>${campo.previaUrl ? `<img src="${campo.previaUrl}" class="foto-previa" alt="Foto atual">` : ""}<input id="campo-${campo.nome}" type="file" accept="image/png,image/jpeg,image/webp"></div>`;
+  }
   const valor = campo.valor != null ? `value="${campo.valor}"` : "";
   return `<div><label>${campo.label}</label><input id="campo-${campo.nome}" type="${campo.tipo}" ${valor} ${campo.attrs || ""}></div>`;
 }
@@ -144,7 +150,11 @@ function abrirModalFormulario(titulo, campos, textoConfirmar, aoConfirmar) {
   const corpoHtml = campos.map(campoHtml).join("");
   abrirModalBase(titulo, corpoHtml, textoConfirmar, async () => {
     const valores = {};
-    for (const campo of campos) valores[campo.nome] = el(`campo-${campo.nome}`).value;
+    for (const campo of campos) {
+      valores[campo.nome] = campo.tipo === "file"
+        ? el(`campo-${campo.nome}`).files[0] || null
+        : el(`campo-${campo.nome}`).value;
+    }
     try {
       await aoConfirmar(valores);
       fecharModal();
@@ -152,6 +162,24 @@ function abrirModalFormulario(titulo, campos, textoConfirmar, aoConfirmar) {
       mostrarToastDeErro(erro);
     }
   });
+}
+
+async function apiUpload(caminho, arquivo, nomeCampo) {
+  const formData = new FormData();
+  formData.append(nomeCampo, arquivo);
+  const headers = {};
+  if (state.sessao) headers["Authorization"] = `Bearer ${state.sessao.token}`;
+
+  const resposta = await fetch(caminho, { method: "POST", headers, body: formData });
+  if (!resposta.ok) {
+    let mensagem = `Erro ${resposta.status}`;
+    try {
+      const dados = await resposta.json();
+      mensagem = dados.mensagem || mensagem;
+    } catch (_) { /* corpo vazio ou não-JSON */ }
+    throw new Error(mensagem);
+  }
+  return resposta.json();
 }
 
 // ---------- Navegação ----------
@@ -603,7 +631,13 @@ function renderCorpoModalItem() {
   for (const produto of produtosFiltrados) {
     const div = document.createElement("div");
     div.className = "produto-picker-item" + (state.itemModal.produto?.id === produto.id ? " selecionado" : "");
-    div.innerHTML = `<span>${produto.nome}</span><span>${formatarMoeda(produto.preco)}</span>`;
+    div.innerHTML = `
+      <span class="produto-picker-item-nome">
+        ${produto.fotoUrl ? `<img src="${produto.fotoUrl}" class="produto-foto-thumb-sm" alt="">` : ""}
+        ${produto.nome}
+      </span>
+      <span>${formatarMoeda(produto.preco)}</span>
+    `;
     div.addEventListener("click", () => {
       state.itemModal.produto = produto;
       renderCorpoModalItem();
@@ -725,7 +759,7 @@ async function carregarCardapio() {
       const tabela = document.createElement("table");
       tabela.className = "tabela";
       tabela.innerHTML = `
-        <thead><tr><th>Nome</th><th>Preço</th><th>Status</th><th data-gerente></th></tr></thead>
+        <thead><tr><th></th><th>Nome</th><th>Preço</th><th>Status</th><th data-gerente></th></tr></thead>
         <tbody></tbody>
       `;
       const tbody = tabela.querySelector("tbody");
@@ -734,7 +768,8 @@ async function carregarCardapio() {
         const tr = document.createElement("tr");
         tr.className = produto.ativo ? "" : "linha-desativada";
         tr.innerHTML = `
-          <td>${produto.nome}</td>
+          <td>${produto.fotoUrl ? `<img src="${produto.fotoUrl}" class="produto-foto-thumb" alt="">` : `<span class="produto-foto-thumb produto-foto-vazia"></span>`}</td>
+          <td>${produto.nome}${produto.descricao ? `<div class="produto-descricao-legenda">${produto.descricao}</div>` : ""}</td>
           <td>${formatarMoeda(produto.preco)}</td>
           <td>
             <span class="badge${produto.ativo ? "" : " inativo"}">${produto.ativo ? "ativo" : "inativo"}</span>
@@ -785,7 +820,7 @@ async function carregarCardapio() {
         tbody.appendChild(tr);
       }
       if (produtosDaCategoria.length === 0) {
-        tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="4">Nenhum produto nesta categoria.</td></tr>`;
+        tbody.innerHTML = `<tr class="tabela-vazia"><td colspan="5">Nenhum produto nesta categoria.</td></tr>`;
       }
 
       secao.appendChild(tabela);
@@ -812,15 +847,21 @@ function abrirModalNovoProduto(categoriaIdPreSelecionada) {
         opcoes: state.categorias.map((c) => ({ value: c.id, label: c.nome })),
         valor: categoriaIdPreSelecionada,
       },
+      { nome: "descricao", label: "Descrição (ingredientes)", tipo: "textarea", attrs: "rows='3' placeholder='ex: pão, carne, queijo, alface'" },
+      { nome: "foto", label: "Foto (opcional)", tipo: "file" },
     ],
     "Criar",
     async (valores) => {
-      await api("POST", "/api/produtos", {
+      const produto = await api("POST", "/api/produtos", {
         nome: valores.nome,
         preco: Number(valores.preco),
         custo: valores.custo ? Number(valores.custo) : null,
         categoriaId: Number(valores.categoriaId),
+        descricao: valores.descricao || null,
       });
+      if (valores.foto) {
+        await apiUpload(`/api/produtos/${produto.id}/foto`, valores.foto, "foto");
+      }
       await carregarCardapio();
     },
   );
@@ -840,6 +881,8 @@ function abrirModalEditarProduto(produto) {
         opcoes: state.categorias.map((c) => ({ value: c.id, label: c.nome })),
         valor: produto.categoriaId,
       },
+      { nome: "descricao", label: "Descrição (ingredientes)", tipo: "textarea", attrs: "rows='3' placeholder='ex: pão, carne, queijo, alface'", valor: produto.descricao },
+      { nome: "foto", label: "Foto (opcional)", tipo: "file", previaUrl: produto.fotoUrl },
     ],
     "Salvar",
     async (valores) => {
@@ -848,7 +891,11 @@ function abrirModalEditarProduto(produto) {
         preco: Number(valores.preco),
         custo: valores.custo ? Number(valores.custo) : null,
         categoriaId: Number(valores.categoriaId),
+        descricao: valores.descricao || null,
       });
+      if (valores.foto) {
+        await apiUpload(`/api/produtos/${produto.id}/foto`, valores.foto, "foto");
+      }
       await carregarCardapio();
     },
   );

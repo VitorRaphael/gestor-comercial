@@ -56,6 +56,10 @@ public class ImpressaoService {
                 recibo.append(" (").append(item.getObservacao()).append(")");
             }
             recibo.append("\n");
+            String descricao = item.getProduto().getDescricao();
+            if (descricao != null && !descricao.isBlank()) {
+                recibo.append("   ").append(descricao).append("\n");
+            }
         }
         recibo.append("========================");
         return recibo.toString();

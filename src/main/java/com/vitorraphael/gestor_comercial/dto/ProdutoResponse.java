@@ -13,7 +13,9 @@ public record ProdutoResponse(
         Long categoriaId,
         String categoriaNome,
         boolean ativo,
-        boolean temItensCombo) {
+        boolean temItensCombo,
+        String descricao,
+        String fotoUrl) {
 
     public static ProdutoResponse de(Produto produto) {
         return de(produto, false);
@@ -30,6 +32,8 @@ public record ProdutoResponse(
                 produto.getCategoria().getId(),
                 produto.getCategoria().getNome(),
                 produto.isAtivo(),
-                temItensCombo);
+                temItensCombo,
+                produto.getDescricao(),
+                produto.getFotoUrl());
     }
 }

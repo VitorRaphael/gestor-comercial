@@ -46,7 +46,7 @@ class ProdutoServiceTest {
         when(categoriaRepository.findById(1L)).thenReturn(Optional.empty());
 
         assertThrows(RecursoNaoEncontradoException.class,
-                () -> produtoService.criar("X-Burger", new BigDecimal("25.90"), null, 1L));
+                () -> produtoService.criar("X-Burger", new BigDecimal("25.90"), null, 1L, null));
 
         verify(produtoRepository, never()).save(any(Produto.class));
     }
@@ -60,7 +60,7 @@ class ProdutoServiceTest {
         when(categoriaRepository.findById(1L)).thenReturn(Optional.of(categoria));
         when(produtoRepository.save(any(Produto.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Produto produto = produtoService.criar("X-Burger", new BigDecimal("25.90"), null, 1L);
+        Produto produto = produtoService.criar("X-Burger", new BigDecimal("25.90"), null, 1L, null);
 
         assertThat(produto.getNome()).isEqualTo("X-Burger");
         assertThat(produto.getPreco()).isEqualByComparingTo(new BigDecimal("25.90"));

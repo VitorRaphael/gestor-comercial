@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.vitorraphael.gestor_comercial.dto.ProdutoRequest;
 import com.vitorraphael.gestor_comercial.dto.ProdutoResponse;
@@ -38,7 +40,7 @@ public class ProdutoController {
     @ExigeGerente
     @PostMapping
     public ResponseEntity<ProdutoResponse> criar(@Valid @RequestBody ProdutoRequest request) {
-        Produto produto = produtoService.criar(request.nome(), request.preco(), request.custo(), request.categoriaId());
+        Produto produto = produtoService.criar(request.nome(), request.preco(), request.custo(), request.categoriaId(), request.descricao());
         return ResponseEntity.status(HttpStatus.CREATED).body(ProdutoResponse.de(produto));
     }
 
@@ -67,7 +69,14 @@ public class ProdutoController {
     @ExigeGerente
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> atualizar(@PathVariable Long id, @Valid @RequestBody ProdutoRequest request) {
-        Produto produto = produtoService.atualizar(id, request.nome(), request.preco(), request.custo(), request.categoriaId());
+        Produto produto = produtoService.atualizar(id, request.nome(), request.preco(), request.custo(), request.categoriaId(), request.descricao());
+        return ResponseEntity.ok(ProdutoResponse.de(produto, comboItemRepository.existsByProdutoComboId(produto.getId())));
+    }
+
+    @ExigeGerente
+    @PostMapping("/{id}/foto")
+    public ResponseEntity<ProdutoResponse> atualizarFoto(@PathVariable Long id, @RequestParam("foto") MultipartFile foto) {
+        Produto produto = produtoService.atualizarFoto(id, foto);
         return ResponseEntity.ok(ProdutoResponse.de(produto, comboItemRepository.existsByProdutoComboId(produto.getId())));
     }
 

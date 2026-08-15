@@ -1,9 +1,15 @@
 package com.vitorraphael.gestor_comercial.service;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.vitorraphael.gestor_comercial.exception.RecursoNaoEncontradoException;
 import com.vitorraphael.gestor_comercial.exception.RegraDeNegocioException;
@@ -16,6 +22,9 @@ import com.vitorraphael.gestor_comercial.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
+
+    private static final Set<String> EXTENSOES_FOTO_PERMITIDAS = Set.of("jpg", "jpeg", "png", "webp");
+    private static final Path DIRETORIO_FOTOS = Path.of("uploads", "produtos");
 
     private final ProdutoRepository produtoRepository;
     private final CategoriaService categoriaService;
@@ -33,7 +42,7 @@ public class ProdutoService {
         this.fichaTecnicaRepository = fichaTecnicaRepository;
     }
 
-    public Produto criar(String nome, BigDecimal preco, BigDecimal custo, Long categoriaId) {
+    public Produto criar(String nome, BigDecimal preco, BigDecimal custo, Long categoriaId, String descricao) {
         Categoria categoria = categoriaService.buscarPorId(categoriaId);
 
         Produto produto = new Produto();
@@ -42,6 +51,7 @@ public class ProdutoService {
         produto.setCusto(custo);
         produto.setCategoria(categoria);
         produto.setAtivo(true);
+        produto.setDescricao(descricao);
         return produtoRepository.save(produto);
     }
 
@@ -56,7 +66,7 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
 
-    public Produto atualizar(Long produtoId, String nome, BigDecimal preco, BigDecimal custo, Long categoriaId) {
+    public Produto atualizar(Long produtoId, String nome, BigDecimal preco, BigDecimal custo, Long categoriaId, String descricao) {
         Produto produto = buscarPorId(produtoId);
         Categoria categoria = categoriaService.buscarPorId(categoriaId);
 
@@ -64,7 +74,50 @@ public class ProdutoService {
         produto.setPreco(preco);
         produto.setCusto(custo);
         produto.setCategoria(categoria);
+        produto.setDescricao(descricao);
         return produtoRepository.save(produto);
+    }
+
+    /**
+     * Salva a foto em disco (fora do classpath, para sobreviver a rebuilds do
+     * jar) e substitui a anterior, se houver. Servida via WebConfig em
+     * /uploads/**.
+     */
+    public Produto atualizarFoto(Long produtoId, MultipartFile foto) {
+        Produto produto = buscarPorId(produtoId);
+
+        if (foto == null || foto.isEmpty()) {
+            throw new RegraDeNegocioException("A foto enviada está vazia.");
+        }
+
+        String extensao = extensaoDe(foto.getOriginalFilename());
+        if (!EXTENSOES_FOTO_PERMITIDAS.contains(extensao)) {
+            throw new RegraDeNegocioException("Formato de imagem não suportado. Use JPG, PNG ou WEBP.");
+        }
+
+        try {
+            Files.createDirectories(DIRETORIO_FOTOS);
+            String nomeArquivo = produtoId + "." + extensao;
+            Path destino = DIRETORIO_FOTOS.resolve(nomeArquivo);
+            for (String extensaoAntiga : EXTENSOES_FOTO_PERMITIDAS) {
+                if (!extensaoAntiga.equals(extensao)) {
+                    Files.deleteIfExists(DIRETORIO_FOTOS.resolve(produtoId + "." + extensaoAntiga));
+                }
+            }
+            foto.transferTo(destino);
+            produto.setFotoUrl("/uploads/produtos/" + nomeArquivo + "?v=" + System.currentTimeMillis());
+        } catch (IOException e) {
+            throw new UncheckedIOException("Falha ao salvar a foto do produto.", e);
+        }
+
+        return produtoRepository.save(produto);
+    }
+
+    private String extensaoDe(String nomeArquivo) {
+        if (nomeArquivo == null || !nomeArquivo.contains(".")) {
+            return "";
+        }
+        return nomeArquivo.substring(nomeArquivo.lastIndexOf('.') + 1).toLowerCase();
     }
 
     public Produto desativar(Long produtoId) {

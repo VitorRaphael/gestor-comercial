@@ -2,6 +2,7 @@ package com.vitorraphael.gestor_comercial.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -30,5 +31,13 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addRedirectViewController("/desktop", "/desktop/index.html");
         registry.addRedirectViewController("/desktop/", "/desktop/index.html");
+    }
+
+    // Fotos de produto ficam em ./uploads/produtos (fora do jar, não em
+    // classpath), pra sobreviver a rebuilds e serem editáveis sem redeploy.
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:uploads/");
     }
 }

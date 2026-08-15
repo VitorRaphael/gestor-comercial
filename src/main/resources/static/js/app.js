@@ -298,7 +298,13 @@ function renderizarProdutos() {
   for (const produto of produtosDaCategoria) {
     const botao = document.createElement("button");
     botao.className = "produto-card";
-    botao.innerHTML = `<span>${produto.nome}</span><span class="produto-preco">${formatarMoeda(produto.preco)}</span>`;
+    botao.innerHTML = `
+      <span class="produto-nome-com-foto">
+        ${produto.fotoUrl ? `<img src="${produto.fotoUrl}" class="produto-foto-thumb" alt="">` : ""}
+        ${produto.nome}
+      </span>
+      <span class="produto-preco">${formatarMoeda(produto.preco)}</span>
+    `;
     botao.addEventListener("click", () => abrirModalQuantidade(produto));
     lista.appendChild(botao);
   }

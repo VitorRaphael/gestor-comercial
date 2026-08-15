@@ -35,3 +35,19 @@ build/
 ### Banco de dados local ###
 *.db
 *.db-journal
+
+### Obsidian (notas pessoais, não é código do projeto) ###
+.obsidian/
+
+### Windows (metadado de pasta do Explorer) ###
+desktop.ini
+
+### Claude Code (config local de preview, não é código do projeto) ###
+.claude/
+
+### Graphify (cache/relatório regenerável — roda "graphify . --update --code-only" pra recriar) ###
+graphify-out/
+
+### Notas de planejamento pessoais ###
+CONTEXT.md
+IdeiasProjeto.md
