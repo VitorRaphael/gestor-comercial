@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,6 +50,20 @@ public class ProdutoController {
         return ResponseEntity.ok(produtos);
     }
 
+    /**
+     * Usado só pela tela de gerenciamento do cardápio, que precisa mostrar
+     * também os produtos desativados (com feedback visual). As telas de
+     * pedido (atendente) usam {@link #listarAtivos()}, que já filtra.
+     */
+    @ExigeGerente
+    @GetMapping("/todos")
+    public ResponseEntity<List<ProdutoResponse>> listarTodos() {
+        List<ProdutoResponse> produtos = produtoService.listarTodos().stream()
+                .map(produto -> ProdutoResponse.de(produto, comboItemRepository.existsByProdutoComboId(produto.getId())))
+                .toList();
+        return ResponseEntity.ok(produtos);
+    }
+
     @ExigeGerente
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> atualizar(@PathVariable Long id, @Valid @RequestBody ProdutoRequest request) {
@@ -65,5 +80,12 @@ public class ProdutoController {
     public ResponseEntity<ProdutoResponse> desativar(@PathVariable Long id) {
         Produto produto = produtoService.desativar(id);
         return ResponseEntity.ok(ProdutoResponse.de(produto, comboItemRepository.existsByProdutoComboId(produto.getId())));
+    }
+
+    @ExigeGerente
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        produtoService.excluir(id);
+        return ResponseEntity.noContent().build();
     }
 }

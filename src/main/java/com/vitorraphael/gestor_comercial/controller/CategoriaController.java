@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +53,28 @@ public class CategoriaController {
     public ResponseEntity<CategoriaResponse> associarImpressora(@PathVariable Long id,
             @Valid @RequestBody AssociarImpressoraRequest request) {
         Categoria categoria = categoriaService.associarImpressora(id, request.impressoraId());
+        return ResponseEntity.ok(CategoriaResponse.de(categoria));
+    }
+
+    @ExigeGerente
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaResponse> editar(@PathVariable Long id,
+            @Valid @RequestBody CategoriaRequest request) {
+        Categoria categoria = categoriaService.editar(id, request.nome());
+        return ResponseEntity.ok(CategoriaResponse.de(categoria));
+    }
+
+    @ExigeGerente
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        categoriaService.excluir(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ExigeGerente
+    @PatchMapping("/{id}/desativar")
+    public ResponseEntity<CategoriaResponse> desativar(@PathVariable Long id) {
+        Categoria categoria = categoriaService.desativar(id);
         return ResponseEntity.ok(CategoriaResponse.de(categoria));
     }
 }

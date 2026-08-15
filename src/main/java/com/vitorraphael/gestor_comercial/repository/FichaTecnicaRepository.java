@@ -9,4 +9,6 @@ import com.vitorraphael.gestor_comercial.model.FichaTecnica;
 public interface FichaTecnicaRepository extends JpaRepository<FichaTecnica, Long> {
 
     List<FichaTecnica> findByProdutoId(Long produtoId);
+
+    boolean existsByProdutoId(Long produtoId);
 }

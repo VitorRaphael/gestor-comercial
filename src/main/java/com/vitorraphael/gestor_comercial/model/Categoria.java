@@ -34,6 +34,9 @@ public class Categoria {
     @JoinColumn(name = "impressora_id", nullable = true)
     private Impressora impressora;
 
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    private boolean ativo = true;
+
     public Long getId() {
         return id;
     }
@@ -56,6 +59,14 @@ public class Categoria {
 
     public void setImpressora(Impressora impressora) {
         this.impressora = impressora;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
     @Override

@@ -11,4 +11,6 @@ public interface ComboItemRepository extends JpaRepository<ComboItem, Long> {
     List<ComboItem> findByProdutoComboId(Long produtoComboId);
 
     boolean existsByProdutoComboId(Long produtoComboId);
+
+    boolean existsByProdutoComponenteId(Long produtoComponenteId);
 }

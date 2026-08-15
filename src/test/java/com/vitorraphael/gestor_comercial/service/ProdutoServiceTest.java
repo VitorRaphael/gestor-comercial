@@ -37,8 +37,8 @@ class ProdutoServiceTest {
     @BeforeEach
     void setUp() {
         ImpressoraService impressoraService = new ImpressoraService(null);
-        CategoriaService categoriaService = new CategoriaService(categoriaRepository, impressoraService);
-        produtoService = new ProdutoService(produtoRepository, categoriaService);
+        CategoriaService categoriaService = new CategoriaService(categoriaRepository, impressoraService, produtoRepository);
+        produtoService = new ProdutoService(produtoRepository, categoriaService, null, null, null);
     }
 
     @Test

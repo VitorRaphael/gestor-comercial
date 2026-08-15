@@ -59,7 +59,7 @@ class ItemComandaServiceTest {
                 movimentoEstoqueService, null);
         ImpressoraService impressoraService = new ImpressoraService(null);
         CategoriaService categoriaService = new CategoriaService(categoriaRepository, impressoraService, produtoRepository);
-        ProdutoService produtoService = new ProdutoService(produtoRepository, categoriaService);
+        ProdutoService produtoService = new ProdutoService(produtoRepository, categoriaService, null, null, null);
         itemComandaService = new ItemComandaService(itemComandaRepository, comandaService, produtoService, null);
     }
 

@@ -262,7 +262,7 @@ el("btn-fechar-modal-produto").addEventListener("click", () => { el("modal-produ
 async function abrirModalProduto() {
   try {
     if (state.categorias.length === 0) {
-      state.categorias = await api("GET", "/api/categorias");
+      state.categorias = (await api("GET", "/api/categorias")).filter((c) => c.ativo);
     }
     state.produtos = await api("GET", "/api/produtos");
     state.categoriaSelecionadaId = state.categorias[0]?.id ?? null;

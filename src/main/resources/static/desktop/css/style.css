@@ -369,6 +369,8 @@ button, input, select, textarea {
 .item-comanda-cancelado { text-decoration: line-through; color: var(--texto-fraco); }
 .item-comanda-cancelado-motivo { color: var(--texto-fraco); font-size: 0.78rem; }
 
+.linha-desativada, .linha-desativada strong { text-decoration: line-through; color: var(--texto-fraco); }
+
 .ficha-tecnica-selector { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
 
 .analytics-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }

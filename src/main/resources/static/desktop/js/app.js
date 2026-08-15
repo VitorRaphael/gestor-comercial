@@ -113,6 +113,22 @@ function abrirModalBase(titulo, corpoHtml, textoConfirmar, aoConfirmar) {
   el("modal").hidden = false;
 }
 
+function abrirModalConfirmarExclusao(tipo, nome, aoConfirmar) {
+  abrirModalBase(
+    "Realmente deseja excluir?",
+    `<p>${tipo}: ${nome}</p>`,
+    "Excluir",
+    async () => {
+      try {
+        await aoConfirmar();
+        fecharModal();
+      } catch (erro) {
+        mostrarToastDeErro(erro);
+      }
+    },
+  );
+}
+
 function campoHtml(campo) {
   if (campo.tipo === "select") {
     const opcoes = campo.opcoes
@@ -636,14 +652,14 @@ async function confirmarAdicionarItem() {
 
 async function carregarCardapio() {
   try {
+    const ehGerente = state.sessao?.perfil === "GERENTE";
     const [categorias, produtos] = await Promise.all([
       api("GET", "/api/categorias"),
-      api("GET", "/api/produtos"),
+      api("GET", ehGerente ? "/api/produtos/todos" : "/api/produtos"),
     ]);
     state.categorias = categorias;
     state.produtos = produtos;
 
-    const ehGerente = state.sessao?.perfil === "GERENTE";
     const lista = el("cardapio-lista");
     lista.innerHTML = "";
 
@@ -659,7 +675,7 @@ async function carregarCardapio() {
       secao.className = "cardapio-categoria";
 
       const cabecalho = document.createElement("div");
-      cabecalho.className = "cardapio-categoria-header";
+      cabecalho.className = "cardapio-categoria-header" + (categoria.ativo ? "" : " linha-desativada");
       cabecalho.innerHTML = `
         <div class="cardapio-categoria-titulo">
           <strong>${categoria.nome}</strong>
@@ -673,16 +689,28 @@ async function carregarCardapio() {
         btnEditarCategoria.addEventListener("click", () => abrirModalEditarCategoria(categoria));
         cabecalho.appendChild(btnEditarCategoria);
 
-        const btnExcluirCategoria = document.createElement("button");
-        btnExcluirCategoria.className = "botao-link perigo";
-        btnExcluirCategoria.textContent = "Excluir";
-        btnExcluirCategoria.addEventListener("click", async () => {
+        const btnDesativarCategoria = document.createElement("button");
+        btnDesativarCategoria.className = "botao-link perigo";
+        btnDesativarCategoria.textContent = "Desativar";
+        btnDesativarCategoria.hidden = !categoria.ativo;
+        btnDesativarCategoria.addEventListener("click", async () => {
           try {
-            await api("DELETE", `/api/categorias/${categoria.id}`);
+            await api("PATCH", `/api/categorias/${categoria.id}/desativar`);
             await carregarCardapio();
           } catch (erro) {
             mostrarToastDeErro(erro);
           }
+        });
+        cabecalho.appendChild(btnDesativarCategoria);
+
+        const btnExcluirCategoria = document.createElement("button");
+        btnExcluirCategoria.className = "botao-link perigo";
+        btnExcluirCategoria.textContent = "Excluir";
+        btnExcluirCategoria.addEventListener("click", () => {
+          abrirModalConfirmarExclusao("Categoria", categoria.nome, async () => {
+            await api("DELETE", `/api/categorias/${categoria.id}`);
+            await carregarCardapio();
+          });
         });
         cabecalho.appendChild(btnExcluirCategoria);
 
@@ -704,6 +732,7 @@ async function carregarCardapio() {
 
       for (const produto of produtosDaCategoria) {
         const tr = document.createElement("tr");
+        tr.className = produto.ativo ? "" : "linha-desativada";
         tr.innerHTML = `
           <td>${produto.nome}</td>
           <td>${formatarMoeda(produto.preco)}</td>
@@ -741,6 +770,17 @@ async function carregarCardapio() {
             }
           });
           tdAcoes.appendChild(btnDesativar);
+
+          const btnExcluir = document.createElement("button");
+          btnExcluir.className = "botao-link perigo";
+          btnExcluir.textContent = "Excluir";
+          btnExcluir.addEventListener("click", () => {
+            abrirModalConfirmarExclusao("Produto", produto.nome, async () => {
+              await api("DELETE", `/api/produtos/${produto.id}`);
+              await carregarCardapio();
+            });
+          });
+          tdAcoes.appendChild(btnExcluir);
         }
         tbody.appendChild(tr);
       }
