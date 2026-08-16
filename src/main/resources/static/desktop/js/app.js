@@ -911,15 +911,16 @@ function abrirModalEditarProduto(produto) {
 
 function abrirModalItensCombo(produtoCombo) {
   const opcoesComponente = state.produtos.filter((p) => p.id !== produtoCombo.id);
+  state.itensComboModal = { busca: "", produto: null };
+
   const corpoHtml = `
     <p class="secao-legenda">Produtos do cardápio que compõem "${produtoCombo.nome}". A venda do combo baixa o estoque e é contabilizada como venda de cada item aqui, na quantidade informada.</p>
     <div class="ficha-tecnica-selector">
-      <select id="campo-item-combo-produto">
-        ${opcoesComponente.map((p) => `<option value="${p.id}">${p.nome}</option>`).join("")}
-      </select>
+      <input type="text" id="item-combo-busca" placeholder="Buscar produto..." autocomplete="off" style="flex: 1;" />
       <input id="campo-item-combo-quantidade" type="number" min="1" step="1" value="1" style="width: 5rem;">
       <button id="btn-confirmar-item-combo" class="botao botao-secundario">+ Adicionar</button>
     </div>
+    <div id="item-combo-produtos" class="produto-picker"></div>
     <table class="tabela">
       <thead>
         <tr>
@@ -935,8 +936,49 @@ function abrirModalItensCombo(produtoCombo) {
 
   if (opcoesComponente.length === 0) {
     el("btn-confirmar-item-combo").disabled = true;
-    el("campo-item-combo-produto").innerHTML = `<option>Nenhum outro produto cadastrado</option>`;
+    el("item-combo-busca").disabled = true;
+    el("item-combo-produtos").innerHTML = `<p style="color:var(--texto-fraco)">Nenhum outro produto cadastrado.</p>`;
   }
+
+  const renderPickerComponente = () => {
+    const buscaEl = el("item-combo-busca");
+    if (buscaEl.value !== state.itensComboModal.busca) buscaEl.value = state.itensComboModal.busca;
+    if (!buscaEl.dataset.ligado) {
+      buscaEl.dataset.ligado = "1";
+      buscaEl.addEventListener("input", () => {
+        state.itensComboModal.busca = buscaEl.value;
+        renderPickerComponente();
+      });
+    }
+
+    const termo = state.itensComboModal.busca.trim().toLowerCase();
+    const produtosEl = el("item-combo-produtos");
+    produtosEl.innerHTML = "";
+    const produtosFiltrados = termo
+      ? opcoesComponente.filter((p) => p.nome.toLowerCase().includes(termo))
+      : opcoesComponente;
+    for (const produto of produtosFiltrados) {
+      const div = document.createElement("div");
+      div.className =
+        "produto-picker-item" + (state.itensComboModal.produto?.id === produto.id ? " selecionado" : "");
+      div.innerHTML = `
+        <span class="produto-picker-item-nome">
+          ${produto.fotoUrl ? `<img src="${produto.fotoUrl}" class="produto-foto-thumb-sm" alt="">` : ""}
+          ${produto.nome}
+        </span>
+      `;
+      div.addEventListener("click", () => {
+        state.itensComboModal.produto = produto;
+        renderPickerComponente();
+      });
+      produtosEl.appendChild(div);
+    }
+    if (produtosFiltrados.length === 0) {
+      produtosEl.innerHTML = `<p style="color:var(--texto-fraco)">Nenhum produto encontrado.</p>`;
+    }
+  };
+
+  if (opcoesComponente.length > 0) renderPickerComponente();
 
   const recarregar = async () => {
     try {
@@ -975,13 +1017,19 @@ function abrirModalItensCombo(produtoCombo) {
 
   if (opcoesComponente.length > 0) {
     el("btn-confirmar-item-combo").addEventListener("click", async () => {
+      if (!state.itensComboModal.produto) {
+        mostrarToast("Selecione um produto.", true);
+        return;
+      }
       try {
         await api("POST", "/api/itens-combo", {
           produtoComboId: produtoCombo.id,
-          produtoComponenteId: Number(el("campo-item-combo-produto").value),
+          produtoComponenteId: state.itensComboModal.produto.id,
           quantidade: Number(el("campo-item-combo-quantidade").value),
         });
         el("campo-item-combo-quantidade").value = "1";
+        state.itensComboModal.produto = null;
+        renderPickerComponente();
         await recarregar();
         await carregarCardapio();
       } catch (erro) {
