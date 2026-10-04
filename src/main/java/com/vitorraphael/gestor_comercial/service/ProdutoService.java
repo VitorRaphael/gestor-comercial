@@ -23,7 +23,7 @@ import com.vitorraphael.gestor_comercial.repository.ProdutoRepository;
 @Service
 public class ProdutoService {
 
-    private static final Set<String> EXTENSOES_FOTO_PERMITIDAS = Set.of("jpg", "jpeg", "png", "webp");
+    private static final Set<String> EXTENSOES_FOTO_PERMITIDAS = Set.of("jpg", "jpeg", "png", "webp", "avif");
     private static final Path DIRETORIO_FOTOS = Path.of("uploads", "produtos");
 
     private final ProdutoRepository produtoRepository;
@@ -92,7 +92,7 @@ public class ProdutoService {
 
         String extensao = extensaoDe(foto.getOriginalFilename());
         if (!EXTENSOES_FOTO_PERMITIDAS.contains(extensao)) {
-            throw new RegraDeNegocioException("Formato de imagem não suportado. Use JPG, PNG ou WEBP.");
+            throw new RegraDeNegocioException("Formato de imagem não suportado. Use JPG, PNG, WEBP ou AVIF.");
         }
 
         try {
